@@ -16,9 +16,9 @@ Bundle 'TaskList.vim'
 Bundle 'supertab'
 Bundle 'vim-git'
 Bundle 'JSON.vim'
+Bundle 'python-mode'
 Bundle 'local-packages'
 Bundle 'molokai'
-Bundle 'python-mode'
 
 
 set modelines=0
@@ -100,7 +100,6 @@ au! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
 
 let mapleader=","
 
-map T :TaskList<CR>
 " Don't indent coments in Python
 inoremap # X<C-H>#
 
@@ -119,6 +118,7 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 " Can have multiply values "pep8,pyflakes,mccabe"
 "let g:pymode_lint_checker = "pylint,pep8,pyflakes,mccabe"
 let g:pymode_lint_checker = "pylint,pep8"
+let g:pymode_run = 0
 
 let g:pymode_rope_extended_complete=1
 let g:lint_message=1
