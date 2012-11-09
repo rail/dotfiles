@@ -3,10 +3,10 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'python-mode'
 Bundle 'Command-T'
 Bundle 'vim-powerline'
 Bundle 'tagbar'
+nmap <F6> :TagbarToggle<CR>
 Bundle 'vim-puppet'
 Bundle 'vim-fugitive'
 Bundle 'ack.vim'
@@ -17,6 +17,8 @@ Bundle 'supertab'
 Bundle 'vim-git'
 Bundle 'JSON.vim'
 Bundle 'local-packages'
+Bundle 'molokai'
+Bundle 'python-mode'
 
 
 set modelines=0
@@ -48,22 +50,16 @@ nnoremap <F3> :set list!<CR>
 filetype on
 filetype plugin on
 filetype indent on
-"let python_highlight_all=1
-au BufEnter *.inc set filetype=php
-au FileType make set noexpandtab
-au BufEnter master*.cfg set filetype=python
-"set expandtab "Python!
-"set sw=4
-"let pythonhighlightall=1   "для максимально полной подсветки файла
-"nmap <F6> :TlistOpen<CR>        "F8 -вызов taglist
-nmap <F6> :TagbarToggle<CR>
-"let g:pydiction_location = '~/.vim/complete-dict'
 " scroll when reach 3rd line from the bottom
 set scrolloff=3
 
 " Manage vimrc
 map ,s :source ~/.vimrc<CR>
 map ,e :sp ~/.vimrc<CR>
+
+au BufEnter *.inc set filetype=php
+au FileType make set noexpandtab
+au BufEnter master*.cfg set filetype=python
 
 set ai
 set history=500         " keep 500 lines of command history
@@ -72,7 +68,8 @@ set shiftwidth=4
 set tabstop=8
 set softtabstop=4
 set smarttab
-colorscheme wombat256mod
+"colorscheme wombat256mod
+colorscheme molokai
 nnoremap <silent> <F10> :q<CR>
 syntax on
 set showcmd            " Show (partial) command in status line.
@@ -88,11 +85,6 @@ autocmd BufReadPost *
       \ if line("'\"") > 0 && line ("'\"") <= line("$") |
       \   exe "normal g'\"" |
       \ endif
-
-"menu Spellcheck.Russian :set spelllang=ru<CR>
-"menu Spellcheck.English :set spelllang=en<CR>
-"map <F9> :emenu Spellcheck.<TAB>
-
 
 " spell checker
 map <silent> <F7> :set invspell<CR>
@@ -130,6 +122,7 @@ let g:pymode_lint_checker = "pylint,pep8"
 
 let g:pymode_rope_extended_complete=1
 let g:lint_message=1
+let g:pymode_lint_maxheight = 3
 
 let g:Powerline_symbols = 'fancy'
 let g:CommandTMaxHeight = 15
