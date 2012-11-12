@@ -66,10 +66,10 @@ set wildignore+=*.o,*.obj,.git,.hg,*.pyc
 set background=dark
 "
 " Undo
-if has('persistent_undo')
-    set undofile            " enable persistent undo
-    set undodir=/tmp/       " store undofiles in a tmp dir
-endif
+"if has('persistent_undo')
+    "set undofile            " enable persistent undo
+    "set undodir=/tmp/       " store undofiles in a tmp dir
+"endif
 
 " X-clipboard support
 if has('unnamedplus')
