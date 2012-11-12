@@ -46,18 +46,18 @@ set wrap
 set linebreak
 " scroll when reach 3rd line from the bottom
 set scrolloff=3
-set ai
-set history=500         " keep 500 lines of command history
-set bs=2                " Allow backspacing over everything in insert mode
+set autoindent
+set history=500
+set backspace=2                " Allow backspacing over everything in insert mode
 set shiftwidth=4
 set tabstop=8
 set softtabstop=4
 set smarttab
-set showcmd            " Show (partial) command in status line.
-set showmatch          " Show matching brackets.
-set ignorecase         " Do case insensitive matching
+set showcmd
+set showmatch
+set ignorecase
 set smartcase
-set incsearch          " Incremental search
+set incsearch
 set hlsearch
 set ruler
 set viminfo='1000,f1,<500,/50,:50
@@ -78,12 +78,12 @@ endif
 
 let mapleader=","
 
-au BufEnter *.inc set filetype=php
-au FileType make set noexpandtab
-au BufEnter master*.cfg set filetype=python
-au! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
-au BufRead,BufnewFile *.C,*.c,*.h,*.cpp,*.cc,*.js,*.ps,*.sh,*.bash match BadFormat /\(\%81v.\+\)\|\(^\t\+\)\|\(\s\+$\)/
-au BufRead,BufnewFile *.py match BadFormat /\(\%80v.\+\)\|\(^\t\+\)\|\(\s\+$\)/
+autocmd BufEnter *.inc set filetype=php
+autocmd FileType make set noexpandtab
+autocmd BufEnter master*.cfg set filetype=python
+autocmd! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
+autocmd BufRead,BufnewFile *.C,*.c,*.h,*.cpp,*.cc,*.js,*.ps,*.sh,*.bash match BadFormat /\(\%81v.\+\)\|\(^\t\+\)\|\(\s\+$\)/
+autocmd BufRead,BufnewFile *.py match BadFormat /\(\%80v.\+\)\|\(^\t\+\)\|\(\s\+$\)/
 
 "restore-position
 autocmd BufReadPost *
