@@ -25,6 +25,7 @@ Bundle 'gist-vim'
 Bundle 'vim-colors-solarized'
 Bundle 'nerdcommenter'
 Bundle 'nerdtree'
+Bundle 'vimwiki'
 
 set modelines=0
 set encoding=utf-8
@@ -99,11 +100,11 @@ colorscheme solarized
 highlight BadFormat ctermbg=red ctermfg=white guibg=#592929
 
 let g:pymode_paths = ["lib/python", "lib/python/vendor"]
-let g:pymode_lint_checker = "pylint,pep8"
+let g:pymode_lint_checker = "pyflakes,pylint,pep8"
 let g:pymode_run = 0
 let g:pymode_lint_maxheight = 5
 let g:pymode_rope_extended_complete=1
-let g:lint_message=1
+let g:pymode_lint_onfly = 1
 
 let g:Powerline_symbols = 'fancy'
 let g:CommandTMaxHeight = 15
@@ -152,3 +153,10 @@ let NERDTreeIgnore=[
     \'\.pyo$',
     \'\..*.rej$',
     \'\.rej$']
+
+let g:vimwiki_folding = 1
+let g:vimwiki_fold_lists = 1
+let g:vimwiki_list = [
+    \ {"path" : "~/Dropbox/wiki"}
+\ ]
+nmap <Leader>wv <Plug>VimwikiIndex
