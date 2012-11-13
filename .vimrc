@@ -81,9 +81,11 @@ let mapleader=","
 autocmd BufEnter *.inc set filetype=php
 autocmd FileType make set noexpandtab
 autocmd BufEnter master*.cfg set filetype=python
-autocmd! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
 autocmd BufRead,BufnewFile *.C,*.c,*.h,*.cpp,*.cc,*.js,*.ps,*.sh,*.bash match BadFormat /\(\%81v.\+\)\|\(^\t\+\)\|\(\s\+$\)/
 autocmd BufRead,BufnewFile *.py match BadFormat /\(\%80v.\+\)\|\(^\t\+\)\|\(\s\+$\)/
+autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
+autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
 
 "restore-position
 autocmd BufReadPost *
@@ -91,8 +93,6 @@ autocmd BufReadPost *
       \   exe "normal g'\"" |
       \ endif
 
-autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
-autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 let g:solarized_termcolors = 256
 colorscheme solarized

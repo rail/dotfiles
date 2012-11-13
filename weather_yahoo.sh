@@ -14,7 +14,7 @@ unit="c"
 update_period=600
 
 # Cache file.
-tmp_file=$(mktemp)
+tmp_file=/tmp/yw.txt
 
 # Get symbol for condition. Available conditions: http://developer.yahoo.com/weather/#codes
 get_condition_symbol() {
