@@ -1,0 +1,69 @@
+[ui]
+editor = ~/.hgext/hgeditor
+username = Rail Aliiev <rail@mozilla.com>
+#merge = meld
+merge = internal:merge
+
+[diff]
+git = 1
+showfunc = 1
+nodates = 1
+unified = 8
+
+[export]
+git = 1
+showfunc = 1
+
+###[defaults]
+[alias]
+#diff = diff -p -U 8
+qdiff = qdiff -p -U 8
+#qnew = -e
+#qrefresh = -e
+import = import --no-commit
+paste = paste --dest diff.pastebin.mozilla.org --user rail
+
+urls = !$HG log --template='{node|short} {desc|firstline}\n' $(echo $HG_ARGS | sed 's/urls //g') | perl -lpe 'BEGIN { ($url = shift) =~ s/^\w+/http/ }; s!^(?=\w+)!$url/rev/!' `hg path default | sed 's,/$,,'`
+last = !$HG urls -l1
+# git diff master...branch == hg diff -r "ancestor(default, mock)" -r mock 
+
+[extensions]
+parentrevspec =
+color =
+pager =
+hgext.hgk =
+rebase =
+hgext.graphlog =
+hgext.mq =
+hgext.purge =
+progress =
+paste = /home/rail/.hg.d/hg-paste/paste.py
+hgext.convert =
+transplant =
+hgext.bookmarks =
+share = 
+#hgext.extdiff =
+#qimportbz = ~/.hg.d/qimportbz
+#prompt = ~/.hg.d/hg-prompt/prompt.py
+#noopmerge = ~/.hg.d/branch-l10n/merge_l10n.py
+#collapse = ~/.hgext/collapse.py
+#inotify =
+hgext.git =
+
+
+[pager]
+pager = LESS='FSRX' less
+attend = log, help, diff, grep, glog, qdiff
+
+
+[hooks]
+# Prevent "hg pull" if MQ patches are applied.
+prechangegroup.mq-no-pull = ! hg qtop > /dev/null 2>&1
+# Prevent "hg push" if MQ patches are applied.
+preoutgoing.mq-no-push = ! hg qtop > /dev/null 2>&1
+
+#changegroup=hg diff --stat -r $HG_NODE -r tip
+
+#[merge-tools]
+#vimdiff.executable = vim
+#vimdiff.args = -d $base $local $output $other +close +close
