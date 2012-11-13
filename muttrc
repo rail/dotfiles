@@ -1,0 +1,195 @@
+set mbox_type = Maildir
+set folder = ~/.offlineimap-mozilla
+
+set spoolfile = ~/.offlineimap-mozilla/INBOX
+source ~/.mutt/muttmailboxes
+
+ignore *
+unignore from: date subject to cc x-mailer user-agent X-Bogosity Reply-To: X-Spam-Status
+hdr_order from subject to cc date x-spam: X-Mailer: User-Agent: Reply-To: X-Bogosity: X-Spam-Status
+
+set use_from
+set from = "Rail Aliiev <rail@mozilla.com>"
+set signature="~/.signature"
+alternates rail@.* raliiev@.*
+
+my_hdr X-IRC-nickname: rail
+
+set sort=threads
+set sort_aux=date-received
+set auto_tag
+set pager_index_lines=9
+set fcc_clear
+set delete=yes
+set move=no         # do not move Inbox items to mbox
+set reply_self
+set mime_forward=ask-yes
+set send_charset="us-ascii:iso-8859-1:iso-8859-9:koi8-r:utf-8"
+set allow_8bit
+set autoedit
+charset-hook "windows-1251"  "CP1251"
+set beep_new=yes
+set editor="vim -c 'set tw=72 et ft=mail formatoptions=tcqw'"
+set index_format="%2H%4C %Z *%D* [%-20.20n] %5c %?M?(->%M)? %s"
+set date_format="%H:%M, %a %d.%m.%y"
+set folder_format="%N %f"
+set fast_reply
+set quit=ask-yes
+set xterm_set_titles
+set mail_check=90
+set mime_forward=yes
+unset markers
+set duplicate_threads=yes
+set pager_stop
+set include=yes
+set mark_old=no
+set rfc2047_parameters
+set text_flowed
+unset write_bcc
+unset bounce_delivered
+set menu_scroll
+set use_envelope_from
+set charset="utf-8"
+set pipe_decode=no
+#set stuff_quoted
+set indent_string="%I> "
+
+
+set sidebar_visible="yes"
+set sidebar_width=35
+#set sidebar_shorten_hierarchy=yes
+set sidebar_delim="│"
+color sidebar_new yellow default
+bind index \CP sidebar-prev
+bind index \CN sidebar-next
+bind index \CO sidebar-open
+bind pager \CP sidebar-prev
+bind pager \CN sidebar-next
+bind pager \CO sidebar-open
+macro index \eb ':toggle sidebar_visible^M'
+macro pager \eb ':toggle sidebar_visible^M' 
+
+
+source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
+#source ~/.muttng/colors
+#set alias_file=~/.muttng/aliases
+#source ~/.muttng/aliases
+#source ~/.muttng/colors
+#source ~/.muttng/white_bg
+#source ~/.muttng/lists
+################mailboxes `~/.muttng/mailboxes.sh`
+
+set postponed=+Drafts
+
+#default signature
+folder-hook . set signature="~/.signature"
+#folder-hook Lists set signature="~/.muttng/sig.lists"
+
+bind generic <insert> tag-entry         # tag message in index
+bind index <delete> delete-message
+bind pager <insert> tag-message         # tag message in pager
+bind pager <delete> delete-message
+
+
+
+#macro index     \ei "c+rail@iqchoice.com/INBOX\n"
+#macro pager     \ei "c+rail@iqchoice.com/INBOX\n"
+#####################macro index G "!killall offlineimap || :\n"
+####################macro pager G "!killall offlineimap || :\n"
+
+#folder-hook Lists push 'T~R\ ~r\ >20d\n'
+#folder-hook . set sort=threads
+#folder-hook Sent     set sort=date-sent
+
+set query_command="abook --mutt-query '%s'"
+macro index a "|abook --add-email\n" 'add sender to abook'
+macro pager a "|abook --add-email\n" 'add sender to abook'
+macro pager \e1 ":set pager_index_lines=1\n" 'Windowsize 1'
+macro pager \e2 ":set pager_index_lines=2\n" 'Windowsize 2'
+macro pager \e3 ":set pager_index_lines=3\n" 'Windowsize 3'
+macro pager \e4 ":set pager_index_lines=4\n" 'Windowsize 4'
+macro pager \e5 ":set pager_index_lines=5\n" 'Windowsize 5'
+macro pager \e6 ":set pager_index_lines=6\n" 'Windowsize 6'
+macro pager \e7 ":set pager_index_lines=7\n" 'Windowsize 7'
+macro pager \e8 ":set pager_index_lines=8\n" 'Windowsize 8'
+macro pager \e9 ":set pager_index_lines=9\n" 'Windowsize 9'
+macro pager \e0 ":set pager_index_lines=0\n" 'Windowsize 0'
+
+
+set wrapmargin = 10
+#set max_line_length = 100
+set quote_regexp="^([ \t]*[^ \-=\t|>]*[|>])+"
+set tmpdir="/tmp"
+
+bind index P parent-message
+bind pager P parent-message
+
+macro index \ea "l~A\n" 'Show all Messages'
+macro index \en "l~N\n" 'Show new Messages'
+
+auto_view text/richtext
+auto_view text/html
+auto_view text/x-sgml
+auto_view text/x-vcard
+auto_view text/x-sh
+auto_view text/x-csrc
+auto_view text/enriched
+auto_view message/partial
+auto_view text/ms-rtf
+auto_view text/rtff
+auto_view application/x-gzip-dvi
+auto_view application/x-gzip
+auto_view application/x-gunzip
+auto_view application/x-gtar
+auto_view application/x-tar
+auto_view application/x-tar-gz
+auto_view application/x-rar-compressed
+auto_view application/x-zip-compressed
+auto_view application/zip
+auto_view application/x-csh
+auto_view application/x-sh
+auto_view application/x-script
+auto_view application/x-shellscript
+auto_view application/x-latex
+auto_view application/x-shar
+auto_view application/x-troff-man
+auto_view application/x-troff-me
+auto_view application/x-pgp-message
+auto_view application/pgp-encrypted
+auto_view application/pgp-signature
+auto_view application/pgp-keys
+auto_view application/ms-tnef
+auto_view application/pdf
+auto_view application/octet-stream
+auto_view application/x-tcl
+auto_view application/x-perl
+auto_view application/ms-word
+auto_view application/msword
+auto_view application/word
+auto_view application/ms-rtf
+auto_view application/rtf
+auto_view application/x-www-form-urlencoded
+auto_view application/octet-stream
+
+alternative_order text/plain text/html text/enriched
+
+
+spam "X-Spam-Status: Yes"                     "S"
+spam "X-Bogosity: Spam, tests=bogofilter"     "B"
+set spam_separator=""
+
+set simple_search="~f %s | ~s %s | ~t %s"
+
+# Scoring
+score "~f gorkem@" 50
+score "~f jpmcc@openoffice.org" 50
+
+macro compose \ee ':set ispell="/usr/bin/aspell -c --mode=email --lang=en"^M'
+macro compose \er ':set ispell="/usr/bin/aspell -c --mode=email --lang=ru"^M'
+set ispell="/usr/bin/aspell -c --mode=email --lang=en"
+#set print_command="LANG=ru_RU.UTF-8 muttprint"
+
+#folder-hook . 'set strict_mime ; set assumed_charset=koi8-r:iso-8859-9:iso-8859-1:utf-8:us-ascii'
+
+unset wait_key
+
