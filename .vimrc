@@ -114,7 +114,6 @@ let g:gist_open_browser_after_post = 1
 " Wildmenu
 set wildmenu                " use wildmenu ...
 set wildcharm=<TAB>
-set wildignore=*.pyc        " ignore file pattern
 
 
 noremap <F9> :emenu G.<TAB>
