@@ -96,7 +96,7 @@ bind pager <delete> delete-message
 
 
 
-#macro index     \ei "c+rail@iqchoice.com/INBOX\n"
+macro index,pager     \ei "c+INBOX\n"
 #macro pager     \ei "c+rail@iqchoice.com/INBOX\n"
 macro index G "!killall -SIGUSR1 offlineimap || :\n"
 macro pager G "!killall -SIGUSR1 offlineimap || :\n"
@@ -219,6 +219,7 @@ unset wait_key
 # AWS cronmail
 color body red default ".*; need [1-9]+"
 color body red default ".*shut down happened .* ago, but we've been up for.*"
+color body yellow default ".*Couldn't log into .* with any known passwords"
 
 # Add a point to GPG signed messages
 score "~g" 1
