@@ -1,7 +1,7 @@
 [general]
 pythonfile = ~/.offlineimap.py
 accounts = Mozilla
-ui = Blinkenlights
+ui = TTYUI
 
 [mbnames]
 enabled = yes

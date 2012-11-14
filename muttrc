@@ -3,6 +3,11 @@ set folder = ~/.offlineimap-mozilla
 
 set spoolfile = ~/.offlineimap-mozilla/INBOX
 source ~/.mutt/muttmailboxes
+set record=+Sent
+set postponed=+Drafts
+set header_cache="~/.mutt/Cache"
+folder-hook . set sort=threads
+folder-hook Sent set sort=date-sent
 
 ignore *
 unignore from: date subject to cc x-mailer user-agent X-Bogosity Reply-To: X-Spam-Status
@@ -30,7 +35,7 @@ set autoedit
 charset-hook "windows-1251"  "CP1251"
 set beep_new=yes
 set editor="vim -c 'set tw=72 et ft=mail formatoptions=tcqw'"
-set index_format="%2H%4C %Z *%D* [%-20.20n] %5c %?M?(->%M)? %s"
+set index_format="%3C %Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"
 set date_format="%H:%M, %a %d.%m.%y"
 set folder_format="%N %f"
 set fast_reply
@@ -67,7 +72,7 @@ bind pager \CP sidebar-prev
 bind pager \CN sidebar-next
 bind pager \CO sidebar-open
 macro index \eb ':toggle sidebar_visible^M'
-macro pager \eb ':toggle sidebar_visible^M' 
+macro pager \eb ':toggle sidebar_visible^M'
 
 
 source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
@@ -83,7 +88,6 @@ set postponed=+Drafts
 
 #default signature
 folder-hook . set signature="~/.signature"
-#folder-hook Lists set signature="~/.muttng/sig.lists"
 
 bind generic <insert> tag-entry         # tag message in index
 bind index <delete> delete-message
@@ -94,25 +98,27 @@ bind pager <delete> delete-message
 
 #macro index     \ei "c+rail@iqchoice.com/INBOX\n"
 #macro pager     \ei "c+rail@iqchoice.com/INBOX\n"
-#####################macro index G "!killall offlineimap || :\n"
-####################macro pager G "!killall offlineimap || :\n"
+macro index G "!killall -SIGUSR1 offlineimap || :\n"
+macro pager G "!killall -SIGUSR1 offlineimap || :\n"
 
 #folder-hook Lists push 'T~R\ ~r\ >20d\n'
 #folder-hook . set sort=threads
 #folder-hook Sent     set sort=date-sent
 
 set query_command="abook --mutt-query '%s'"
-macro index a "|abook --add-email\n" 'add sender to abook'
-macro pager a "|abook --add-email\n" 'add sender to abook'
-macro pager \e1 ":set pager_index_lines=1\n" 'Windowsize 1'
-macro pager \e2 ":set pager_index_lines=2\n" 'Windowsize 2'
-macro pager \e3 ":set pager_index_lines=3\n" 'Windowsize 3'
-macro pager \e4 ":set pager_index_lines=4\n" 'Windowsize 4'
-macro pager \e5 ":set pager_index_lines=5\n" 'Windowsize 5'
-macro pager \e6 ":set pager_index_lines=6\n" 'Windowsize 6'
-macro pager \e7 ":set pager_index_lines=7\n" 'Windowsize 7'
-macro pager \e8 ":set pager_index_lines=8\n" 'Windowsize 8'
-macro pager \e9 ":set pager_index_lines=9\n" 'Windowsize 9'
+#macro index a "|abook --add-email\n" 'add sender to abook'
+#macro pager a "|abook --add-email\n" 'add sender to abook'
+macro index a "s+Archives.`date +%Y`\n"
+macro pager a "s+Archives.`date +%Y`\n"
+macro pager \e1 ":set pager_index_lines=3\n" 'Windowsize 1'
+macro pager \e2 ":set pager_index_lines=6\n" 'Windowsize 2'
+macro pager \e3 ":set pager_index_lines=9\n" 'Windowsize 3'
+macro pager \e4 ":set pager_index_lines=12\n" 'Windowsize 4'
+macro pager \e5 ":set pager_index_lines=15\n" 'Windowsize 5'
+macro pager \e6 ":set pager_index_lines=18\n" 'Windowsize 6'
+macro pager \e7 ":set pager_index_lines=21\n" 'Windowsize 7'
+macro pager \e8 ":set pager_index_lines=24\n" 'Windowsize 8'
+macro pager \e9 ":set pager_index_lines=27\n" 'Windowsize 9'
 macro pager \e0 ":set pager_index_lines=0\n" 'Windowsize 0'
 
 
@@ -124,8 +130,14 @@ set tmpdir="/tmp"
 bind index P parent-message
 bind pager P parent-message
 
-macro index \ea "l~A\n" 'Show all Messages'
-macro index \en "l~N\n" 'Show new Messages'
+macro index     .i      "l((~N|~O|~F)!~D)|(~d<1w!~Q)\n" 'Show messages not so old (1 week)'
+macro index     .n      "l~N\n" 'Show new messages'
+macro index     .o      "l(~N|~O)\n" 'Show old messages'
+macro index     .a      "l~A\n" 'Show all messages'
+macro index     .t      "l~d<1d\n" 'Show messages from today'
+macro index     .y      "l~d<2d ~d>1d\n" 'Show messages up to 1 year old'
+folder-hook     INBOX       push '.i'
+folder-hook     .       push '.n'
 
 auto_view text/richtext
 auto_view text/html
@@ -136,7 +148,7 @@ auto_view text/x-csrc
 auto_view text/enriched
 auto_view message/partial
 auto_view text/ms-rtf
-auto_view text/rtff
+auto_view text/rtf
 auto_view application/x-gzip-dvi
 auto_view application/x-gzip
 auto_view application/x-gunzip
@@ -181,8 +193,19 @@ set spam_separator=""
 set simple_search="~f %s | ~s %s | ~t %s"
 
 # Scoring
-score "~f gorkem@" 50
-score "~f jpmcc@openoffice.org" 50
+score "~f bhearsum@" 10
+score "~f catlee@" 10
+score "~f nthomas@" 10
+score "~f joduinn@" 10
+score "~f jhopkins@" 10
+score "~f aki@" 10
+score "~f coop@" 10
+score "~f armenzg@" 10
+score "~f kmoir@" 10
+score "~f mgerva" 10
+score "~f hwine@" 10
+score "~f lsblakk@" 10
+score "~f akeybl@" 10
 
 macro compose \ee ':set ispell="/usr/bin/aspell -c --mode=email --lang=en"^M'
 macro compose \er ':set ispell="/usr/bin/aspell -c --mode=email --lang=ru"^M'
@@ -193,3 +216,37 @@ set ispell="/usr/bin/aspell -c --mode=email --lang=en"
 
 unset wait_key
 
+# AWS cronmail
+color body red default ".*; need [1-9]+"
+color body red default ".*shut down happened .* ago, but we've been up for.*"
+
+# Add a point to GPG signed messages
+score "~g" 1
+
+## Add a point to GPG encrypted messages
+score "~G" 1
+
+## Add a point to Flagged messages
+score "~F" 1
+
+## Add a point to messages from a known mailing list
+## * Use the, `subscribe' and `lists' command to tell mutt about lists
+score "~l" 1
+
+## Add a point to old (unread) messages
+score "~O" 1
+
+## Add a point to messages addressed to you
+score "~p" 1
+
+## Add a point to messages from you
+score "~P" 1
+
+## Add a point to messages you replied to (using mutt)
+score "~Q" 1
+
+## Add a point to read messages
+score "~R" 1
+
+## Add a point to messages less than 80,000 bytes
+score "~z 0-80000" 1
