@@ -10,8 +10,8 @@ folder-hook . set sort=threads
 folder-hook Sent set sort=date-sent
 
 ignore *
-unignore from: date subject to cc x-mailer user-agent X-Bogosity Reply-To: X-Spam-Status
-hdr_order from subject to cc date x-spam: X-Mailer: User-Agent: Reply-To: X-Bogosity: X-Spam-Status
+unignore from: date subject to cc x-mailer user-agent Reply-To: X-Bugzilla-Assigned-To: X-Bugzilla-Who:
+hdr_order from subject to cc date x-spam: X-Mailer: User-Agent: Reply-To: X-Bugzilla-Assigned-To: X-Bugzilla-Who:
 
 set use_from
 set from = "Rail Aliiev <rail@mozilla.com>"
@@ -35,7 +35,9 @@ set autoedit
 charset-hook "windows-1251"  "CP1251"
 set beep_new=yes
 set editor="vim -c 'set tw=72 et ft=mail formatoptions=tcqw'"
-set index_format="%3C %Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"
+set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"
+folder-hook . 'set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"'
+folder-hook Bug 'set index_format="%2N %Z %D %?M?(->%M)? %s"'
 set date_format="%H:%M, %a %d.%m.%y"
 set folder_format="%N %f"
 set fast_reply
@@ -108,8 +110,7 @@ macro pager G "!killall -SIGUSR1 offlineimap || :\n"
 set query_command="abook --mutt-query '%s'"
 #macro index a "|abook --add-email\n" 'add sender to abook'
 #macro pager a "|abook --add-email\n" 'add sender to abook'
-macro index a "s+Archives.`date +%Y`\n"
-macro pager a "s+Archives.`date +%Y`\n"
+macro index,pager a "s+Archives.`date +%Y`\n"
 macro pager \e1 ":set pager_index_lines=3\n" 'Windowsize 1'
 macro pager \e2 ":set pager_index_lines=6\n" 'Windowsize 2'
 macro pager \e3 ":set pager_index_lines=9\n" 'Windowsize 3'
@@ -130,12 +131,12 @@ set tmpdir="/tmp"
 bind index P parent-message
 bind pager P parent-message
 
-macro index     .i      "l((~N|~O|~F)!~D)|(~d<1w!~Q)\n" 'Show messages not so old (1 week)'
-macro index     .n      "l~N\n" 'Show new messages'
-macro index     .o      "l(~N|~O)\n" 'Show old messages'
-macro index     .a      "l~A\n" 'Show all messages'
-macro index     .t      "l~d<1d\n" 'Show messages from today'
-macro index     .y      "l~d<2d ~d>1d\n" 'Show messages up to 1 year old'
+macro index,pager     .i      "l((~N|~O|~F)!~D)|(~d<1w!~Q)\n" 'Show messages not so old (1 week)'
+macro index,pager      .n      "l~N\n" 'Show new messages'
+macro index,pager      .o      "l(~N|~O)\n" 'Show old messages'
+macro index,pager      .a      "l~A\n" 'Show all messages'
+macro index,pager      .t      "l~d<1d\n" 'Show messages from today'
+macro index,pager      .y      "l~d<2d ~d>1d\n" 'Show messages up to 1 year old'
 folder-hook     INBOX       push '.i'
 folder-hook     .       push '.n'
 
@@ -217,7 +218,8 @@ set ispell="/usr/bin/aspell -c --mode=email --lang=en"
 unset wait_key
 
 # AWS cronmail
-color body red default ".*; need [1-9]+"
+color body red default ".*; need [1-9].*"
+color body red default "review[?+\-]"
 color body red default ".*shut down happened .* ago, but we've been up for.*"
 color body yellow default ".*Couldn't log into .* with any known passwords"
 
@@ -251,3 +253,6 @@ score "~R" 1
 
 ## Add a point to messages less than 80,000 bytes
 score "~z 0-80000" 1
+
+# TODO: score by bz components
+# TODO: highlight bugzilla users

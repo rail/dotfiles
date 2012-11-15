@@ -37,4 +37,4 @@ remotehost = mail.mozilla.com
 remoteuser = raliiev@mozilla.com
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-folderfilter = lambda folder: folder not in ['Contacts', 'Emailed Contacts']
+folderfilter = lambda folder: folder not in ['Contacts', 'Emailed Contacts', 'Chats']
