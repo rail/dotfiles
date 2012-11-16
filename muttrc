@@ -65,7 +65,7 @@ set indent_string="%I> "
 
 set sidebar_visible="yes"
 set sidebar_width=35
-#set sidebar_shorten_hierarchy=yes
+set sidebar_shortpath=yes
 set sidebar_delim="│"
 color sidebar_new yellow default
 bind index \CP sidebar-prev
@@ -78,7 +78,7 @@ macro index \eb ':toggle sidebar_visible^M'
 macro pager \eb ':toggle sidebar_visible^M'
 
 
-source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
+source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
 #source ~/.muttng/colors
 #set alias_file=~/.muttng/aliases
 #source ~/.muttng/aliases
@@ -86,8 +86,6 @@ source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
 #source ~/.muttng/white_bg
 #source ~/.muttng/lists
 ################mailboxes `~/.muttng/mailboxes.sh`
-
-set postponed=+Drafts
 
 #default signature
 folder-hook . set signature="~/.signature"
@@ -105,8 +103,6 @@ macro index G "!killall -SIGUSR1 offlineimap || :\n"
 macro pager G "!killall -SIGUSR1 offlineimap || :\n"
 
 #folder-hook Lists push 'T~R\ ~r\ >20d\n'
-#folder-hook . set sort=threads
-#folder-hook Sent     set sort=date-sent
 
 set query_command="abook --mutt-query '%s'"
 #macro index a "|abook --add-email\n" 'add sender to abook'
