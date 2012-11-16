@@ -204,6 +204,10 @@ score "~f mgerva" 10
 score "~f hwine@" 10
 score "~f lsblakk@" 10
 score "~f akeybl@" 10
+score "~f mrz@" 10
+score "~f bmoss@" 10
+score "~f johnath@" 10
+score "~f mbanner@" 10
 
 macro compose \ee ':set ispell="/usr/bin/aspell -c --mode=email --lang=en"^M'
 macro compose \er ':set ispell="/usr/bin/aspell -c --mode=email --lang=ru"^M'
@@ -214,11 +218,19 @@ set ispell="/usr/bin/aspell -c --mode=email --lang=en"
 
 unset wait_key
 
-# AWS cronmail
 color body red default ".*; need [1-9].*"
 color body red default "review[?+\-]"
+# AWS cronmail
 color body red default ".*shut down happened .* ago, but we've been up for.*"
 color body yellow default ".*Couldn't log into .* with any known passwords"
+
+# release mail
+color index red color234 "~s '[release] .* failed at'"
+color index green color234 "~s '[release] .* ready for release'"
+color index green color234 "~s 'All signed builds now available'"
+
+# scoring
+color index green color234 "~N~n 10-"
 
 # Add a point to GPG signed messages
 score "~g" 1
