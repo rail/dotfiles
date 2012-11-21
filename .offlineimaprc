@@ -1,7 +1,8 @@
 [general]
-pythonfile = ~/.offlineimap.py
 accounts = Mozilla
 ui = TTYUI
+pythonfile = ~/.dotfiles/offlineimap.py
+fsync = False
 
 [mbnames]
 enabled = yes
@@ -17,7 +18,7 @@ localrepository = Mozilla_Local
 remoterepository = Mozilla_Remote
 status_backend = sqlite
 # Minutes between syncs
-autorefresh = 5
+autorefresh = 3
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
 # only changes were to IMAP flags
 quick = 10
