@@ -21,9 +21,10 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 present=$(cat /sys/class/power_supply/BAT0/present)
-full=$(cat  /sys/class/power_supply/BAT0/energy_full)
-rem=$(cat /sys/class/power_supply/BAT0/energy_now)
+full=$(cat  /sys/class/power_supply/BAT0/energy_full || cat /sys/class/power_supply/BAT0/charge_full)
+rem=$(cat /sys/class/power_supply/BAT0/energy_now || cat /sys/class/power_supply/BAT0/charge_now)
 state=$(cat /sys/class/power_supply/BAT0/status)
+#acpi -b | sed  -e 's/Battery .: //' -e 's/, /\n/g' -e 's/%//g' | read state percent remaining
 if [ $rem -ge 0 ] && [ $full -gt 0 ]; then
     percent=$(((100*$rem)/$full))
     if [ "$percent" -lt 15 ]; then
