@@ -33,7 +33,7 @@ set send_charset="us-ascii:iso-8859-1:iso-8859-9:koi8-r:utf-8"
 set allow_8bit
 set autoedit
 charset-hook "windows-1251"  "CP1251"
-set beep_new=yes
+set beep_new=no
 set editor="vim -c 'set tw=72 et spell ft=mail formatoptions=tcqw'"
 set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"
 folder-hook . 'set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"'
