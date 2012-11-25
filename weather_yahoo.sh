@@ -11,7 +11,7 @@ location="4118"
 unit="c"
 
 # The update period in seconds.
-update_period=600
+update_period=1800
 
 # Cache file.
 tmp_file=/tmp/yw.txt
