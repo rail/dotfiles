@@ -8,6 +8,8 @@ set postponed=+Drafts
 set header_cache="~/.mutt/Cache"
 folder-hook . set sort=threads
 folder-hook Sent set sort=date-sent
+folder-hook . set pager_stop
+folder-hook Cron set pager_stop=no
 
 ignore *
 unignore from: date subject to cc x-mailer user-agent Reply-To: X-Bugzilla-Assigned-To: X-Bugzilla-Who:
@@ -107,7 +109,8 @@ macro pager G "!killall -SIGUSR1 offlineimap || :\n"
 folder-hook Junk 'push "D~d>2d"\n'
 folder-hook Trash 'push "D~d>2d"\n'
 
-set query_command="abook --mutt-query '%s'"
+# set query_command="abook --mutt-query '%s'"
+set query_command = "lbdbq %s 2>/dev/null"
 macro index,pager A "|abook --add-email\n" 'add sender to abook'
 macro index,pager a "s+Archives.`date +%Y`\n"
 macro pager \e1 ":set pager_index_lines=3\n" 'Windowsize 1'
@@ -226,6 +229,7 @@ color body red color234 "review[?+\-]"
 # AWS cronmail
 color body red color234 ".*shut down happened .* ago, but we've been up for.*"
 color body yellow color234 ".*Couldn't log into .* with any known passwords"
+color body green color234 ".*reserved instance.*
 
 # release mail
 color index red color234 "~s '[release] .* failed at'"

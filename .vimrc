@@ -26,6 +26,7 @@ Bundle 'vim-colors-solarized'
 Bundle 'nerdcommenter'
 Bundle 'nerdtree'
 Bundle 'vimwiki'
+Bundle 'vim-py-coverage'
 
 set modelines=0
 set encoding=utf-8
@@ -104,13 +105,14 @@ let g:pymode_lint_checker = "pyflakes,pylint,pep8"
 let g:pymode_run = 0
 let g:pymode_lint_maxheight = 5
 let g:pymode_rope_extended_complete=1
-let g:pymode_lint_onfly = 1
+let g:pymode_folding = 0
 
 let g:Powerline_symbols = 'fancy'
 let g:CommandTMaxHeight = 15
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 
+let g:py_coverage_bin = "/usr/bin/python-coverage"
 " Wildmenu
 set wildmenu                " use wildmenu ...
 set wildcharm=<TAB>
