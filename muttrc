@@ -64,6 +64,7 @@ set charset="utf-8"
 set pipe_decode=no
 #set stuff_quoted
 set indent_string="%I> "
+set help=no
 
 
 set sidebar_visible="yes"
