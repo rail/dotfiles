@@ -274,13 +274,3 @@ score "~z 0-80000" 1
 
 # TODO: score by bz components
 # TODO: highlight bugzilla users
-
-macro index <F8> \
-      "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt -r --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
-      "notmuch: search mail"
-macro index <F9> \
-      "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt -r thread<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter><enter-command>set wait_key<enter>" \
-      "notmuch: reconstruct thread"
-macro index <F6> \
-      "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt tag -- -inbox<enter>" \
-      "notmuch: remove message from inbox"
