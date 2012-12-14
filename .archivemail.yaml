@@ -7,7 +7,6 @@ delete:
         - Trash
         - Junk
         - Cron
-        - Cruncher
         - Infra-All
         - Nagios
         - Preproduction
