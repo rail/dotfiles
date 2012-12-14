@@ -1,0 +1,20 @@
+---
+topdir: ~/.offlineimap-mozilla
+delete:
+    3:
+        - Bugs IT
+        - Bugs Resolved
+        - Trash
+        - Junk
+        - Cron
+        - Cruncher
+        - Infra-All
+        - Nagios
+        - Preproduction
+        - Puppet
+        - Staging
+    7:
+        - Bug requests
+        - Bugs Releng
+        - Bugs Unsorted
+        - buildbot-devel

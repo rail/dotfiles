@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+
+import os
+import yaml
+import logging
+
+from sh import archivemail
+from optparse import OptionParser
+
+parser = OptionParser()
+parser.add_option('-n', dest='dryrun', action="store_true", default=False)
+parser.add_option('-v', dest='verbose', action="store_true", default=False)
+options, host = parser.parse_args()
+
+if options.dryrun:
+    archivemail = archivemail.bake('-n')
+
+if options.verbose:
+    archivemail = archivemail.bake('-v')
+    logging.basicConfig(level=logging.DEBUG)
+
+stream = open(os.path.expanduser("~/.archivemail.yaml"), 'r')
+config = yaml.load(stream)
+
+topdir = config['topdir']
+logging.info("Topdir: %s" % topdir)
+
+for days, folders in config['delete'].iteritems():
+    for folder in folders:
+        folder = os.path.join(os.path.expanduser(topdir), folder)
+        logging.info("Deleteing %s days old emails from %s" % (days, folder))
+        res = archivemail('--delete', '--days', days, folder)
+        if options.verbose:
+            logging.info(res)
