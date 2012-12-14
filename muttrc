@@ -78,15 +78,14 @@ bind index \CO sidebar-open
 bind pager \CP sidebar-prev
 bind pager \CN sidebar-next
 bind pager \CO sidebar-open
-macro index \eb ':toggle sidebar_visible^M'
-macro pager \eb ':toggle sidebar_visible^M'
+macro index \eb ":toggle sidebar_visible\n"
+macro pager \eb ":toggle sidebar_visible\n"
 
 
 source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
-#source ~/.muttng/colors
 set alias_file=~/.mutt/aliases
 source ~/.mutt/aliases
-#source ~/.muttng/lists
+source ~/.mutt/lists
 ################mailboxes `~/.muttng/mailboxes.sh`
 
 #default signature
@@ -100,9 +99,7 @@ bind pager <delete> delete-message
 
 
 macro index,pager     \ei "c+INBOX\n"
-#macro pager     \ei "c+rail@iqchoice.com/INBOX\n"
-macro index G "!killall -SIGUSR1 offlineimap || :\n"
-macro pager G "!killall -SIGUSR1 offlineimap || :\n"
+macro index,pager G "!killall -SIGUSR1 offlineimap || :\n"
 
 #folder-hook Lists push 'T~R\ ~r\ >20d\n'
 
@@ -110,8 +107,9 @@ macro pager G "!killall -SIGUSR1 offlineimap || :\n"
 folder-hook Junk 'push "D~d>2d"\n'
 folder-hook Trash 'push "D~d>2d"\n'
 
-# set query_command="abook --mutt-query '%s'"
-set query_command = "lbdbq %s 2>/dev/null"
+bind editor <Tab> complete-query
+bind editor ^T complete
+set query_command="abook --mutt-query %s || lbdbq %s 2>/dev/null"
 macro index,pager A "|abook --add-email\n" 'add sender to abook'
 macro index,pager a "s+Archives.`date +%Y`\n"
 macro pager \e1 ":set pager_index_lines=3\n" 'Windowsize 1'
@@ -216,10 +214,7 @@ score "~f bmoss@" 10
 score "~f johnath@" 10
 score "~f mbanner@" 10
 
-macro compose \ee ':set ispell="/usr/bin/aspell -c --mode=email --lang=en"^M'
-macro compose \er ':set ispell="/usr/bin/aspell -c --mode=email --lang=ru"^M'
-set ispell="/usr/bin/aspell -c --mode=email --lang=en"
-#set print_command="LANG=ru_RU.UTF-8 muttprint"
+set print_command="LANG=en_CA.UTF-8 muttprint"
 
 #folder-hook . 'set strict_mime ; set assumed_charset=koi8-r:iso-8859-9:iso-8859-1:utf-8:us-ascii'
 

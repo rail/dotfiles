@@ -6,9 +6,9 @@ def mycmp(x, y):
         xsw = x.name.startswith(prefix)
         ysw = y.name.startswith(prefix)
         if xsw and ysw:
-            return cmp(x.name, y.name)
+            return cmp(x.name.lower(), y.name.lower())
         elif xsw:
             return -1
         elif ysw:
             return +1
-    return cmp(x.name, y.name)
+    return cmp(x.name.lower(), y.name.lower())
