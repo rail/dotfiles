@@ -63,8 +63,9 @@ set use_envelope_from
 set charset="utf-8"
 set pipe_decode=no
 #set stuff_quoted
-set indent_string="%I> "
+#set indent_string="%I> "
 set help=no
+set forward_format = "Fwd: %s"
 
 
 set sidebar_visible="yes"
@@ -132,7 +133,7 @@ set tmpdir="/tmp"
 bind index P parent-message
 bind pager P parent-message
 
-macro index,pager     .i      "l((~N|~O|~F)!~D)|(~d<1w!~Q)\n" 'Show messages not so old (1 week)'
+macro index,pager      .i      "l((~N|~O|~F)!~D)|(~d<1w!~Q)\n" 'Show messages not so old (1 week)'
 macro index,pager      .n      "l~N\n" 'Show new messages'
 macro index,pager      .o      "l(~N|~O)\n" 'Show old messages'
 macro index,pager      .a      "l~A\n" 'Show all messages'

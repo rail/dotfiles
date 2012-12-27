@@ -36,9 +36,9 @@ if [ $rem -ge 0 ] && [ $full -gt 0 ]; then
     fi
 
     case $state in
-        charging|Charging|Unknown) sign="⌁ " ;;
-        discharging|Discharging) sign="☔ " ;;
-        charged|Unknown|Full) sign=" ⚛ "; percent="" ;;
+        charging|Charging|Unknown) sign="⚡ " ;;
+        discharging|Discharging) sign="▼ " ;;
+        charged|Unknown|Full) sign=" ♻ "; percent="" ;;
         *) sign="$state" ;;
     esac
     [ -n "$percent" ] || return

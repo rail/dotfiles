@@ -365,21 +365,39 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-
-function run_once(prg)
-    if not prg then
-        do return nil end
-    end
-    awful.util.spawn_with_shell("pgrep -u $USER -x " .. prg .. " || (" .. prg .. ")")
+function run_once(prg, times)
+   if not prg then
+      do return nil end
+   end
+   times = times or 1
+   count_prog = tonumber(awful.util.pread('ps aux | grep "' .. prg .. '" | grep -v grep | wc -l'))
+   if times > count_prog then
+      for l = count_prog, times-1 do
+         awful.util.spawn_with_shell(prg)
+      end
+   end
 end
-run_once("gnome-settings-daemon")
-run_once("nm-applet")
---run_once("gnome-power-manager")
-run_once("gnome-screensaver")
-run_once("gnome-sound-applet")
---run_once("thunderbird")
---run_once("firefox")
-run_once("pidgin")
---run_once("konversation")
---run_once("/usr/lib/deja-dup/deja-dup/deja-dup-monitor")
-awful.util.spawn_with_shell("awsetbg ~/Desktop/wallpaper.jpg")
+
+-- Autorun programs
+autorun = true
+
+autorunApps = {
+    "awsetbg ~/Desktop/wallpaper.jpg",
+}
+
+runOnceApps = {
+    "gnome-settings-daemon",
+    "nm-applet",
+    "gnome-screensaver",
+    "gnome-sound-applet",
+    "pidgin",
+}
+
+if autorun then
+   for app = 1, #autorunApps do
+      awful.util.spawn(autorunApps[app])
+   end
+   for app = 1, #runOnceApps do
+      run_once(runOnceApps[app])
+   end
+end
