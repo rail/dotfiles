@@ -65,6 +65,7 @@ set viminfo='1000,f1,<500,/50,:50
 set cursorline
 set wildignore+=*.o,*.obj,.git,.hg,*.pyc
 set background=dark
+set expandtab
 "
 " Undo
 "if has('persistent_undo')
@@ -87,6 +88,7 @@ autocmd BufRead,BufnewFile *.py match BadFormat /\(\%80v.\+\)\|\(^\t\+\)\|\(\s\+
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
+au BufRead,BufNewFile *.pp setfiletype puppet
 
 "restore-position
 autocmd BufReadPost *

@@ -382,7 +382,7 @@ end
 autorun = true
 
 autorunApps = {
-    "awsetbg ~/Desktop/wallpaper.jpg",
+    "awsetbg /home/rail/Desktop/wallpaper.jpg",
 }
 
 runOnceApps = {

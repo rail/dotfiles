@@ -270,3 +270,7 @@ score "~z 0-80000" 1
 
 # TODO: score by bz components
 # TODO: highlight bugzilla users
+
+# decrypt bugzilla messages
+message-hook '~s "\\(Secure bug .* updated\\)"' 'exec check-traditional-pgp'
+message-hook '~s "SecureMail"' 'exec check-traditional-pgp'
