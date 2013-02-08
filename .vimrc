@@ -38,7 +38,7 @@ set noswapfile
 set modeline
 set laststatus=2 " scroll the screen before I rech the bottom
 "set statusline=%f%m%r%h%w\ [%{&ff}]\ %y\ [POS=%03l/%L,%03v][%p%%]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]
-"set number
+set number
 set mousehide "hide mouse curson while typing
 set termencoding=utf-8
 set novisualbell "don't blink
@@ -163,3 +163,9 @@ let g:vimwiki_list = [
     \ {"path" : "~/Dropbox/wiki"}
 \ ]
 nmap <Leader>wv <Plug>VimwikiIndex
+
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>

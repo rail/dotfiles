@@ -327,6 +327,7 @@ awful.rules.rules = {
     --{ rule = { class = "Earlybird" }, properties = { tag = tags[1][5] } },
     { rule = { class = "Skype" }, properties = { tag = tags[1][9], floating = true } },
     { rule = { class = "Pidgin" }, properties = { tag = tags[1][9], floating = true } },
+    { rule = { class = "Tasque" }, properties = { tag = tags[1][9], floating = true } },
     { rule = { class = "Unity-2d-launcher" },
     properties = { sticky = true } },
     { rule = { class = "Gwibber" }, properties = { tag = tags[1][9], floating = true } },
