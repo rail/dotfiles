@@ -27,6 +27,7 @@ Bundle 'nerdcommenter'
 Bundle 'nerdtree'
 Bundle 'vimwiki'
 Bundle 'vim-py-coverage'
+Bundle 'vim-visual-star-search'
 
 set modelines=0
 set encoding=utf-8

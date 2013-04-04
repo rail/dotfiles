@@ -231,6 +231,7 @@ globalkeys = awful.util.table.join(
               end),
     awful.key({ modkey }, "c", function () awful.util.spawn("/home/rail/bin/mpass") end),
     awful.key({ modkey }, "v", function () awful.util.spawn("/home/rail/bin/rpass") end),
+    awful.key({ modkey }, "b", function () awful.util.spawn("/home/rail/bin/vncpass") end),
     awful.key({ }, "Print", function () awful.util.spawn("/home/rail/bin/sattap.sh") end),
     awful.key({ modkey },            "z",     function ()
         awful.util.spawn("dmenu_run -b -i -p 'Run command:' -nb '" ..
@@ -384,6 +385,9 @@ autorun = true
 
 autorunApps = {
     "awsetbg /home/rail/Desktop/wallpaper.jpg",
+    "xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1",
+    "xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2",
+    "xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5",
 }
 
 runOnceApps = {

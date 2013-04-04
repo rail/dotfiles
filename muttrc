@@ -12,8 +12,8 @@ folder-hook . set pager_stop
 folder-hook Cron set pager_stop=no
 
 ignore *
-unignore from: date subject to cc x-mailer user-agent Reply-To: X-Bugzilla-Assigned-To: X-Bugzilla-Who:
-hdr_order from subject to cc date x-spam: X-Mailer: User-Agent: Reply-To: X-Bugzilla-Assigned-To: X-Bugzilla-Who:
+unignore from: date subject to cc Reply-To: X-Bugzilla-Assigned-To: X-Bugzilla-Who:
+hdr_order from subject to cc date x-spam: Reply-To: X-Bugzilla-Assigned-To: X-Bugzilla-Who:
 
 set use_from
 set from = "Rail Aliiev <rail@mozilla.com>"
@@ -110,7 +110,7 @@ folder-hook Trash 'push "D~d>2d"\n'
 
 bind editor <Tab> complete-query
 bind editor ^T complete
-set query_command="abook --mutt-query %s || lbdbq %s 2>/dev/null"
+set query_command="grep -Rhi '^to: .*@' ~/.offlineimap-mozilla/INBOX | sed 's/^To: //gi'| sort | uniq -u || abook --mutt-query %s || lbdbq %s 2>/dev/null"
 macro index,pager A "|abook --add-email\n" 'add sender to abook'
 macro index,pager a "s+Archives.`date +%Y`\n"
 macro pager \e1 ":set pager_index_lines=3\n" 'Windowsize 1'
@@ -226,6 +226,8 @@ color body red color234 "review[?+\-]"
 # AWS cronmail
 color body blue color234 ".*dev-linux64-ec2-.*
 color body red color234 ".*shut down happened .* ago, but we've been up for.*"
+color body red color234 ".*rebooting instance with impaired status.*"
+color body red color234 ".*shut down an instance with impaired status.*"
 color body red color234 "Traceback \\(most recent call last\\)"
 color body yellow color234 ".*Couldn't log into .* with any known passwords"
 color body green color234 ".*reserved instance.*

@@ -4,7 +4,7 @@ if ! tmux -2 attach-session -t mutt; then
     tmux new-session -d -s mutt -n Mail
     tmux splitw -t mutt:1 -v -p 4
     tmux send-keys -t mutt:1.1 "mutt" C-m
-    tmux send-keys -t mutt:1.2 "offlineimap" C-m
+    tmux send-keys -t mutt:1.2 "while 1; do offlineimap; sleep 3;done" C-m
     tmux select-pane -t mutt:1.1
     tmux rename-window -t 1 Mail
     tmux -2 attach-session -t mutt
