@@ -110,7 +110,7 @@ folder-hook Trash 'push "D~d>2d"\n'
 
 bind editor <Tab> complete-query
 bind editor ^T complete
-set query_command="grep -Rhi '^to: .*@' ~/.offlineimap-mozilla/INBOX | sed 's/^To: //gi'| sort | uniq -u || abook --mutt-query %s || lbdbq %s 2>/dev/null"
+set query_command="grep -Rhi '^to: .*%s.*' ~/.offlineimap-mozilla/INBOX | sed 's/^To: //gi'| sort | uniq -u || abook --mutt-query %s || lbdbq %s 2>/dev/null"
 macro index,pager A "|abook --add-email\n" 'add sender to abook'
 macro index,pager a "s+Archives.`date +%Y`\n"
 macro pager \e1 ":set pager_index_lines=3\n" 'Windowsize 1'
