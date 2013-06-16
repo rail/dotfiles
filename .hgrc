@@ -20,7 +20,7 @@ showfunc = 1
 qdiff = qdiff -p -U 8
 #qnew = -e
 #qrefresh = -e
-import = import --no-commit
+apply = import --no-commit -f
 paste = paste --dest diff.pastebin.mozilla.org --user rail
 
 urls = !$HG log --template='{node|short} {desc|firstline}\n' $(echo $HG_ARGS | sed 's/urls //g') | perl -lpe 'BEGIN { ($url = shift) =~ s/^\w+/http/ }; s!^(?=\w+)!$url/rev/!' `hg path default | sed 's,/$,,'`
@@ -48,7 +48,7 @@ share =
 #noopmerge = ~/.hg.d/branch-l10n/merge_l10n.py
 #collapse = ~/.hgext/collapse.py
 #inotify =
-hgext.git =
+#hgext.git =
 
 
 [pager]

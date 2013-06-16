@@ -6,7 +6,6 @@ delete:
         - Bugs Resolved
         - Trash
         - Junk
-        - Cron
         - Infra-All
         - Nagios
         - Preproduction
@@ -17,3 +16,5 @@ delete:
         - Bugs Releng
         - Bugs Unsorted
         - buildbot-devel
+    30:
+        - Cron

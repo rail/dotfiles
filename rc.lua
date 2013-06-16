@@ -4,7 +4,6 @@ require("awful.rules")
 require("beautiful")
 require("naughty")
 require("debian.menu")
-require("vicious")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -73,12 +72,6 @@ separator = widget({ type = "imagebox" })
 separator.image = image(beautiful.widget_sep)
 
 -- }}}
-
--- {{{ Weather widget
-weatherwidget = widget({ type = "textbox" })
-vicious.register(weatherwidget, vicious.widgets.weather, "${tempc}° ${sky}", 3600, "CYYZ")
--- }}}
-
 
 -- {{{ Wibox
 -- Create a textclock widget
@@ -156,7 +149,7 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
-        separator, weatherwidget,
+        separator,
         mytextclock,
         s == 1 and mysystray or nil,
         mytasklist[s],
@@ -400,7 +393,7 @@ runOnceApps = {
 
 if autorun then
    for app = 1, #autorunApps do
-      awful.util.spawn(autorunApps[app])
+      awful.util.spawn_with_shell(autorunApps[app])
    end
    for app = 1, #runOnceApps do
       run_once(runOnceApps[app])
