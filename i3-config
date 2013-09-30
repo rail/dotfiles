@@ -187,7 +187,7 @@ exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint'
 bindsym $mod+x exec /home/rail/bin/rpass
 bindsym $mod+c exec /home/rail/bin/mpass
 bindsym $mod+b exec /home/rail/bin/vncpass
-#bindsym Print exec /home/rail/bin/sattap.sh
+bindsym --release Print exec --no-startup-id /home/rail/bin/sattap.sh
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
