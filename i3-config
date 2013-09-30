@@ -175,6 +175,7 @@ for_window [class="Totem"] floating enable
 for_window [class="VidyoDesktop"] floating enable
 for_window [class="pinentry"] floating enable
 for_window [class="eog"] floating enable
+for_window [class="gcr-prompter"] floating enable
 
 assign [class="^Konversation$"] → 9
 assign [class="^Pidgin$"] → 9
@@ -198,3 +199,7 @@ bindsym $mod+minus scratchpad show
 workspace 1 output VGA1
 workspace 2 output VGA1
 workspace 9 output LVDS1
+
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
