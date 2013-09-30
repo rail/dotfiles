@@ -67,3 +67,6 @@ preoutgoing.mq-no-push = ! hg qtop > /dev/null 2>&1
 #[merge-tools]
 #vimdiff.executable = vim
 #vimdiff.args = -d $base $local $output $other +close +close
+
+[mq]
+secret = True

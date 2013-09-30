@@ -234,6 +234,7 @@ color body red color234 "Traceback \\(most recent call last\\)"
 color body color236 color234 ".*Couldn't log into .* with any known passwords"
 color body color236 color234 ".*not stopping, waiting for graceful shutdown"
 color body green color234 ".*reserved instance.*
+color body red color234 "running: [0-9]+"
 
 # release mail
 color index red color234 "~s '[release] .* failed at'"
@@ -281,3 +282,5 @@ score "~z 0-80000" 1
 # decrypt bugzilla messages
 message-hook '~s "\\(Secure bug .* updated\\)"' 'exec check-traditional-pgp'
 message-hook '~s "SecureMail"' 'exec check-traditional-pgp'
+
+set implicit_autoview

@@ -313,6 +313,7 @@ awful.rules.rules = {
     { rule = { class = "VidyoDesktop" }, properties = { floating = true } },
     { rule = { class = "pinentry" }, properties = { floating = true } },
     { rule = { class = "gimp" }, properties = { floating = true } },
+    { rule = { class = "eog" }, properties = { floating = true } },
     { rule = { class = "Konversation" }, properties = { tag = tags[1][1] } },
     --{ rule = { class = "wing.py" }, properties = { tag = tags[1][3] } },
     --{ rule = { class = "Firefox" }, properties = { tag = tags[1][4] } },
@@ -322,8 +323,6 @@ awful.rules.rules = {
     { rule = { class = "Skype" }, properties = { tag = tags[1][9], floating = true } },
     { rule = { class = "Pidgin" }, properties = { tag = tags[1][9], floating = true } },
     { rule = { class = "Tasque" }, properties = { tag = tags[1][9], floating = true } },
-    { rule = { class = "Unity-2d-launcher" },
-    properties = { sticky = true } },
     { rule = { class = "Gwibber" }, properties = { tag = tags[1][9], floating = true } },
     { rule = { class = "Stardict" }, properties = { floating = true } },
 }

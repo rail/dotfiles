@@ -8,7 +8,7 @@ filetype indent on
 syntax on
 
 Bundle 'TaskList.vim'
-Bundle 'Command-T'
+"Bundle 'Command-T'
 Bundle 'vim-powerline'
 Bundle 'tagbar'
 Bundle 'vim-puppet'
@@ -18,6 +18,7 @@ Bundle 'supertab'
 Bundle 'vim-git'
 Bundle 'JSON.vim'
 Bundle 'python-mode'
+"Bundle 'jedi-vim'
 Bundle 'local-packages'
 Bundle 'molokai'
 Bundle 'webapi-vim'
@@ -28,6 +29,8 @@ Bundle 'nerdtree'
 Bundle 'vimwiki'
 Bundle 'vim-py-coverage'
 Bundle 'vim-visual-star-search'
+Bundle 'ctrlp.vim'
+Bundle 'ZoomWin'
 
 set modelines=0
 set encoding=utf-8
@@ -64,7 +67,7 @@ set hlsearch
 set ruler
 set viminfo='1000,f1,<500,/50,:50
 set cursorline
-set wildignore+=*.o,*.obj,.git,.hg,*.pyc
+set wildignore+=*.o,*.obj,.git,.hg,*.pyc,*.db,*.sqlite
 set background=dark
 set expandtab
 "
@@ -156,6 +159,8 @@ let NERDTreeIgnore=[
     \'\.pyc$',
     \'\.pyo$',
     \'\..*.rej$',
+    \'\..*.db$',
+    \'\..*.sqlite$',
     \'\.rej$']
 
 let g:vimwiki_folding = 1
