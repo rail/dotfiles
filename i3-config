@@ -118,7 +118,13 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
+#bindsym XF86ScreenSaver exec gnome-screensaver-command --lock
+#bindsym XF86Sleep exec gnome-screensaver-command --lock; exec sudo pm-suspend
+# XF86AudioRaiseVolume
+# XF86AudioLowerVolume
+# XF86AudioMute
+# XF86AudioMicMute
+# XF86Launch1 (ThinkVantage)
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -153,21 +159,22 @@ bar {
         tray_output primary
 }
 
-
-
-
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 500 ms
 
-exec /usr/bin/gnome-settings-daemon
-exec /usr/bin/nm-applet
-exec /usr/bin/gnome-screensaver
-exec /usr/bin/gnome-sound-applet
+exec --no-startup-id /usr/bin/cinnamon-settings-daemon
+#exec --no-startup-id /usr/bin/gnome-settings-daemon
+exec --no-startup-id /usr/bin/nm-applet
+exec --no-startup-id /usr/bin/cinnamon-screensaver
+#exec --no-startup-id /usr/bin/gnome-screensaver
+exec --no-startup-id /usr/bin/cinnamon-sound-applet
+#exec --no-startup-id /usr/bin/gnome-sound-applet
 exec /usr/bin/pidgin
 exec --no-startup-id /usr/bin/feh --bg-scale ~/Desktop/wallpaper.jpg
+#exec --no-startup-id /usr/bin/syndaemon -i 1.0 -t -K -R
 
 for_window [class="Pidgin" window_role="conversation"] floating enable
-for_window [class="Skype"] floating enable
+#for_window [class="Skype"] floating enable
 for_window [class="Stardict"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Transmission-gtk"] floating enable
@@ -179,11 +186,13 @@ for_window [class="gcr-prompter"] floating enable
 
 assign [class="^Konversation$"] → 9
 assign [class="^Pidgin$"] → 9
-assign [class="^Skype$"] → 9
+#assign [class="^Skype$"] → 9
 
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5
+exec_always --no-startup-id /usr/bin/setxkbmap -option compose:menu,grp:shifts_toggle,grp_led:caps,caps:escape us,ru
+exec_always --no-startup-id /usr/bin/synclient TouchpadOff=1
 
 bindsym $mod+x exec /home/rail/bin/rpass
 bindsym $mod+c exec /home/rail/bin/mpass
@@ -198,8 +207,13 @@ bindsym $mod+minus scratchpad show
 
 workspace 1 output VGA1
 workspace 2 output VGA1
+workspace 4 output VGA1
 workspace 9 output LVDS1
 
 bindsym $mod+t border normal
 bindsym $mod+y border 1pixel
 bindsym $mod+u border none
+
+# no window titles please
+new_window 1pixel
+#new_float none

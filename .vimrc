@@ -110,6 +110,7 @@ let g:pymode_paths = ["lib/python", "lib/python/vendor"]
 let g:pymode_lint_checker = "pyflakes,pylint,pep8"
 let g:pymode_run = 0
 let g:pymode_lint_maxheight = 5
+let g:pymode_rope = 1
 let g:pymode_rope_extended_complete=1
 let g:pymode_folding = 0
 
