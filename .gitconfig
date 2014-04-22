@@ -15,6 +15,7 @@
     out = outgoing
     du = diff -U8 --patch-with-stat --binary --no-renames @{u}...
     in = log ..@{u}
+    nb = !sh -c 'git checkout -b $1 origin/master' -
 
 [color]
     ui = auto

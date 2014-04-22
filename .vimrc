@@ -8,7 +8,6 @@ filetype indent on
 syntax on
 
 Bundle 'TaskList.vim'
-"Bundle 'Command-T'
 Bundle 'vim-powerline'
 Bundle 'tagbar'
 Bundle 'vim-puppet'
@@ -92,7 +91,8 @@ autocmd BufRead,BufnewFile *.py match BadFormat /\(\%80v.\+\)\|\(^\t\+\)\|\(\s\+
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
-au BufRead,BufNewFile *.pp setfiletype puppet
+autocmd! BufRead,BufNewFile *.pp set syntax=puppet filetype=puppet
+autocmd! BufRead,BufNewFile *.rst set tw=72 et spell formatoptions=tcqw
 
 "restore-position
 autocmd BufReadPost *
@@ -107,12 +107,11 @@ colorscheme solarized
 highlight BadFormat ctermbg=red ctermfg=white guibg=#592929
 
 let g:pymode_paths = ["lib/python", "lib/python/vendor"]
-let g:pymode_lint_checker = "pyflakes,pylint,pep8"
+let g:pymode_lint_checker = ['pyflakes', 'pep8', 'mccabe', 'pylint']
 let g:pymode_run = 0
-let g:pymode_lint_maxheight = 5
-let g:pymode_rope = 1
-let g:pymode_rope_extended_complete=1
 let g:pymode_folding = 0
+
+"let g:pymode_lint_ignore = "C0103,C0111,E1002,E1101,R0901,R0902,R0904,W0141,W0142,W0212,W0232,W0621,R0913"
 
 let g:Powerline_symbols = 'fancy'
 let g:CommandTMaxHeight = 15

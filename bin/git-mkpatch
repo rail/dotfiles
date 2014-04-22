@@ -38,3 +38,4 @@ if [ "$(stat -c '%s' $dest)" = "0" ]; then
     echo "The patch is zero size. Looks like you are done with this branch"
 fi
 echo $dest
+echo $dest | xclip -selection clipboard

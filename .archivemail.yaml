@@ -16,5 +16,7 @@ delete:
         - Bugs Releng
         - Bugs Unsorted
         - buildbot-devel
-    30:
         - Cron
+        - Unsorted
+    14:
+        - Cron AWS

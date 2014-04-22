@@ -32,7 +32,7 @@ sep = .
 restoreatime = no
 
 [Repository Mozilla_Remote]
-# maxconnections = 4
+maxconnections = 4
 type = IMAP
 foldersort = mycmp
 # idlefolders = ['INBOX']

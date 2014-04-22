@@ -226,7 +226,8 @@ unset wait_key
 color body red color234 ".*; need [1-9].*"
 color body red color234 "review[?+\-]"
 # AWS cronmail
-color body blue color234 ".*dev-linux64-ec2-.*
+color body magenta color234 ".*rebooting.*"
+color body blue color234 ".*bld-linux64-spot: *"
 color body red color234 ".*shut down happened .* ago, but we've been up for.*"
 color body red color234 ".*rebooting instance with impaired status.*"
 color body red color234 ".*shut down an instance with impaired status.*"

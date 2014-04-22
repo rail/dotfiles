@@ -49,6 +49,10 @@ share =
 #collapse = ~/.hgext/collapse.py
 #inotify =
 #hgext.git =
+#mozext = /home/rail/work/mozilla/build/hgext-gecko-dev
+
+[mozext]
+ircnick = rail
 
 
 [pager]
