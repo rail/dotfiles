@@ -102,6 +102,8 @@ bind pager <delete> delete-message
 macro index,pager     \ei "c+INBOX\n"
 macro index,pager G "!killall -SIGUSR1 offlineimap || :\n"
 
+macro index,pager \ez "<pipe-message>~/bin/mutt2task.py\n"
+
 #folder-hook Lists push 'T~R\ ~r\ >20d\n'
 
 # Junk/spam mail older than two days is automatically marked for deletion
@@ -223,19 +225,20 @@ unset wait_key
 
 # Use the following script to dump color numbers:
 # http://www.vim.org/scripts/script.php?script_id=1349
-color body red color234 ".*; need [1-9].*"
+#color body red color234 ".*; need [1-9].*"
 color body red color234 "review[?+\-]"
 # AWS cronmail
 color body magenta color234 ".*rebooting.*"
-color body blue color234 ".*bld-linux64-spot: *"
+#color body blue color234 ".*bld-linux64-spot: *"
 color body red color234 ".*shut down happened .* ago, but we've been up for.*"
 color body red color234 ".*rebooting instance with impaired status.*"
 color body red color234 ".*shut down an instance with impaired status.*"
 color body red color234 "Traceback \\(most recent call last\\)"
 color body color236 color234 ".*Couldn't log into .* with any known passwords"
 color body color236 color234 ".*not stopping, waiting for graceful shutdown"
-color body green color234 ".*reserved instance.*
 color body red color234 "running: [0-9]+"
+#color body red color234 ".*No slave name available for.*"
+color body red color234 ".*No free IP available for.*"
 
 # release mail
 color index red color234 "~s '[release] .* failed at'"
