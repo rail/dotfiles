@@ -112,6 +112,7 @@ let g:pymode_run = 0
 let g:pymode_folding = 0
 
 "let g:pymode_lint_ignore = "C0103,C0111,E1002,E1101,R0901,R0902,R0904,W0141,W0142,W0212,W0232,W0621,R0913"
+let g:pymode_lint_ignore = "C901"
 
 let g:Powerline_symbols = 'fancy'
 let g:CommandTMaxHeight = 15
