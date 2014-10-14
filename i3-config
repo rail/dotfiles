@@ -177,7 +177,7 @@ exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint'
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5
 exec_always --no-startup-id /usr/bin/xinput disable 'eGalax Inc. eGalaxTouch EXC7903-66v03_T1'
-exec_always --no-startup-id /usr/bin/setxkbmap -option compose:menu,grp:shifts_toggle,grp_led:caps,caps:escape us,ru
+exec_always --no-startup-id /usr/bin/setxkbmap -option compose:ralt,grp:shifts_toggle,grp_led:caps,caps:escape us,ru
 exec_always --no-startup-id /usr/bin/synclient TouchpadOff=1
 exec_always --no-startup-id /usr/bin/feh --bg-scale ~/Desktop/wallpaper.jpg
 
@@ -185,8 +185,9 @@ exec_always --no-startup-id /usr/bin/feh --bg-scale ~/Desktop/wallpaper.jpg
 #exec --no-startup-id /usr/bin/cinnamon-screensaver
 #exec --no-startup-id /usr/bin/cinnamon-sound-applet
 
+##exec --no-startup-id /usr/bin/gnome-settings-daemon
 exec --no-startup-id /usr/bin/gnome-sound-applet
-exec --no-startup-id /usr/bin/gnome-settings-daemon
+exec --no-startup-id /usr/bin/unity-settings-daemon
 exec --no-startup-id /usr/bin/gnome-screensaver
 
 exec --no-startup-id /usr/bin/nm-applet

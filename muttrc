@@ -70,8 +70,9 @@ set forward_format = "Fwd: %s"
 
 set sidebar_visible="yes"
 set sidebar_width=35
-set sidebar_shortpath=yes
+# set sidebar_shortpath=yes
 set sidebar_delim="│"
+# set sidebar_newmail_only="yes"
 color sidebar_new yellow color234
 bind index \CP sidebar-prev
 bind index \CN sidebar-next

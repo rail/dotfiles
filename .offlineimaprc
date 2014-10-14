@@ -9,9 +9,11 @@ fsync = False
 enabled = yes
 filename = ~/.mutt/muttmailboxes
 peritem = "+%(foldername)s"
-sep = " "
+sep = " \\\n"
 header = "mailboxes "
 footer = "\n"
+# Do not try to sort already sorted mailboxes!
+sort_keyfunc = lambda d: None
 
 
 [Account Mozilla]
