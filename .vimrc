@@ -176,3 +176,6 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" do dot show docs!!!
+set completeopt=menu
