@@ -187,7 +187,7 @@ exec_always --no-startup-id /usr/bin/feh --bg-scale ~/Desktop/wallpaper.jpg
 #exec --no-startup-id /usr/bin/cinnamon-sound-applet
 
 ##exec --no-startup-id /usr/bin/gnome-settings-daemon
-exec --no-startup-id /usr/bin/gnome-sound-applet
+#exec --no-startup-id /usr/bin/gnome-sound-applet
 exec --no-startup-id /usr/bin/unity-settings-daemon
 exec --no-startup-id /usr/bin/gnome-screensaver
 
@@ -218,10 +218,10 @@ bindsym $mod+u border none
 new_window 1pixel
 #new_float none
 
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -10% && killall -SIGUSR1 i3status
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && killall -SIGUSR1 i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- +5% && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- -5% && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle && killall -SIGUSR1 i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute alsa_input.pci-0000_00_1b.0.analog-stereo toggle
 
 
 bindsym $mod+Mod1+Right move workspace to output right

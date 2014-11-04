@@ -31,7 +31,7 @@ Bundle 'vim-visual-star-search'
 Bundle 'ctrlp.vim'
 Bundle 'ZoomWin'
 
-set modelines=0
+"set modelines=0
 set encoding=utf-8
 set ttyfast
 set list
