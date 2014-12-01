@@ -20,7 +20,7 @@ if options.verbose:
     logging.basicConfig(level=logging.DEBUG)
 
 stream = open(os.path.expanduser("~/.archivemail.yaml"), 'r')
-config = yaml.load(stream)
+config = yaml.safe_load(stream)
 
 topdir = config['topdir']
 logging.info("Topdir: %s" % topdir)

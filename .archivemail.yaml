@@ -2,21 +2,18 @@
 topdir: ~/.offlineimap-mozilla
 delete:
     3:
-        - Bugs IT
-        - Bugs Resolved
         - Trash
         - Junk
-        - Infra-All
-        - Nagios
-        - Preproduction
-        - Puppet
-        - Staging
     7:
-        - Bug requests
-        - Bugs Releng
         - Bugs Unsorted
-        - buildbot-devel
+        - Bugs Releases
         - Cron
         - Unsorted
-    14:
+        - tb-drivers
+        - Bugs CC
+        - Apuppet
         - Cron AWS
+    30:
+        - My Bugs
+        - Bugs New
+        - Release Drivers

@@ -110,6 +110,7 @@ let g:pymode_paths = ["lib/python", "lib/python/vendor"]
 let g:pymode_lint_checker = ['pyflakes', 'pep8', 'mccabe', 'pylint']
 let g:pymode_run = 0
 let g:pymode_folding = 0
+let g:pymode_rope_regenerate_on_write = 0
 
 "let g:pymode_lint_ignore = "C0103,C0111,E1002,E1101,R0901,R0902,R0904,W0141,W0142,W0212,W0232,W0621,R0913"
 let g:pymode_lint_ignore = "C901"

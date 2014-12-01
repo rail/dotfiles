@@ -1,4 +1,4 @@
-prioritized = ['INBOX', 'Bug requests', 'Bugs Assigned', 'Release']
+prioritized = ['INBOX', 'My Bugs', 'Release', 'tb-drivers']
 
 
 def mycmp(x, y):

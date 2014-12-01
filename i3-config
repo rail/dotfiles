@@ -155,6 +155,7 @@ bar {
         status_command i3status
         #position top
         tray_output primary
+        #mode hide
 }
 
 workspace_auto_back_and_forth yes
@@ -171,22 +172,17 @@ for_window [class="pinentry"] floating enable
 for_window [class="eog"] floating enable
 for_window [class="gcr-prompter"] floating enable
 
-assign [class="^Konversation$"] → 9
-assign [class="^Pidgin$"] → 9
-
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5
 exec_always --no-startup-id /usr/bin/xinput disable 'eGalax Inc. eGalaxTouch EXC7903-66v03_T1'
-exec_always --no-startup-id /usr/bin/setxkbmap -option compose:ralt,grp:shifts_toggle,grp_led:caps,caps:escape us,ru
+
+exec_always --no-startup-id /usr/bin/setxkbmap -option compose:ralt,grp:shifts_toggle,grp_led:caps,caps:escape -layout us,ru
 exec_always --no-startup-id /usr/bin/synclient TouchpadOff=1
-exec_always --no-startup-id /usr/bin/feh --bg-scale ~/Desktop/wallpaper.jpg
+exec_always --no-startup-id xsetroot -solid '#101010'
+exec_always --no-startup-id pactl set-sink-volume 0 '20%'
 
-#exec --no-startup-id /usr/bin/cinnamon-settings-daemon
-#exec --no-startup-id /usr/bin/cinnamon-screensaver
-#exec --no-startup-id /usr/bin/cinnamon-sound-applet
-
-##exec --no-startup-id /usr/bin/gnome-settings-daemon
+#exec --no-startup-id /usr/bin/gnome-settings-daemon
 #exec --no-startup-id /usr/bin/gnome-sound-applet
 exec --no-startup-id /usr/bin/unity-settings-daemon
 exec --no-startup-id /usr/bin/gnome-screensaver
@@ -194,34 +190,36 @@ exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id /usr/bin/nm-applet
 #exec --no-startup-id /usr/bin/syndaemon -i 1.0 -t -K -R
 
-bindsym $mod+x exec /home/rail/bin/rpass
-bindsym $mod+c exec /home/rail/bin/mpass
-bindsym $mod+b exec /home/rail/bin/vncpass
 bindsym $mod+Shift+p exec /home/rail/bin/sattap.sh
 #bindsym --release Print exec --no-startup-id /home/rail/bin/sattap.sh
+bindsym XF86Launch1 exec /home/rail/bin/sattap.sh
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
-
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
+# Laptop
+workspace 2 output LVDS1
+# monitor, fallback to laptop
 workspace 1 output DP1
 workspace 4 output DP1
-workspace 9 output LVDS1
 
 bindsym $mod+t border normal
 bindsym $mod+y border 1pixel
 bindsym $mod+u border none
+bindsym $mod+b border toggle
 
 # no window titles please
 new_window 1pixel
 #new_float none
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- +5% && killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- -5% && killall -SIGUSR1 i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle && killall -SIGUSR1 i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute alsa_input.pci-0000_00_1b.0.analog-stereo toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +5% && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -5% && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && killall -SIGUSR1 i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+# bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
+# bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
 
 
 bindsym $mod+Mod1+Right move workspace to output right
