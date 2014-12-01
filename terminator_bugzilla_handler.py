@@ -12,7 +12,7 @@ class BugzillaBugURLHandler(plugin.URLHandler):
 
     capabilities = ['url_handler']
     handler_name = 'bugzilla_bug'
-    match = r'\b(bug):?\s?#?[0-9]+(,\s*#?[0-9]+)*\b'
+    match = r'\b\[?(Bug|bug):?\s?#?[0-9]+(,\s*#?[0-9]+)*\]?\b'
     nameopen = "Open Bugzilla bug"
     namecopy = "Copy bug URL"
 
