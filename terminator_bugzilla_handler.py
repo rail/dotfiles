@@ -1,5 +1,8 @@
 # Based on url_handlers.py by Chris Jones <cmsj@tenshu.net?
 # GPL v2 only
+#
+# copy the file to ~/.config/terminator/plugins/ and enable it in in Preferences
+
 import re
 import terminatorlib.plugin as plugin
 
