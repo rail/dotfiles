@@ -1,36 +1,36 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin() " required
+
+Plugin 'vim-scripts/TaskList.vim.git'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+Plugin 'kogent/vim-puppet'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mileszs/ack.vim'
+Plugin 'ervandew/supertab'
+Plugin 'vim-scripts/JSON.vim'
+Plugin 'klen/python-mode'
+Plugin 'local-packages'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/vimwiki'
+Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'kien/ctrlp.vim'
+Plugin 'alfredodeza/coveragepy.vim'
+Plugin 'mhinz/vim-signify'
+Plugin 'gmarik/Vundle.vim'
+
+call vundle#end() " required
+
 filetype on
 filetype plugin on
 filetype indent on
 syntax on
-
-Bundle 'TaskList.vim'
-Bundle 'vim-powerline'
-Bundle 'tagbar'
-Bundle 'vim-puppet'
-Bundle 'vim-fugitive'
-Bundle 'ack.vim'
-Bundle 'supertab'
-Bundle 'vim-git'
-Bundle 'JSON.vim'
-Bundle 'python-mode'
-"Bundle 'jedi-vim'
-Bundle 'local-packages'
-Bundle 'molokai'
-Bundle 'webapi-vim'
-Bundle 'gist-vim'
-Bundle 'vim-colors-solarized'
-Bundle 'nerdcommenter'
-Bundle 'nerdtree'
-Bundle 'vimwiki'
-Bundle 'vim-py-coverage'
-Bundle 'vim-visual-star-search'
-Bundle 'ctrlp.vim'
-Bundle 'ZoomWin'
-
 "set modelines=0
 set encoding=utf-8
 set ttyfast
@@ -41,7 +41,7 @@ set noswapfile
 set modeline
 set laststatus=2 " scroll the screen before I rech the bottom
 "set statusline=%f%m%r%h%w\ [%{&ff}]\ %y\ [POS=%03l/%L,%03v][%p%%]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]
-set number
+set nonumber
 set mousehide "hide mouse curson while typing
 set termencoding=utf-8
 set novisualbell "don't blink
@@ -69,12 +69,6 @@ set cursorline
 set wildignore+=*.o,*.obj,.git,.hg,*.pyc,*.db,*.sqlite
 set background=dark
 set expandtab
-"
-" Undo
-"if has('persistent_undo')
-    "set undofile            " enable persistent undo
-    "set undodir=/tmp/       " store undofiles in a tmp dir
-"endif
 
 " X-clipboard support
 if has('unnamedplus')
@@ -83,13 +77,11 @@ endif
 
 let mapleader=","
 
-autocmd BufEnter *.inc set filetype=php
 autocmd FileType make set noexpandtab
 autocmd BufEnter master*.cfg set filetype=python
 autocmd BufRead,BufnewFile *.C,*.c,*.h,*.cpp,*.cc,*.js,*.ps,*.sh,*.bash match BadFormat /\(\%81v.\+\)\|\(^\t\+\)\|\(\s\+$\)/
 autocmd BufRead,BufnewFile *.py match BadFormat /\(\%80v.\+\)\|\(^\t\+\)\|\(\s\+$\)/
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
-autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
 autocmd! BufRead,BufNewFile *.pp set syntax=puppet filetype=puppet
 autocmd! BufRead,BufNewFile *.rst set tw=72 et spell formatoptions=tcqw
@@ -103,7 +95,6 @@ autocmd BufReadPost *
 
 let g:solarized_termcolors = 256
 colorscheme solarized
-"highlight CursorLine ctermbg=black
 highlight BadFormat ctermbg=red ctermfg=white guibg=#592929
 
 let g:pymode_paths = ["lib/python", "lib/python/vendor"]
@@ -115,12 +106,10 @@ let g:pymode_rope_regenerate_on_write = 0
 "let g:pymode_lint_ignore = "C0103,C0111,E1002,E1101,R0901,R0902,R0904,W0141,W0142,W0212,W0232,W0621,R0913"
 let g:pymode_lint_ignore = "C901"
 
-let g:Powerline_symbols = 'fancy'
 let g:CommandTMaxHeight = 15
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 
-let g:py_coverage_bin = "/usr/bin/python-coverage"
 " Wildmenu
 set wildmenu                " use wildmenu ...
 set wildcharm=<TAB>
@@ -141,8 +130,6 @@ menu G.Blame :Gblame<CR>
 inoremap # X<C-H>#
 cmap w!! %!sudo tee > /dev/null %
 
-" remap TaskList mapping to prevent conflicts with Command-T
-map <unique> <Leader>T <Plug>TaskList
 nmap <F6> :TagbarToggle<CR>
 nmap <F8> :Gist<CR>
 vmap <F8> :Gist<CR>
@@ -180,3 +167,18 @@ noremap <Right> <NOP>
 
 " do dot show docs!!!
 set completeopt=menu
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline_symbols.branch = '⎇'
+" do not show changes in the status line
+let g:airline#extensions#hunks#enabled = 0
+" don't show buffers/tabs
+"let g:airline#extensions#tabline#enabled = 0
