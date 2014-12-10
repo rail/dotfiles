@@ -93,7 +93,11 @@ autocmd BufReadPost *
       \ endif
 
 
-let g:solarized_termcolors = 256
+set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 colorscheme solarized
 highlight BadFormat ctermbg=red ctermfg=white guibg=#592929
 

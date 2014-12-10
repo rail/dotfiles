@@ -73,7 +73,7 @@ set sidebar_width=35
 # set sidebar_shortpath=yes
 set sidebar_delim="│"
 # set sidebar_newmail_only="yes"
-color sidebar_new yellow color234
+color sidebar_new yellow default
 bind index \CP sidebar-prev
 bind index \CN sidebar-next
 bind index \CO sidebar-open
@@ -226,29 +226,29 @@ unset wait_key
 
 # Use the following script to dump color numbers:
 # http://www.vim.org/scripts/script.php?script_id=1349
-#color body red color234 ".*; need [1-9].*"
-color body red color234 "review[?+\-]"
+#color body red default ".*; need [1-9].*"
+color body red default "review[?+\-]"
 # AWS cronmail
-color body magenta color234 ".*rebooting.*"
-#color body blue color234 ".*bld-linux64-spot: *"
-color body red color234 ".*shut down happened .* ago, but we've been up for.*"
-color body red color234 ".*rebooting instance with impaired status.*"
-color body red color234 ".*shut down an instance with impaired status.*"
-color body red color234 "Traceback \\(most recent call last\\)"
-color body color236 color234 ".*Couldn't log into .* with any known passwords"
-color body color236 color234 ".*not stopping, waiting for graceful shutdown"
-color body red color234 "running: [0-9]+"
-#color body red color234 ".*No slave name available for.*"
-color body red color234 ".*No free IP available for.*"
+color body magenta default ".*rebooting.*"
+#color body blue default ".*bld-linux64-spot: *"
+color body red default ".*shut down happened .* ago, but we've been up for.*"
+color body red default ".*rebooting instance with impaired status.*"
+color body red default ".*shut down an instance with impaired status.*"
+color body red default "Traceback \\(most recent call last\\)"
+color body color236 default ".*Couldn't log into .* with any known passwords"
+color body color236 default ".*not stopping, waiting for graceful shutdown"
+color body red default "running: [0-9]+"
+#color body red default ".*No slave name available for.*"
+color body red default ".*No free IP available for.*"
 
 # release mail
-color index red color234 "~s '[release] .* failed at'"
-color index green color234 "~s '[release] .* ready for release'"
-color index green color234 "~s 'All signed builds now available'"
-color index green color234 "~s '.*aws sanity check'"
+color index red default "~s '[release] .* failed at'"
+color index green default "~s '[release] .* ready for release'"
+color index green default "~s 'All signed builds now available'"
+color index green default "~s '.*aws sanity check'"
 
 # scoring
-color index green color234 "~N~n 10-"
+color index green default "~N~n 10-"
 
 # Add a point to GPG signed messages
 score "~g" 1
