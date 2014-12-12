@@ -24,6 +24,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'alfredodeza/coveragepy.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'mhinz/vim-startify'
+Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end() " required
 
@@ -186,3 +190,21 @@ let g:airline_symbols.branch = '⎇'
 let g:airline#extensions#hunks#enabled = 0
 " don't show buffers/tabs
 "let g:airline#extensions#tabline#enabled = 0
+
+
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" g:signify_disable_by_default = 1
+nmap <F4> :SignifyToggle<CR>
+
+let g:startify_change_to_vcs_root = 1
+let g:startify_bookmarks = [ '~/work/mozilla/git/cloud-tools/', '~/work/mozilla/git/puppet/' ]
+
+let g:UltiSnipsUsePythonVersion = 2
