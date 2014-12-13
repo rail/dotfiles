@@ -6,7 +6,7 @@ call vundle#begin() " required
 Plugin 'vim-scripts/TaskList.vim.git'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
-Plugin 'kogent/vim-puppet'
+Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Plugin 'ervandew/supertab'
@@ -28,6 +28,11 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mhinz/vim-startify'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'python_match.vim'
+Plugin 'bling/vim-bufferline'
 
 call vundle#end() " required
 
@@ -208,3 +213,6 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_bookmarks = [ '~/work/mozilla/git/cloud-tools/', '~/work/mozilla/git/puppet/' ]
 
 let g:UltiSnipsUsePythonVersion = 2
+
+let g:indent_guides_guide_size=1
+let g:indent_guides_start_level=2
