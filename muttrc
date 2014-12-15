@@ -1,7 +1,9 @@
 set mbox_type = Maildir
 set folder = ~/.offlineimap-mozilla
+# set folder = ~/.offlineimap-gmail
 
 set spoolfile = ~/.offlineimap-mozilla/INBOX
+# set spoolfile = ~/.offlineimap-gmail/INBOX
 source ~/.mutt/muttmailboxes
 set record=+Sent
 set postponed=+Drafts
@@ -20,8 +22,6 @@ set from = "Rail Aliiev <rail@mozilla.com>"
 set signature="~/.signature"
 alternates rail@.* raliiev@.*
 
-my_hdr X-IRC-nickname: rail
-
 set sort=threads
 set sort_aux=date-received
 set auto_tag
@@ -31,10 +31,9 @@ set delete=yes
 set move=no         # do not move Inbox items to mbox
 set reply_self
 set mime_forward=ask-yes
-set send_charset="us-ascii:iso-8859-1:iso-8859-9:koi8-r:utf-8"
+set send_charset="us-ascii:iso-8859-1:iso-8859-9:utf-8"
 set allow_8bit
 set autoedit
-charset-hook "windows-1251"  "CP1251"
 set beep_new=no
 set editor="vim -c 'set tw=72 et spell ft=mail formatoptions=tcqw'"
 set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"
@@ -42,7 +41,6 @@ folder-hook . 'set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"'
 folder-hook Bug 'set index_format="%2N %Z %D %?M?(->%M)? %s"'
 folder-hook Releases 'set index_format="%Z %D %?M?(->%M)? %s"'
 set date_format="%H:%M, %a, %d %b"
-#set date_format="%H:%M, %a %d.%m.%y"
 set folder_format="%N %f"
 set fast_reply
 set quit=ask-yes
@@ -62,8 +60,6 @@ set menu_scroll
 set use_envelope_from
 set charset="utf-8"
 set pipe_decode=no
-#set stuff_quoted
-#set indent_string="%I> "
 set help=no
 set forward_format = "Fwd: %s"
 
@@ -83,39 +79,30 @@ bind pager \CO sidebar-open
 macro index \eb ":toggle sidebar_visible\n"
 macro pager \eb ":toggle sidebar_visible\n"
 
-
 source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
-set alias_file=~/.mutt/aliases
-source ~/.mutt/aliases
 source ~/.mutt/lists
-################mailboxes `~/.muttng/mailboxes.sh`
-
-#default signature
-#folder-hook . set signature="~/.signature"
 
 bind generic <insert> tag-entry         # tag message in index
 bind index <delete> delete-message
 bind pager <insert> tag-message         # tag message in pager
 bind pager <delete> delete-message
 
-
-
 macro index,pager     \ei "c+INBOX\n"
 macro index,pager G "!killall -SIGUSR1 offlineimap || :\n"
-
 macro index,pager \ez "<pipe-message>~/bin/mutt2task.py\n"
 
 #folder-hook Lists push 'T~R\ ~r\ >20d\n'
 
 # Junk/spam mail older than two days is automatically marked for deletion
 folder-hook Junk 'push "D~d>2d"\n'
+folder-hook Spam 'push "D~d>2d"\n'
 folder-hook Trash 'push "D~d>2d"\n'
 
 bind editor <Tab> complete-query
 bind editor ^T complete
 set query_command="abook --mutt-query %s || lbdbq %s 2>/dev/null"
 macro index,pager A "|abook --add-email\n" 'add sender to abook'
-macro index,pager a "s+Archives.`date +%Y`\n"
+# macro index,pager a "s+Archives\n"
 macro pager \e1 ":set pager_index_lines=3\n" 'Windowsize 1'
 macro pager \e2 ":set pager_index_lines=6\n" 'Windowsize 2'
 macro pager \e3 ":set pager_index_lines=9\n" 'Windowsize 3'
@@ -143,8 +130,9 @@ macro index,pager      .a      "l~A\n" 'Show all messages'
 macro index,pager      .t      "l~d<1d\n" 'Show messages from today'
 macro index,pager      .y      "l~d<2d ~d>1d\n" 'Show messages up to 1 year old'
 folder-hook     INBOX       push '.i'
-folder-hook     notmuch push '.a'
-folder-hook     .       push '.n'
+folder-hook     notmuch     push '.a'
+folder-hook     Cron        push '.a'
+folder-hook     .           push '.n'
 
 auto_view text/richtext
 auto_view text/html
@@ -192,32 +180,11 @@ auto_view application/octet-stream
 
 alternative_order text/plain text/html text/enriched
 
-
 spam "X-Spam-Status: Yes"                     "S"
 spam "X-Bogosity: Spam, tests=bogofilter"     "B"
 set spam_separator=""
 
 set simple_search="~f %s | ~s %s | ~t %s"
-
-# Scoring
-score "~f bhearsum@" 10
-score "~f catlee@" 10
-score "~f nthomas@" 10
-score "~f joduinn@" 10
-score "~f jhopkins@" 10
-score "~f aki@" 10
-score "~f coop@" 10
-score "~f armenzg@" 10
-score "~f kmoir@" 10
-score "~f mgerva" 10
-score "~f hwine@" 10
-score "~f lsblakk@" 10
-score "~f akeybl@" 10
-score "~f mrz@" 10
-score "~f bmoss@" 10
-score "~f johnath@" 10
-score "~f mbanner@" 10
-
 set print_command="LANG=en_CA.UTF-8 muttprint"
 
 #folder-hook . 'set strict_mime ; set assumed_charset=koi8-r:iso-8859-9:iso-8859-1:utf-8:us-ascii'
@@ -229,60 +196,13 @@ unset wait_key
 #color body red default ".*; need [1-9].*"
 color body red default "review[?+\-]"
 # AWS cronmail
-color body magenta default ".*rebooting.*"
-#color body blue default ".*bld-linux64-spot: *"
-color body red default ".*shut down happened .* ago, but we've been up for.*"
-color body red default ".*rebooting instance with impaired status.*"
-color body red default ".*shut down an instance with impaired status.*"
-color body red default "Traceback \\(most recent call last\\)"
-color body color236 default ".*Couldn't log into .* with any known passwords"
-color body color236 default ".*not stopping, waiting for graceful shutdown"
 color body red default "running: [0-9]+"
-#color body red default ".*No slave name available for.*"
-color body red default ".*No free IP available for.*"
 
 # release mail
 color index red default "~s '[release] .* failed at'"
 color index green default "~s '[release] .* ready for release'"
 color index green default "~s 'All signed builds now available'"
 color index green default "~s '.*aws sanity check'"
-
-# scoring
-color index green default "~N~n 10-"
-
-# Add a point to GPG signed messages
-score "~g" 1
-
-## Add a point to GPG encrypted messages
-score "~G" 1
-
-## Add a point to Flagged messages
-score "~F" 1
-
-## Add a point to messages from a known mailing list
-## * Use the, `subscribe' and `lists' command to tell mutt about lists
-score "~l" 1
-
-## Add a point to old (unread) messages
-score "~O" 1
-
-## Add a point to messages addressed to you
-score "~p" 1
-
-## Add a point to messages from you
-score "~P" 1
-
-## Add a point to messages you replied to (using mutt)
-score "~Q" 1
-
-## Add a point to read messages
-score "~R" 1
-
-## Add a point to messages less than 80,000 bytes
-score "~z 0-80000" 1
-
-# TODO: score by bz components
-# TODO: highlight bugzilla users
 
 # decrypt bugzilla messages
 message-hook '~s "\\(Secure bug .* updated\\)"' 'exec check-traditional-pgp'

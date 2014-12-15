@@ -10,7 +10,7 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Plugin 'ervandew/supertab'
-Plugin 'vim-scripts/JSON.vim'
+" Plugin 'vim-scripts/JSON.vim'
 Plugin 'klen/python-mode'
 Plugin 'local-packages'
 Plugin 'mattn/webapi-vim'
@@ -33,6 +33,13 @@ Plugin 'tpope/vim-repeat'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'python_match.vim'
 Plugin 'bling/vim-bufferline'
+" JS
+Plugin 'elzr/vim-json'
+Plugin 'groenewege/vim-less'
+Plugin 'pangloss/vim-javascript'
+Plugin 'briancollins/vim-jst'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'marijnh/tern_for_vim'
 
 call vundle#end() " required
 
