@@ -1,5 +1,5 @@
 [general]
-accounts = Mozilla
+accounts = Mozilla-gmail
 ui = TTYUI
 #ui = quiet
 pythonfile = ~/.dotfiles/offlineimap.py
@@ -16,30 +16,43 @@ footer = "\n"
 sort_keyfunc = lambda d: None
 
 
-[Account Mozilla]
-localrepository = Mozilla_Local
-remoterepository = Mozilla_Remote
+[Repository Mozilla_Remote-gmail]
+maxconnections = 4
+type = Gmail
+foldersort = mycmp
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+#folderfilter = lambda foldername: foldername not in '[Gmail]/All Mail'
+remoteusereval = get_username("Mozilla_Remote")
+remotepasseval = get_password("Mozilla_Remote")
+nametrans: lambda s: {'[Gmail]/Starred'   : 'Starred',
+                      '[Gmail]/Trash'     : 'Trash',
+                      '[Gmail]/Spam'      : 'Spam',
+                      '[Gmail]/Sent Mail' : 'Sent',
+                      '[Gmail]/Important' : 'Important',
+                      '[Gmail]/Drafts'    : 'Drafts',
+                      '[Gmail]/All Mail'  : 'Archive',
+                      }.get(s, s)
+
+
+[Repository Mozilla_Local-gmail]
+type = Maildir
+localfolders = ~/.offlineimap-gmail
+restoreatime = no
+nametrans: lambda s: dict((value,key) for key,value in
+                      {'[Gmail]/Starred'   : 'Starred',
+                       '[Gmail]/Trash'     : 'Trash',
+                       '[Gmail]/Spam'      : 'Spam',
+                       '[Gmail]/Sent Mail' : 'Sent',
+                       '[Gmail]/Important' : 'Important',
+                       '[Gmail]/Drafts'    : 'Drafts',
+                       '[Gmail]/All Mail'  : 'Archive',
+                      }.iteritems()).get(s, s)
+
+[Account Mozilla-gmail]
+localrepository = Mozilla_Local-gmail
+remoterepository = Mozilla_Remote-gmail
 status_backend = sqlite
-# Minutes between syncs
-# autorefresh = 3
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
 # only changes were to IMAP flags
 quick = 10
-postsynchook = notmuch new
-
-[Repository Mozilla_Local]
-type = Maildir
-localfolders = ~/.offlineimap-mozilla
-sep = .
-restoreatime = no
-
-[Repository Mozilla_Remote]
-maxconnections = 4
-type = IMAP
-foldersort = mycmp
-# idlefolders = ['INBOX']
-remotehost = mail.mozilla.com
-remoteuser = raliiev@mozilla.com
-ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-folderfilter = lambda folder: folder not in ['Contacts', 'Emailed Contacts', 'Chats', 'Notes', ]

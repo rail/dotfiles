@@ -1,9 +1,7 @@
 set mbox_type = Maildir
-set folder = ~/.offlineimap-mozilla
-# set folder = ~/.offlineimap-gmail
+set folder = ~/.offlineimap-gmail
 
-set spoolfile = ~/.offlineimap-mozilla/INBOX
-# set spoolfile = ~/.offlineimap-gmail/INBOX
+set spoolfile = ~/.offlineimap-gmail/INBOX
 source ~/.mutt/muttmailboxes
 set record=+Sent
 set postponed=+Drafts
@@ -14,8 +12,8 @@ folder-hook . set pager_stop
 folder-hook Cron set pager_stop=no
 
 ignore *
-unignore from: date subject to cc Reply-To: X-Bugzilla-Assigned-To: X-Bugzilla-Who:
-hdr_order from subject to cc date x-spam: Reply-To: X-Bugzilla-Assigned-To: X-Bugzilla-Who:
+unignore from: date subject to cc Reply-To:
+hdr_order from subject to cc date x-spam: Reply-To:
 
 set use_from
 set from = "Rail Aliiev <rail@mozilla.com>"
@@ -100,9 +98,9 @@ folder-hook Trash 'push "D~d>2d"\n'
 
 bind editor <Tab> complete-query
 bind editor ^T complete
-set query_command="abook --mutt-query %s || lbdbq %s 2>/dev/null"
+set query_command="abook --mutt-query %s || lbdbq %s | egrep -v 'lbdbq: .* matches'"
 macro index,pager A "|abook --add-email\n" 'add sender to abook'
-# macro index,pager a "s+Archives\n"
+macro index,pager a "s+Archives\n"
 macro pager \e1 ":set pager_index_lines=3\n" 'Windowsize 1'
 macro pager \e2 ":set pager_index_lines=6\n" 'Windowsize 2'
 macro pager \e3 ":set pager_index_lines=9\n" 'Windowsize 3'
