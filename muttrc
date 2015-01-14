@@ -116,7 +116,7 @@ macro index,pager A "|abook --add-email\n" 'add sender to abook'
 macro index \eb ":toggle sidebar_visible\n"
 macro pager \eb ":toggle sidebar_visible\n"
 macro index,pager     \ei "c+INBOX\n"
-macro index S "<save-message>+=Spam<enter>" "mark message as spam"
+macro index S "<save-message>+Spam<enter>" "mark message as spam"
 
 folder-hook     INBOX       push '.i'
 folder-hook     notmuch     push '.a'
