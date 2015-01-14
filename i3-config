@@ -205,6 +205,7 @@ workspace 2 output LVDS1
 # monitor, fallback to laptop
 workspace 1 output DP1
 workspace 4 output DP1
+workspace 8 output DP1
 
 bindsym $mod+t border normal
 bindsym $mod+y border 1pixel

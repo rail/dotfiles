@@ -26,6 +26,7 @@ paste = paste --dest diff.pastebin.mozilla.org --user rail
 urls = !$HG log --template='{node|short} {desc|firstline}\n' $(echo $HG_ARGS | sed 's/urls //g') | perl -lpe 'BEGIN { ($url = shift) =~ s/^\w+/http/ }; s!^(?=\w+)!$url/rev/!' `hg path default | sed 's,/$,,'`
 last = !$HG urls -l1
 # git diff master...branch == hg diff -r "ancestor(default, mock)" -r mock 
+stripo = strip --no-backup 'outgoing()'
 
 [extensions]
 parentrevspec =

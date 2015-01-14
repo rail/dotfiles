@@ -10,7 +10,7 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Plugin 'ervandew/supertab'
-" Plugin 'vim-scripts/JSON.vim'
+Plugin 'vim-scripts/JSON.vim'
 Plugin 'klen/python-mode'
 Plugin 'local-packages'
 Plugin 'mattn/webapi-vim'
@@ -34,12 +34,13 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'python_match.vim'
 Plugin 'bling/vim-bufferline'
 " JS
-Plugin 'elzr/vim-json'
+"Plugin 'elzr/vim-json'
 Plugin 'groenewege/vim-less'
 Plugin 'pangloss/vim-javascript'
 Plugin 'briancollins/vim-jst'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'marijnh/tern_for_vim'
+
 
 call vundle#end() " required
 
@@ -125,6 +126,7 @@ let g:pymode_rope_regenerate_on_write = 0
 
 "let g:pymode_lint_ignore = "C0103,C0111,E1002,E1101,R0901,R0902,R0904,W0141,W0142,W0212,W0232,W0621,R0913"
 let g:pymode_lint_ignore = "C901"
+let g:pymode_options_max_line_length = 79
 
 let g:CommandTMaxHeight = 15
 let g:gist_detect_filetype = 1

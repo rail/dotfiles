@@ -22,7 +22,7 @@ type = Gmail
 foldersort = mycmp
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-#folderfilter = lambda foldername: foldername not in '[Gmail]/All Mail'
+folderfilter = lambda foldername: foldername not in '[Gmail]/All Mail'
 remoteusereval = get_username("Mozilla_Remote")
 remotepasseval = get_password("Mozilla_Remote")
 nametrans: lambda s: {'[Gmail]/Starred'   : 'Starred',

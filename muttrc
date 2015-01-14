@@ -1,32 +1,20 @@
 set mbox_type = Maildir
 set folder = ~/.offlineimap-gmail
-
+set implicit_autoview
 set spoolfile = ~/.offlineimap-gmail/INBOX
-source ~/.mutt/muttmailboxes
 set record=+Sent
 set postponed=+Drafts
 set header_cache="~/.mutt/Cache"
-folder-hook . set sort=threads
-folder-hook Sent set sort=date-sent
-folder-hook . set pager_stop
-folder-hook Cron set pager_stop=no
-
-ignore *
-unignore from: date subject to cc Reply-To:
-hdr_order from subject to cc date x-spam: Reply-To:
-
+set trash=+Trash
 set use_from
 set from = "Rail Aliiev <rail@mozilla.com>"
 set signature="~/.signature"
-alternates rail@.* raliiev@.*
-
 set sort=threads
 set sort_aux=date-received
 set auto_tag
 set pager_index_lines=9
 set fcc_clear
 set delete=yes
-set move=no         # do not move Inbox items to mbox
 set reply_self
 set mime_forward=ask-yes
 set send_charset="us-ascii:iso-8859-1:iso-8859-9:utf-8"
@@ -35,9 +23,6 @@ set autoedit
 set beep_new=no
 set editor="vim -c 'set tw=72 et spell ft=mail formatoptions=tcqw'"
 set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"
-folder-hook . 'set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"'
-folder-hook Bug 'set index_format="%2N %Z %D %?M?(->%M)? %s"'
-folder-hook Releases 'set index_format="%Z %D %?M?(->%M)? %s"'
 set date_format="%H:%M, %a, %d %b"
 set folder_format="%N %f"
 set fast_reply
@@ -45,62 +30,78 @@ set quit=ask-yes
 set xterm_set_titles
 set mail_check=90
 set mime_forward=yes
-unset markers
 set duplicate_threads=yes
 set pager_stop
 set include=yes
-set mark_old=no
 set rfc2047_parameters
 set text_flowed
-unset write_bcc
-unset bounce_delivered
 set menu_scroll
 set use_envelope_from
 set charset="utf-8"
 set pipe_decode=no
 set help=no
 set forward_format = "Fwd: %s"
-
-
 set sidebar_visible="yes"
 set sidebar_width=35
 # set sidebar_shortpath=yes
 set sidebar_delim="│"
 # set sidebar_newmail_only="yes"
+set query_command="abook --mutt-query %s || lbdbq %s | egrep -v 'lbdbq: .* matches'"
+set wrapmargin = 10
+#set max_line_length = 100
+set quote_regexp="^([ \t]*[^ \-=\t|>]*[|>])+"
+set tmpdir="/tmp"
+set spam_separator=""
+set simple_search="~f %s | ~s %s | ~t %s"
+set print_command="LANG=en_CA.UTF-8 muttprint"
+
+unset move
+unset wait_key
+unset markers
+unset write_bcc
+unset bounce_delivered
+unset confirmappend
+unset mark_old
+
 color sidebar_new yellow default
+# Use the following script to dump color numbers: http://www.vim.org/scripts/script.php?script_id=1349
+color body red default "review[?+\-]"
+
+# release mail
+color index red default "~s '[release] .* failed at'"
+color index green default "~s '[release] .* ready for release'"
+color index green default "~s 'All signed builds now available'"
+color index green default "~s '.*aws_sanity_check'"
+
+ignore *
+unignore from: date subject to cc Reply-To:
+hdr_order from subject to cc date x-spam: Reply-To:
+alternates rail@.* raliiev@.*
+
+source ~/.mutt/muttmailboxes
+source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
+source ~/.mutt/lists
+
+bind index P parent-message
+bind pager P parent-message
+bind generic <insert> tag-entry         # tag message in index
+bind pager <insert> tag-message         # tag message in pager
+bind index,pager <delete> delete-message
+bind editor <Tab> complete-query
+bind editor ^T complete
 bind index \CP sidebar-prev
 bind index \CN sidebar-next
 bind index \CO sidebar-open
 bind pager \CP sidebar-prev
 bind pager \CN sidebar-next
 bind pager \CO sidebar-open
-macro index \eb ":toggle sidebar_visible\n"
-macro pager \eb ":toggle sidebar_visible\n"
 
-source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
-source ~/.mutt/lists
-
-bind generic <insert> tag-entry         # tag message in index
-bind index <delete> delete-message
-bind pager <insert> tag-message         # tag message in pager
-bind pager <delete> delete-message
-
-macro index,pager     \ei "c+INBOX\n"
-macro index,pager G "!killall -SIGUSR1 offlineimap || :\n"
-macro index,pager \ez "<pipe-message>~/bin/mutt2task.py\n"
-
-#folder-hook Lists push 'T~R\ ~r\ >20d\n'
-
-# Junk/spam mail older than two days is automatically marked for deletion
-folder-hook Junk 'push "D~d>2d"\n'
-folder-hook Spam 'push "D~d>2d"\n'
-folder-hook Trash 'push "D~d>2d"\n'
-
-bind editor <Tab> complete-query
-bind editor ^T complete
-set query_command="abook --mutt-query %s || lbdbq %s | egrep -v 'lbdbq: .* matches'"
-macro index,pager A "|abook --add-email\n" 'add sender to abook'
-macro index,pager a "s+Archives\n"
+macro index,pager      .i      "l((~N|~O|~F)!~D)|(~d<1w!~Q)\n" 'Show messages not so old (1 week)'
+macro index,pager      .n      "l~N\n" 'Show new messages'
+macro index,pager      .o      "l(~N|~O)\n" 'Show old messages'
+macro index,pager      .a      "l~A\n" 'Show all messages'
+macro index,pager      .t      "l~d<1d\n" 'Show messages from today'
+macro index,pager      .y      "l~d<2d ~d>1d\n" 'Show messages up to 1 year old'
 macro pager \e1 ":set pager_index_lines=3\n" 'Windowsize 1'
 macro pager \e2 ":set pager_index_lines=6\n" 'Windowsize 2'
 macro pager \e3 ":set pager_index_lines=9\n" 'Windowsize 3'
@@ -111,26 +112,23 @@ macro pager \e7 ":set pager_index_lines=21\n" 'Windowsize 7'
 macro pager \e8 ":set pager_index_lines=24\n" 'Windowsize 8'
 macro pager \e9 ":set pager_index_lines=27\n" 'Windowsize 9'
 macro pager \e0 ":set pager_index_lines=0\n" 'Windowsize 0'
+macro index,pager A "|abook --add-email\n" 'add sender to abook'
+macro index \eb ":toggle sidebar_visible\n"
+macro pager \eb ":toggle sidebar_visible\n"
+macro index,pager     \ei "c+INBOX\n"
+macro index S "<save-message>+=Spam<enter>" "mark message as spam"
 
-
-set wrapmargin = 10
-#set max_line_length = 100
-set quote_regexp="^([ \t]*[^ \-=\t|>]*[|>])+"
-set tmpdir="/tmp"
-
-bind index P parent-message
-bind pager P parent-message
-
-macro index,pager      .i      "l((~N|~O|~F)!~D)|(~d<1w!~Q)\n" 'Show messages not so old (1 week)'
-macro index,pager      .n      "l~N\n" 'Show new messages'
-macro index,pager      .o      "l(~N|~O)\n" 'Show old messages'
-macro index,pager      .a      "l~A\n" 'Show all messages'
-macro index,pager      .t      "l~d<1d\n" 'Show messages from today'
-macro index,pager      .y      "l~d<2d ~d>1d\n" 'Show messages up to 1 year old'
 folder-hook     INBOX       push '.i'
 folder-hook     notmuch     push '.a'
 folder-hook     Cron        push '.a'
 folder-hook     .           push '.n'
+folder-hook . 'set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"'
+folder-hook Bug 'set index_format="%2N %Z %D %?M?(->%M)? %s"'
+folder-hook Releases 'set index_format="%Z %D %?M?(->%M)? %s"'
+folder-hook . set sort=threads
+folder-hook Sent set sort=date-sent
+folder-hook . set pager_stop
+folder-hook Cron set pager_stop=no
 
 auto_view text/richtext
 auto_view text/html
@@ -180,30 +178,8 @@ alternative_order text/plain text/html text/enriched
 
 spam "X-Spam-Status: Yes"                     "S"
 spam "X-Bogosity: Spam, tests=bogofilter"     "B"
-set spam_separator=""
-
-set simple_search="~f %s | ~s %s | ~t %s"
-set print_command="LANG=en_CA.UTF-8 muttprint"
-
-#folder-hook . 'set strict_mime ; set assumed_charset=koi8-r:iso-8859-9:iso-8859-1:utf-8:us-ascii'
-
-unset wait_key
-
-# Use the following script to dump color numbers:
-# http://www.vim.org/scripts/script.php?script_id=1349
-#color body red default ".*; need [1-9].*"
-color body red default "review[?+\-]"
-# AWS cronmail
-color body red default "running: [0-9]+"
-
-# release mail
-color index red default "~s '[release] .* failed at'"
-color index green default "~s '[release] .* ready for release'"
-color index green default "~s 'All signed builds now available'"
-color index green default "~s '.*aws sanity check'"
 
 # decrypt bugzilla messages
 message-hook '~s "\\(Secure bug .* updated\\)"' 'exec check-traditional-pgp'
 message-hook '~s "SecureMail"' 'exec check-traditional-pgp'
 
-set implicit_autoview
