@@ -2,7 +2,7 @@
 
 import gnomekeyring as gkey
 
-prioritized = ['INBOX', 'My Bugs', 'Release', 'tb-drivers']
+prioritized = ['INBOX', 'My bugs', 'Release', 'tb-drivers']
 
 
 def mycmp(x, y):
