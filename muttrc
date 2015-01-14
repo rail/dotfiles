@@ -129,6 +129,7 @@ folder-hook . set sort=threads
 folder-hook Sent set sort=date-sent
 folder-hook . set pager_stop
 folder-hook Cron set pager_stop=no
+folder-hook Trash push 'T~N<enter>Wn'  # Mark all trashed messages as read
 
 auto_view text/richtext
 auto_view text/html
