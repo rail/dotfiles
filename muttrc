@@ -117,6 +117,7 @@ macro index \eb ":toggle sidebar_visible\n"
 macro pager \eb ":toggle sidebar_visible\n"
 macro index,pager     \ei "c+INBOX\n"
 macro index,pager S "<save-message>+Spam<enter>" "mark message as spam"
+macro index,pager a "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
 
 folder-hook     INBOX       push '.i'
 folder-hook     notmuch     push '.a'

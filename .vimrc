@@ -40,6 +40,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'briancollins/vim-jst'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'fatih/vim-go'
 
 
 call vundle#end() " required
