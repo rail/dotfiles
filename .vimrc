@@ -36,12 +36,13 @@ Plugin 'bling/vim-bufferline'
 " JS
 "Plugin 'elzr/vim-json'
 Plugin 'groenewege/vim-less'
-Plugin 'pangloss/vim-javascript'
 Plugin 'briancollins/vim-jst'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'fatih/vim-go'
-
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end() " required
 
@@ -103,6 +104,8 @@ autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
 autocmd! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
 autocmd! BufRead,BufNewFile *.pp set syntax=puppet filetype=puppet
 autocmd! BufRead,BufNewFile *.rst set tw=72 et spell formatoptions=tcqw
+
+autocmd FileType javascript set shiftwidth=2 softtabstop=2
 
 "restore-position
 autocmd BufReadPost *
@@ -226,3 +229,10 @@ let g:UltiSnipsUsePythonVersion = 2
 
 let g:indent_guides_guide_size=1
 let g:indent_guides_start_level=2
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" Not for python
+let g:syntastic_python_checkers = []

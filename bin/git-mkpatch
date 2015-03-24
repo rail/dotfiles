@@ -13,6 +13,12 @@ branch=${branch##refs/heads/}
 repo=$(basename $(git rev-parse --show-toplevel))
 repo=${repo%%.git}
 
+PROG=$(basename $0)
+if [ "$PROG" = "git-gist" ]; then
+    git diff -U8 @{upstream}... | gist --type diff --description $branch-$repo.diff
+    exit
+fi
+
 # Do the magic
 git diff -U8 @{upstream}... > $tmpfile
 
