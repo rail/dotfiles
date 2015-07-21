@@ -236,3 +236,4 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Not for python
 let g:syntastic_python_checkers = []
+let g:syntastic_javascript_checkers = []

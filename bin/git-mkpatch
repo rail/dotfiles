@@ -15,12 +15,12 @@ repo=${repo%%.git}
 
 PROG=$(basename $0)
 if [ "$PROG" = "git-gist" ]; then
-    git diff -U8 @{upstream}... | gist --type diff --description $branch-$repo.diff
+    git diff -U8 --patch-with-stat --binary @{upstream}... | gist --type diff --description $branch-$repo.diff
     exit
 fi
 
 # Do the magic
-git diff -U8 @{upstream}... > $tmpfile
+git diff -U8 --patch-with-stat --binary @{upstream}... > $tmpfile
 
 # Check if we've done this before
 shopt -s nullglob

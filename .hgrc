@@ -51,6 +51,7 @@ share =
 #inotify =
 #hgext.git =
 #mozext = /home/rail/work/mozilla/build/hgext-gecko-dev
+bundleclone = ~/.hg.d/version-control-tools/hgext/bundleclone
 
 [mozext]
 ircnick = rail

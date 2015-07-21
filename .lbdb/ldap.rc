@@ -29,7 +29,7 @@ $match = Net::Netrc->lookup('mail.mozilla.com');
 $login = $match->login();
 $password = $match->password();
 
-$ldap_server = 'ldaps://addressbook.mozilla.com:636';
+$ldap_server = 'ldaps://ldap.mozilla.org:636';
 $search_base = 'dc=mozilla';
 $ldap_search_fields    = 'givenname sn cn mail';
 $ldap_expected_answers = 'givenname sn cn mail mobile';
