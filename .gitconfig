@@ -17,6 +17,7 @@
     du = diff -U8 --patch-with-stat --binary @{u}...
     in = log ..@{u}
     nb = !sh -c 'git checkout -b $1 origin/master' -
+    glog = log --graph --abbrev-commit --decorate --date=relative --format=tformat:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 
 [color]
     ui = auto

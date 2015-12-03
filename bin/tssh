@@ -11,6 +11,7 @@ while true; do
         shift 2
     elif [ $opt == s ]; then
         sync=1
+        shift
     elif [ $opt == ? ]; then
         break
     fi
