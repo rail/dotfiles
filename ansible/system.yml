@@ -1,0 +1,60 @@
+---
+- hosts: all
+  name: manage the system!
+  tasks:
+      #- name: apt pinning preferences
+      #  copy: dest=/etc/apt/preferences.d/pinning src={{DOTFILES}}/apt_pinning
+
+      #- name: apt repositories
+      #  apt_repository: repo='{{item}}' state=present
+      #  with_items:
+      #      - "deb http://ftp.debian.org/debian/ testing main contrib non-free"
+      #      - "deb http://security.debian.org/ testing/updates main contrib non-free"
+      #      - "deb http://ftp.debian.org/debian/ unstable main contrib non-free"
+
+      - name: packages
+        apt: update_cache=yes cache_valid_time=3600 name={{item}}
+        with_items:
+          - zsh
+          - python2.7
+          - python2.7-dev
+          - python3.5
+          - python3.5-dev
+          - python3
+          - python3-dev
+          - tmux
+          - tmux
+          - vim
+          - vim-gtk  # For X11 clipboard awareness
+          - i3
+          - mc
+          - apt-file
+          - silversearcher-ag
+          - openssh-server
+          - network-manager-openvpn-gnome
+          - unzip
+          - zip
+          - htop
+          - xclip
+          - git
+          - mercurial
+          - sudo
+          - flashplugin-nonfree
+          - docker.io
+          - virtualbox
+          - rofi
+          - xbacklight
+          - xinput
+          - virtualenvwrapper
+          - ipython-notebook
+          - ipython3-notebook
+          - offlineimap
+          - mutt-patched
+          - postfix
+          - python-tox
+          - gnome-screensaver
+          - chromium
+          - stardict
+          - equivs
+          - calibre
+          - qt4-qtconfig

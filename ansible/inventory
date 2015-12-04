@@ -1,0 +1,5 @@
+localhost ansible_connection=local
+
+[all:vars]
+HOME=/home/rail
+DOTFILES=/home/rail/.dotfiles
