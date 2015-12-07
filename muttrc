@@ -65,6 +65,8 @@ unset confirmappend
 unset mark_old
 
 color sidebar_new yellow default
+#color sidebar_new yellow color234
+# color sidebar_flagged color253 color234
 # Use the following script to dump color numbers: http://www.vim.org/scripts/script.php?script_id=1349
 color body red default "review[?+\-]"
 
@@ -81,6 +83,7 @@ alternates rail@.* raliiev@.*
 
 source ~/.mutt/muttmailboxes
 source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
+#source ~/.mutt/vombatidae.mutt
 source ~/.mutt/lists
 
 bind index P parent-message
