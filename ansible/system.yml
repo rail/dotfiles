@@ -70,3 +70,7 @@
           - terminator
           - urlview
           - links
+          - devscripts
+          - libmysqlclient-dev
+          - libssl-dev
+          - libffi-dev
