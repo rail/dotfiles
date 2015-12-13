@@ -25,7 +25,7 @@
             #- {src: firefox, dest: bin/firefox}
             #- {src: firefox-moz, dest: bin/firefox-moz}
             #- {src: git-mkpatch, dest: bin/git-mkpatch}
-            #- {src: hgrc, dest: .hgrc}
+            - {src: .hgrc, dest: .hgrc}
             #- {src: tmux_attach, dest: bin/tmux_attach}
             - {src: .archivemail.yaml, dest: .archivemail.yaml}
             - {src: .gitconfig, dest: .gitconfig}
