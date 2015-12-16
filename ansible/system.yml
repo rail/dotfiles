@@ -67,7 +67,6 @@
           - python-sh
           - imapfilter
           - python-gnomekeyring
-          - terminator
           - urlview
           - links
           - devscripts
@@ -78,3 +77,7 @@
           - libxml2-dev # nikola
           - libxslt1-dev # nikola
           - libjpeg9-dev # nikola
+          - secure-delete
+          - s3cmd
+          - python-zope.interface
+          - python-openssl
