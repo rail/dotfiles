@@ -38,7 +38,7 @@ hgext.graphlog =
 hgext.mq =
 hgext.purge =
 progress =
-paste = /home/rail/.hg.d/hg-paste/paste.py
+# paste = /home/rail/.hg.d/hg-paste/paste.py
 hgext.convert =
 transplant =
 hgext.bookmarks =
@@ -52,6 +52,7 @@ share =
 #hgext.git =
 #mozext = /home/rail/work/mozilla/build/hgext-gecko-dev
 bundleclone = ~/.hg.d/version-control-tools/hgext/bundleclone
+reviewboard = ~/.hg.d/version-control-tools/hgext/reviewboard/client.py
 
 [mozext]
 ircnick = rail
@@ -76,3 +77,15 @@ preoutgoing.mq-no-push = ! hg qtop > /dev/null 2>&1
 
 [mq]
 secret = True
+
+[mozilla]
+ircnick = rail
+
+[paths]
+# For HTTP pushing
+review = https://reviewboard-hg.mozilla.org/autoreview
+
+# For SSH pushing
+# review = ssh://reviewboard-hg.mozilla.org/autoreview
+
+%include ~/.hgsecrets
