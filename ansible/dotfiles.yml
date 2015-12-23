@@ -12,6 +12,12 @@
       - name: railz-dotfiles
         git: repo=https://github.com/rail/dotfiles.git dest={{DOTFILES}} update=no
 
+      - name: mozilla dir
+        file: dest={{HOME}}/.config/i3 state=directory
+
+      - name: mozilla dir
+        file: dest={{HOME}}/.config/i3status state=directory
+
       - name: symlinks
         file: src={{DOTFILES}}/{{item.src}} dest={{HOME}}/{{item.dest}} state=link
         with_items:
@@ -32,6 +38,6 @@
             - {src: .zshrc-railz, dest: .zshrc-railz}
             - {src: .ssh/config, dest: .ssh/config}
             - {src: .config/i3/config, dest: .config/i3/config}
-            - {src: .config/i3/py3status.cfg, dest: .config/i3/py3status.cfg}
+            - {src: .config/i3status/config, dest: .config/i3status/config}
 
 #- include: mozilla.yml
