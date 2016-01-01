@@ -27,21 +27,22 @@ urls = !$HG log --template='{node|short} {desc|firstline}\n' $(echo $HG_ARGS | s
 last = !$HG urls -l1
 # git diff master...branch == hg diff -r "ancestor(default, mock)" -r mock 
 stripo = strip --no-backup 'outgoing()'
+wip = log --graph --rev=wip --template=wip
 
 [extensions]
-parentrevspec =
-color =
-pager =
-hgext.hgk =
-rebase =
-hgext.graphlog =
-hgext.mq =
-hgext.purge =
-progress =
+parentrevspec = 
+color = 
+pager = 
+hgext.hgk = 
+rebase = 
+hgext.graphlog = 
+hgext.mq = 
+hgext.purge = 
+progress = 
 # paste = /home/rail/.hg.d/hg-paste/paste.py
-hgext.convert =
-transplant =
-hgext.bookmarks =
+hgext.convert = 
+transplant = 
+hgext.bookmarks = 
 share = 
 #hgext.extdiff =
 #qimportbz = ~/.hg.d/qimportbz
@@ -51,8 +52,11 @@ share =
 #inotify =
 #hgext.git =
 #mozext = /home/rail/work/mozilla/build/hgext-gecko-dev
-bundleclone = ~/.hg.d/version-control-tools/hgext/bundleclone
-reviewboard = ~/.hg.d/version-control-tools/hgext/reviewboard/client.py
+bundleclone = ~/.mozbuild/version-control-tools/hgext/bundleclone
+# reviewboard = ~/.hg.d/version-control-tools/hgext/reviewboard/client.py
+histedit = 
+# firefoxtree = ~/.mozbuild/version-control-tools/hgext/firefoxtree
+# push-to-try = ~/.mozbuild/version-control-tools/hgext/push-to-try
 
 [mozext]
 ircnick = rail
@@ -84,8 +88,12 @@ ircnick = rail
 [paths]
 # For HTTP pushing
 review = https://reviewboard-hg.mozilla.org/autoreview
+[revsetalias]
+wip = (parents(not public()) or not public() or . or (head() and branch(default))) and (not obsolete() or unstable()^) and not closed()
+[templates]
+wip = '{label("log.branch", branches)} {label("changeset.{phase}", rev)}{label("changeset.{phase}", ":")}{label("changeset.{phase}", short(node))} {label("grep.user", author|user)}{label("log.tag", if(tags," {tags}"))} {label("log.bookmark", if(bookmarks," {bookmarks}"))}\n{label(ifcontains(rev, revset("."), "desc.here"),desc|firstline)}'
 
 # For SSH pushing
 # review = ssh://reviewboard-hg.mozilla.org/autoreview
 
-%include ~/.hgsecrets
+# %include ~/.hgsecrets

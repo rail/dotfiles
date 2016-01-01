@@ -86,3 +86,10 @@
           - gnome-tweak-tool
           - python-setuptools
           - aptitude
+          - python-pytest-cov
+          - dmz-cursor-theme
+          - python-stdeb
+          - jwhois
+          - libevent-dev
+          - golang
+          - gparted
