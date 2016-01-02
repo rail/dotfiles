@@ -3,6 +3,7 @@ general {
         interval = 5
 }
 
+order += "external_script weather"
 order += "volume master"
 order += "wireless wlp4s0"
 order += "battery 0"
@@ -23,10 +24,17 @@ tztime local {
         format = " %a %d, %H:%M "
 }
 tztime NZ {
-        format = "NZ: %H:%M "
+        format = " NZ: %H:%M "
         timezone = "Pacific/Auckland"
 }
 
 volume master {
     format = " ♪ %volume "
 }
+
+external_script weather {
+    script_path = "/home/rail/.dotfiles/weather_yahoo.sh"
+    format = ' {output} '
+    cache_timeout = 1800
+}
+

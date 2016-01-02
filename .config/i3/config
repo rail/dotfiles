@@ -235,6 +235,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym XF86LaunchA exec /home/rail/bin/sattap.sh
 #exec_always --no-startup-id feh --bg-scale ~/Desktop/wallpaper.jpg
 #exec_always --no-startup-id xsetroot -solid '#101010'
+# Make Caps Lock a Control key
+exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id /usr/bin/nm-applet
 workspace 1 output eDP1
 workspace 3 output DP1

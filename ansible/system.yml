@@ -19,12 +19,6 @@
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
         with_items:
           - zsh
-          - python2.7
-          - python2.7-dev
-          - python3.5
-          - python3.5-dev
-          - python3
-          - python3-dev
           - tmux
           - tmux
           - vim
@@ -49,12 +43,9 @@
           - xbacklight
           - xinput
           - virtualenvwrapper
-          - ipython-notebook
-          - ipython3-notebook
           - offlineimap
           - mutt-patched
           - postfix
-          - python-tox
           - gnome-screensaver
           - chromium
           - stardict
@@ -64,9 +55,7 @@
           - libiw-dev
           - android-tools-fastboot
           - android-tools-adb
-          - python-sh
           - imapfilter
-          - python-gnomekeyring
           - urlview
           - links
           - devscripts
@@ -79,17 +68,39 @@
           - libjpeg9-dev # nikola
           - secure-delete
           - s3cmd
-          - python-zope.interface
-          - python-openssl
           - libyaml-dev
-          - python-cryptography
           - gnome-tweak-tool
-          - python-setuptools
           - aptitude
-          - python-pytest-cov
           - dmz-cursor-theme
-          - python-stdeb
           - jwhois
           - libevent-dev
           - golang
           - gparted
+
+      - name: python
+        apt: update_cache=yes cache_valid_time=3600 name={{item}}
+        with_items:
+          - python-zope.interface
+          - python-openssl
+          - python-cryptography
+          - python-setuptools
+          - python-pytest-cov
+          - python-stdeb
+          - python-gnomekeyring
+          - python-sh
+          - python-tox
+          - ipython-notebook
+          - ipython3-notebook
+          - python2.7
+          - python2.7-dev
+          - python3.5
+          - python3.5-dev
+          - python3
+          - python3-dev
+
+      - name: emacs
+        apt: update_cache=yes cache_valid_time=3600 name={{item}}
+        with_items:
+          - emacs
+          - org-mode-doc
+          - emacs-goodies-el

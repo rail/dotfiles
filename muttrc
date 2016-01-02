@@ -46,7 +46,7 @@ set sidebar_width=35
 # set sidebar_shortpath=yes
 set sidebar_delim="│"
 # set sidebar_newmail_only="yes"
-set query_command="abook --mutt-query %s || lbdbq %s | egrep -v 'lbdbq: .* matches'"
+set query_command="abook --mutt-query %s"
 set wrapmargin = 10
 #set max_line_length = 100
 set quote_regexp="^([ \t]*[^ \-=\t|>]*[|>])+"
@@ -124,7 +124,6 @@ macro index,pager S "<save-message>+Spam<enter>" "mark message as spam"
 macro index,pager a "<enter-command>unset trash\n <delete-message><enter-command>set trash=+Trash\n" "Gmail archive message"
 
 folder-hook     INBOX       push '.i'
-folder-hook     notmuch     push '.a'
 folder-hook     Cron        push '.a'
 folder-hook     .           push '.n'
 folder-hook . 'set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"'
