@@ -76,6 +76,10 @@
           - libevent-dev
           - golang
           - gparted
+          - vinagre
+          - workrave
+          - fonts-font-awesome
+          - virtualbox-guest-additions-iso
 
       - name: python
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
@@ -97,6 +101,7 @@
           - python3.5-dev
           - python3
           - python3-dev
+          - python-notify2
 
       - name: emacs
         apt: update_cache=yes cache_valid_time=3600 name={{item}}

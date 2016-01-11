@@ -1,7 +1,7 @@
 ---
 - hosts: all
 
-  name: manage the dotfiles 
+  name: manage the dotfiles
 
   tasks:
       # - include: vim.yml
@@ -21,13 +21,6 @@
       - name: symlinks
         file: src={{DOTFILES}}/{{item.src}} dest={{HOME}}/{{item.dest}} state=link
         with_items:
-            #- {src: i3status.conf, dest: .i3status.conf}
-            #- {src: zshrc, dest: .zshrc}
-            #- {src: update_displays, dest: bin/update_displays}
-            #- {src: open_in_bugzilla.sh, dest: bin/open_in_bugzilla.sh}
-            #- {src: firefox, dest: bin/firefox}
-            #- {src: firefox-moz, dest: bin/firefox-moz}
-            #- {src: git-mkpatch, dest: bin/git-mkpatch}
             - {src: .hgrc, dest: .hgrc}
             - {src: .archivemail.yaml, dest: .archivemail.yaml}
             - {src: .gitconfig, dest: .gitconfig}

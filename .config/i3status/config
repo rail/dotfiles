@@ -3,23 +3,27 @@ general {
         interval = 5
 }
 
-order += "external_script weather"
-order += "volume master"
+order += "weather_yahoo toronto"
+order += "volume_status master"
 order += "wireless wlp4s0"
-order += "battery 0"
+order += "battery_level 0"
 order += "tztime NZ"
 order += "tztime local"
 
 wireless wlp4s0 {
-        format_up = " WiFi: %quality "
-        format_down = " W: down "
+        format_up = "  %quality "
+        format_down = " down "
 }
 
-battery 0 {
-        format = " %status %percentage %remaining "
-        last_full_capacity = true
+battery_level 0 {
+    charging_character = ""
+    cache_timeout = 5
+    format = " {icon} {percent}% "
+    #blocks = " "
+    # setting "blocks" here doesn't work for unicode characters
+    # patch py3status/modules/battery_level.py and set
+    # BLOCKS = ["", "", "", "", " "]
 }
-
 tztime local {
         format = " %a %d, %H:%M "
 }
@@ -28,13 +32,15 @@ tztime NZ {
         timezone = "Pacific/Auckland"
 }
 
-volume master {
-    format = " ♪ %volume "
+volume_status master {
+    format = "  {percentage}% "
 }
 
-external_script weather {
-    script_path = "/home/rail/.dotfiles/weather_yahoo.sh"
-    format = ' {output} '
-    cache_timeout = 1800
+weather_yahoo toronto {
+    woeid = "91978064"
+    forecast_days = 2
+    icon_snow = "❄"
+    icon_rain = "☔"
+    today_format = "{icon}{temp}{units}°  "
+    forecast_format = "{day}: {icon}{high}/{low} "
 }
-
