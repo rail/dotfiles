@@ -80,6 +80,9 @@
           - workrave
           - fonts-font-awesome
           - virtualbox-guest-additions-iso
+          - rustc
+          - cargo
+          - compton
 
       - name: python
         apt: update_cache=yes cache_valid_time=3600 name={{item}}

@@ -41,6 +41,6 @@ weather_yahoo toronto {
     forecast_days = 2
     icon_snow = "❄"
     icon_rain = "☔"
-    today_format = "{icon}{temp}{units}°  "
-    forecast_format = "{day}: {icon}{high}/{low} "
+    format_today = "{icon}{temp}°{units} "
+    format_forecast = "{day}: {icon}{high}/{low}"
 }
