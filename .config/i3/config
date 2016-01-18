@@ -250,7 +250,8 @@ bindsym XF86LaunchA exec /home/rail/bin/sattap.sh
 # Make Caps Lock a Control key
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id /usr/bin/nm-applet
-exec --no-startup-id compton -cCGf -i 0.8 -e 0.8
+exec --no-startup-id compton -cCGf -e 0.8
+exec --no-startup-id xrandr --dpi 144
 
 workspace $ws1 output DP1
 workspace $ws2 output DP1
