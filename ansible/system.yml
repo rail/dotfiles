@@ -49,41 +49,53 @@
           - gnome-screensaver
           - chromium
           - stardict
-          - equivs
           - calibre
           - qt4-qtconfig
-          - libiw-dev
           - android-tools-fastboot
           - android-tools-adb
           - imapfilter
           - urlview
           - links
-          - devscripts
-          - libmysqlclient-dev
-          - libssl-dev
-          - libffi-dev
           - zim
-          - libxml2-dev # nikola
-          - libxslt1-dev # nikola
-          - libjpeg9-dev # nikola
           - secure-delete
           - s3cmd
-          - libyaml-dev
           - gnome-tweak-tool
           - aptitude
           - dmz-cursor-theme
           - jwhois
-          - libevent-dev
-          - golang
           - gparted
           - vinagre
           - workrave
           - fonts-font-awesome
           - virtualbox-guest-additions-iso
-          - rustc
-          - cargo
           - compton
           - easytag
+          - icedove
+          - calendar-google-provider
+          - enigmail
+          - feh
+
+      - name: dev
+        apt: update_cache=yes cache_valid_time=3600 name={{item}}
+        with_items:
+          - devscripts
+          - autoconf2.13
+          - quilt
+          - pbuilder
+          - libiw-dev
+          - libevent-dev
+          - libyaml-dev
+          - libmysqlclient-dev
+          - libssl-dev
+          - libffi-dev
+          - libxml2-dev # nikola
+          - libxslt1-dev # nikola
+          - libjpeg9-dev # nikola
+          - rustc
+          - cargo
+          - golang
+          - equivs
+          - ubuntu-archive-keyring # to build ubuntu packages in pbuilder
 
       - name: python
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
