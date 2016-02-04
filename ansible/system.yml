@@ -74,6 +74,7 @@
           - calendar-google-provider
           - enigmail
           - feh
+          - redshift
 
       - name: dev
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
@@ -96,6 +97,7 @@
           - golang
           - equivs
           - ubuntu-archive-keyring # to build ubuntu packages in pbuilder
+          - debocker
 
       - name: python
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
@@ -113,11 +115,11 @@
           - ipython3-notebook
           - python2.7
           - python2.7-dev
-          - python3.5
-          - python3.5-dev
           - python3
           - python3-dev
           - python-notify2
+          - python-flake8
+          - python3-flake8
 
       - name: emacs
         apt: update_cache=yes cache_valid_time=3600 name={{item}}

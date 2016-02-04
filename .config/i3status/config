@@ -19,7 +19,7 @@ battery_level 0 {
     charging_character = ""
     cache_timeout = 5
     format = " {icon} {percent}% "
-    #blocks = " "
+    blocks =  
     # setting "blocks" here doesn't work for unicode characters
     # patch py3status/modules/battery_level.py and set
     # BLOCKS = ["", "", "", "", " "]
