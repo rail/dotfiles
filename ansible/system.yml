@@ -2,6 +2,8 @@
 - hosts: all
   name: manage the system!
   tasks:
+      - name: system users
+        user: name=rail shell=/bin/zsh group=rail groups=rail,cdrom,floppy,sudo,audio,dip,video,plugdev,netdev,lpadmin,bluetooth,scanner,docker,vboxusers uid=1000
       - name: apt pinning preferences
         copy: dest=/etc/apt/preferences.d/pinning src={{DOTFILES}}/apt_pinning
 
@@ -75,6 +77,8 @@
           - enigmail
           - feh
           - redshift
+          - pinentry-curses
+          - deja-dup
 
       - name: dev
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
@@ -98,6 +102,9 @@
           - equivs
           - ubuntu-archive-keyring # to build ubuntu packages in pbuilder
           - debocker
+          - puppet-lint
+          - docker-compose
+          - sqlite3
 
       - name: python
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
