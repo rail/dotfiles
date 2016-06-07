@@ -8,6 +8,7 @@ order += "volume_status master"
 order += "wireless wlp4s0"
 order += "battery_level 0"
 order += "tztime NZ"
+order += "tztime PL"
 order += "tztime local"
 
 wireless wlp4s0 {
@@ -30,6 +31,10 @@ tztime local {
 tztime NZ {
         format = " NZ: %H:%M "
         timezone = "Pacific/Auckland"
+}
+tztime PL {
+        format = " WOW: %H:%M "
+        timezone = "Europe/Warsaw"
 }
 
 volume_status master {

@@ -164,7 +164,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         # status_command i3status
-        status_command /home/rail/.virtualenvs/py3status-dev/bin/py3status
+        status_command /home/rail/.virtualenvs/py3status-dev-py3/bin/py3status
         tray_output eDP1
 }
 
@@ -208,7 +208,7 @@ exec --no-startup-id /usr/bin/gnome-settings-daemon
 exec --no-startup-id /usr/lib/notification-daemon/notification-daemon
 exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id redshift
-exec --no-startup-id workrave
+#exec --no-startup-id workrave
 
 workspace_auto_back_and_forth yes
 force_display_urgency_hint 500 ms
@@ -216,6 +216,7 @@ force_display_urgency_hint 500 ms
 for_window [class="Pidgin" window_role="conversation"] floating enable
 for_window [class="Stardict"] floating enable
 for_window [class="MPlayer"] floating enable
+for_window [class="smplayer"] floating enable
 for_window [class="Transmission-gtk"] floating enable
 for_window [class="Totem"] floating enable
 for_window [class="Vlc"] floating enable
@@ -249,10 +250,11 @@ exec_always --no-startup-id feh --bg-scale ~/Desktop/2560x1600.jpg
 # Make Caps Lock a Control key
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id /usr/bin/nm-applet
-exec --no-startup-id compton -cCGf -e 0.8
-exec --no-startup-id xrandr --dpi 144
+# exec --no-startup-id compton -cCGf -e 0.8
+#exec --no-startup-id xrandr --dpi 144
 
 workspace "$ws1" output DP1
 workspace "$ws2" output DP1
 workspace "$ws3" output DP1
 workspace "$ws4" output DP1
+bindsym $mod+m exec ~/bin/toggle_ext_monitor
