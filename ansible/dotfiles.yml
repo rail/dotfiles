@@ -19,7 +19,6 @@
       - name: symlinks
         file: src={{DOTFILES}}/{{item.src}} dest={{HOME}}/{{item.dest}} state=link
         with_items:
-            - {src: .hgrc, dest: .hgrc}
             - {src: .archivemail.yaml, dest: .archivemail.yaml}
             - {src: .gitconfig, dest: .gitconfig}
             - {src: .gitglobalignore, dest: .gitglobalignore}

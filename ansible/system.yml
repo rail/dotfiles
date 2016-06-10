@@ -6,6 +6,8 @@
         user: name=rail shell=/bin/zsh group=rail groups=rail,cdrom,floppy,sudo,audio,dip,video,plugdev,netdev,lpadmin,bluetooth,scanner,docker,vboxusers uid=1000
       - name: apt pinning preferences
         copy: dest=/etc/apt/preferences.d/pinning src={{DOTFILES}}/apt_pinning
+      - name: Monitor hotplug rules
+        copy: dest=/etc/udev/rules.d/95-monitor-hotplug.rules src={{DOTFILES}}/monitor-hotplug.rules
 
       - name: apt repositories
         apt_repository: repo='{{item}}' state=present
