@@ -1,0 +1,27 @@
+---
+- name: oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest={{HOME}}/.oh-my-zsh update=no
+
+- name: railz-dotfiles
+  git: repo=https://github.com/rail/dotfiles.git dest={{DOTFILES}} update=no
+
+- name: i3 dir
+  file: dest={{HOME}}/.config/i3 state=directory
+
+- name: i3status dir
+  file: dest={{HOME}}/.config/i3status state=directory
+
+- name: symlinks
+  file: src={{DOTFILES}}/{{item.src}} dest={{HOME}}/{{item.dest}} state=link
+  with_items:
+    - {src: .archivemail.yaml, dest: .archivemail.yaml}
+    - {src: .gitconfig, dest: .gitconfig}
+    - {src: .gitglobalignore, dest: .gitglobalignore}
+    - {src: .offlineimaprc, dest: .offlineimaprc}
+    - {src: .tmux.conf, dest: .tmux.conf}
+    - {src: .zshrc, dest: .zshrc}
+    - {src: .zshrc-railz, dest: .zshrc-railz}
+    - {src: .ssh/config, dest: .ssh/config}
+    - {src: .config/i3/config, dest: .config/i3/config}
+    - {src: .config/i3status/config, dest: .config/i3status/config}
+    - {src: .Xresources, dest: .Xresources}

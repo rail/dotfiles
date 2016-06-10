@@ -1,0 +1,32 @@
+---
+- name: install source-code-pro - make temp dir
+  file:
+    path: "/tmp/setup/adobe_font"
+    state: directory
+
+- name: install source-code-pro - download font
+  get_url:
+    url: "https://github.com/adobe-fonts/source-code-pro/archive/1.017R.zip"
+    dest: "/tmp/setup/adobe_font/source_code_pro.zip"
+    mode: 0755
+
+- name: install source-code-pro - unzip downloaded font
+  unarchive:
+    src: "/tmp/setup/adobe_font/source_code_pro.zip"
+    dest: "/tmp/setup/adobe_font"
+
+- name: install source-code-pro - make fonts directory
+  file:
+    path: "/home/{{ username }}/.fonts"
+    state: directory
+
+- name: install source-code-pro - copy fonts
+  copy:
+    src: "/tmp/setup/adobe_font/source-code-pro-1.017R/OTF/"
+    dest: "/home/{{ username }}/.fonts"
+    mode: 0755
+  register: fonts_copied
+
+- name: install source-code-pro - font cache
+  command: "fc-cache -f -v"
+  when: fonts_copied|changed

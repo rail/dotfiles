@@ -4,20 +4,6 @@
   tasks:
       - name: system users
         user: name=rail shell=/bin/zsh group=rail groups=rail,cdrom,floppy,sudo,audio,dip,video,plugdev,netdev,lpadmin,bluetooth,scanner,docker,vboxusers uid=1000
-      - name: apt pinning preferences
-        copy: dest=/etc/apt/preferences.d/pinning src={{DOTFILES}}/apt_pinning
-      - name: Monitor hotplug rules
-        copy: dest=/etc/udev/rules.d/95-monitor-hotplug.rules src={{DOTFILES}}/monitor-hotplug.rules
-
-      - name: apt repositories
-        apt_repository: repo='{{item}}' state=present
-        with_items:
-            - "deb http://ftp.debian.org/debian/ testing main contrib non-free"
-            - "deb-src http://ftp.debian.org/debian/ testing main contrib non-free"
-            - "deb http://security.debian.org/ testing/updates main contrib non-free"
-            - "deb-src http://security.debian.org/ testing/updates main contrib non-free"
-            - "deb http://ftp.debian.org/debian/ unstable main contrib non-free"
-            - "deb-src http://ftp.debian.org/debian/ unstable main contrib non-free"
 
       - name: packages
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
@@ -28,7 +14,6 @@
           - vim
           - vim-gtk  # For X11 clipboard awareness
           - i3
-          - i3blocks
           - mc
           - apt-file
           - silversearcher-ag
@@ -79,7 +64,7 @@
           - calendar-google-provider
           - enigmail
           - feh
-          - redshift-gtk
+          - redshift+gtk
           - pinentry-curses
           - deja-dup
           - tree
@@ -115,6 +100,7 @@
           - docker-compose
           - sqlite3
           - pandoc
+
 
       - name: python
         apt: update_cache=yes cache_valid_time=3600 name={{item}}

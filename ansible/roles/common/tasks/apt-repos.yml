@@ -1,0 +1,15 @@
+---
+- name: apt repositories
+  apt_repository: repo='{{item}}' state=present
+  become: yes
+  with_items:
+    - "deb http://ftp.debian.org/debian/ testing main contrib non-free"
+    - "deb-src http://ftp.debian.org/debian/ testing main contrib non-free"
+    - "deb http://security.debian.org/ testing/updates main contrib non-free"
+    - "deb-src http://security.debian.org/ testing/updates main contrib non-free"
+    - "deb http://ftp.debian.org/debian/ unstable main contrib non-free"
+    - "deb-src http://ftp.debian.org/debian/ unstable main contrib non-free"
+
+- name: apt pinning preferences
+  copy: dest=/etc/apt/preferences.d/pinning src=apt_pinning
+  become: yes

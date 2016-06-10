@@ -1,0 +1,4 @@
+---
+- name: Monitor hotplug rules
+  copy: dest=/etc/udev/rules.d/95-monitor-hotplug.rules src=monitor-hotplug.rules
+  become: yes
