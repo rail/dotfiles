@@ -16,16 +16,18 @@ while true; do
         break
     fi
 done
-new=1
+
+TARGET="T$RANDOM"
+new=0
 for h in $*; do
     if [ "$new" = "0" ]; then
-        tmux new-window "ssh $login $h"
+        tmux new-window -n $TARGET "ssh $login $h"
         new=1
     else
-        tmux split-window "ssh $login $h"
+        tmux split-window -t $TARGET "ssh $login $h"
     fi
-    tmux select-layout even-vertical
+    tmux select-layout -t $TARGET even-vertical
 done
 if [ $sync == 1 ]; then
-    tmux set-option sync on
+    tmux set-option -t $TARGET sync on
 fi

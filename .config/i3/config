@@ -11,22 +11,46 @@
 
 set $mod Mod4
 
+set $ws1 1 
+set $ws2 2 
+set $ws3 3 
+set $ws4 4 
+set $ws5 5 
+set $ws6 6 
+set $ws7 7 
+set $ws8 8 
+set $ws9 9 
+set $ws10 10 
+
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color #E53935
+
+# from `pactl list sinks| grep Name`
+set $out_sink alsa_output.pci-0000_00_1b.0.analog-stereo
+# from `pactl list sources | grep Name`
+set $in_source alsa_input.pci-0000_00_1b.0.analog-stereo
+
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 14
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+font pango: System San Francisco Display 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+workspace_auto_back_and_forth yes
+new_window 1pixel
+force_display_urgency_hint 500 ms
+
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -35,12 +59,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -bg "#222222" -font "mono 18" -fg "#777777" -show run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show run
 
 # change focus
 bindsym $mod+j focus left
@@ -92,28 +111,17 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 1 
-set $ws2 2 
-set $ws3 3 
-set $ws4 4 
-set $ws5 5 
-set $ws6 6 
-set $ws7 7  
-set $ws8 8 
-set $ws9 9 
-set $ws10 10 
-
 # switch to workspace
-#bindsym $mod+1 workspace $ws1
-#bindsym $mod+2 workspace $ws2
-#bindsym $mod+3 workspace $ws3
-#bindsym $mod+4 workspace $ws4
-#bindsym $mod+5 workspace $ws5
-#bindsym $mod+6 workspace $ws6
-#bindsym $mod+7 workspace $ws7
-#bindsym $mod+8 workspace $ws8
-#bindsym $mod+9 workspace $ws9
-#bindsym $mod+0 workspace $ws10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -133,6 +141,38 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+bindsym $mod+b border toggle
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $out_sink +5% && killall -s USR1 py3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $out_sink -5% && killall -s USR1 py3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $out_sink toggle && killall -s USR1 py3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute $in_source toggle && killall -s USR1 py3status
+bindsym XF86Tools exec gnome-control-center
+
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+
+bindsym $mod+Mod1+Right move workspace to output right
+bindsym $mod+Mod1+Left move workspace to output left
+bindsym $mod+Mod1+Up move workspace to output up
+bindsym $mod+Mod1+Down move workspace to output down
+bindsym $mod+Tab workspace back_and_forth
+
+bindsym Ctrl+Mod1+l exec gnome-screensaver-command --lock
+# sticky window
+bindsym $mod+Shift+s sticky toggle
+
+# Scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
+
+bindsym $mod+m exec ~/bin/toggle_ext_monitor
+#bindsym $mod+Shift+p exec /home/rail/bin/sattap.sh
+#bindsym XF88LaunchA exec /home/rail/bin/sattap.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -166,52 +206,36 @@ bar {
         # status_command i3status
         status_command /home/rail/.virtualenvs/py3status-dev-py3/bin/py3status
         tray_output eDP1
+        colors {
+            background $bg-color
+            separator #757575
+            #                  border             background         text
+            focused_workspace  $bg-color          $bg-color          $text-color
+            inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+            urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+        }
 }
 
-bindsym $mod+t border normal
-bindsym $mod+y border 1pixel
-bindsym $mod+u border none
-bindsym $mod+b border toggle
-new_window 1pixel
-
-# from `pactl list sinks| grep Name`
-set $out_sink alsa_output.pci-0000_00_1b.0.analog-stereo
-# from `pactl list sources | grep Name`
-set $in_source alsa_input.pci-0000_00_1b.0.analog-stereo
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $out_sink +5% && killall -s USR1 py3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $out_sink -5% && killall -s USR1 py3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $out_sink toggle && killall -s USR1 py3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute $in_source toggle && killall -s USR1 py3status
-bindsym XF86Tools exec gnome-control-center
-
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-
-bindsym $mod+Mod1+Right move workspace to output right
-bindsym $mod+Mod1+Left move workspace to output left
-bindsym $mod+Mod1+Up move workspace to output up
-bindsym $mod+Mod1+Down move workspace to output down
-bindsym $mod+Tab workspace back_and_forth
-
+# scrolling by trackpoint
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5
 
-# localectl set-x11-keymap us,ru pc101 ,winkeys compose:ralt,grp:shifts_toggle,grp_led:caps,caps:escape
 exec_always --no-startup-id /usr/bin/setxkbmap -option compose:ralt,grp:shifts_toggle,grp_led:caps,caps:escape -layout us,ru
 exec_always --no-startup-id /usr/bin/synclient TouchpadOff=1
-# exec_always --no-startup-id xsetroot -solid '#101010'
 exec_always --no-startup-id pactl set-sink-volume 0 '50%'
+exec_always --no-startup-id feh --bg-scale ~/Desktop/2560x1600.jpg
+# Make Caps Lock a Control key
+exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 exec --no-startup-id /usr/bin/gnome-settings-daemon
 exec --no-startup-id /usr/lib/notification-daemon/notification-daemon
 exec --no-startup-id /usr/bin/gnome-screensaver
-exec --no-startup-id redshift
-#exec --no-startup-id workrave
-
-workspace_auto_back_and_forth yes
-force_display_urgency_hint 500 ms
+exec --no-startup-id redshift-gtk
+exec --no-startup-id /usr/bin/nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id compton -cCGf -e 0.8 --fade-delta=2 -b
+exec --no-startup-id xrandr --dpi 144
 
 for_window [class="Pidgin" window_role="conversation"] floating enable
 for_window [class="Stardict"] floating enable
@@ -227,34 +251,7 @@ for_window [class="eog"] floating enable
 for_window [class="gcr-prompter"] floating enable
 for_window [class="(?i)skype.*"] floating enable
 
-bindsym Ctrl+Mod1+l exec gnome-screensaver-command --lock
-
-bindsym $mod+0 exec "i3-msg workspace '$ws10'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-bindsym $mod+1 exec "i3-msg workspace '$ws1'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-bindsym $mod+2 exec "i3-msg workspace '$ws2'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-bindsym $mod+3 exec "i3-msg workspace '$ws3'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-bindsym $mod+4 exec "i3-msg workspace '$ws4'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-bindsym $mod+5 exec "i3-msg workspace '$ws5'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-bindsym $mod+6 exec "i3-msg workspace '$ws6'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-bindsym $mod+7 exec "i3-msg workspace '$ws7'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-bindsym $mod+8 exec "i3-msg workspace '$ws8'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-bindsym $mod+9 exec "i3-msg workspace '$ws9'; i3-msg scratchpad show; i3-msg focus mode_toggle"
-
-bindsym $mod+minus scratchpad show
-bindsym $mod+Shift+minus move scratchpad
-
-#bindsym $mod+Shift+p exec /home/rail/bin/sattap.sh
-bindsym XF86LaunchA exec /home/rail/bin/sattap.sh
-exec_always --no-startup-id feh --bg-scale ~/Desktop/2560x1600.jpg
-#exec_always --no-startup-id xsetroot -solid '#101010'
-# Make Caps Lock a Control key
-exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-exec --no-startup-id /usr/bin/nm-applet
-# exec --no-startup-id compton -cCGf -e 0.8
-#exec --no-startup-id xrandr --dpi 144
-
 workspace "$ws1" output DP1
 workspace "$ws2" output DP1
 workspace "$ws3" output DP1
 workspace "$ws4" output DP1
-bindsym $mod+m exec ~/bin/toggle_ext_monitor

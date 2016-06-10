@@ -10,10 +10,10 @@ print "IMAP filter in progress... ",
 sys.stdout.flush()
 sh.nice("imapfilter", "-c",
         os.path.expanduser("~/.dotfiles/imapfilter.config.lua"),
-        _timeout=3 * 60)
+        _timeout=4 * 60)
 print "Done"
 print "sync in progress... ",
 sys.stdout.flush()
-sh.nice("offlineimap", _timeout=3 * 60)
+sh.nice("offlineimap", _timeout=4 * 60)
 print "Done"
 os.chmod(imap_status, 0o644)

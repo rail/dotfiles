@@ -26,6 +26,7 @@
           - vim
           - vim-gtk  # For X11 clipboard awareness
           - i3
+          - i3blocks
           - mc
           - apt-file
           - silversearcher-ag
@@ -76,9 +77,15 @@
           - calendar-google-provider
           - enigmail
           - feh
-          - redshift
+          - redshift-gtk
           - pinentry-curses
           - deja-dup
+          - tree
+          - info
+          - jq
+          - scrot
+          - lxappearance
+          - blueman
 
       - name: dev
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
@@ -105,6 +112,7 @@
           - puppet-lint
           - docker-compose
           - sqlite3
+          - pandoc
 
       - name: python
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
@@ -127,6 +135,7 @@
           - python-notify2
           - python-flake8
           - python3-flake8
+          - python-simplejson
 
       - name: emacs
         apt: update_cache=yes cache_valid_time=3600 name={{item}}
