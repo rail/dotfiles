@@ -4,3 +4,4 @@
   become: yes
   with_items:
     - slim
+    - libnotify-bin

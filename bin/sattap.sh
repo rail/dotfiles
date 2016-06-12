@@ -8,10 +8,10 @@ imageshack(){
     curl -H Expect: -F fileupload="@$1" -F xml=yes -# "http://www.imageshack.us/index.php" > /tmp/$out 2>&1
 
     if [ `cat /tmp/$out | grep image_link | wc -l` -lt 1 ]; then
-        ok "Error: $1"
+        notify-send "Error: $1"
     else
         cat /tmp/$out | tr -d " " | grep image_link | grep -o  http[^\<]* | xclip -selection clipboard
-        ok "Uploaded! Paste from clipboard."
+        notify-send "Uploaded! Paste from clipboard."
     fi
     #rm /tmp/$out
 }
@@ -28,4 +28,4 @@ scp $FILEPATH ${SCP_HOST}:$SCP_PATH
 rm $FILEPATH
 
 echo -n $HTTP_URL$FILENAME | xclip -selection clipboard
-ok "Uploaded to $HTTP_URL$FILENAME"
+notify-send "Uploaded to $HTTP_URL$FILENAME"

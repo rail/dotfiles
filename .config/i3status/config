@@ -43,9 +43,9 @@ volume_status master {
 
 weather_yahoo toronto {
     woeid = "91978064"
-    forecast_days = 2
+    forecast_days = 1
     icon_snow = "❄"
     icon_rain = "☔"
-    format_today = "{icon}{temp}°{units} "
-    format_forecast = "{day}: {icon}{high}/{low}"
+    format_today = "{icon}{temp}°{units}   "
+    format_forecast = " {day}: {icon} {high}/{low}"
 }

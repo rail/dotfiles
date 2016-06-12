@@ -1,4 +1,5 @@
 ---
+- include: users.yml
 - include: apt-repos.yml
 - include: gsettings.yml
 - include: fonts.yml
@@ -6,3 +7,4 @@
 - include: tmux.yml
 - include: udev.yml
 - include: dotfiles.yml
+- include: packages.yml

@@ -153,8 +153,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $out_sink toggle 
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute $in_source toggle && killall -s USR1 py3status
 bindsym XF86Tools exec gnome-control-center
 
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && notify-send -t 700 `xbacklight -get`
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 && notify-send -t 700 `xbacklight -get`
 
 bindsym $mod+Mod1+Right move workspace to output right
 bindsym $mod+Mod1+Left move workspace to output left
