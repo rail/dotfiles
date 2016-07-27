@@ -7,7 +7,7 @@ general {
 order += "volume_status master"
 order += "wireless wlp4s0"
 order += "battery_level 0"
-order += "tztime NZ"
+order += "tztime Berlin"
 # order += "tztime PL"
 order += "tztime local"
 order += "external_script layout"
@@ -32,6 +32,10 @@ tztime local {
 tztime NZ {
     format = " NZ: %H:%M "
     timezone = "Pacific/Auckland"
+}
+tztime Berlin {
+    format = " BER: %H:%M "
+    timezone = "Europe/Berlin"
 }
 tztime PL {
     format = " WOW: %H:%M "
