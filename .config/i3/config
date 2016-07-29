@@ -210,7 +210,7 @@ bindsym $mod+r mode "resize"
 bar {
         # status_command i3status
         status_command /home/rail/.virtualenvs/py3status-dev-py3/bin/py3status
-        tray_output eDP-1
+        tray_output eDP1
         tray_padding 0
         colors {
             background $bg-color
@@ -258,7 +258,7 @@ for_window [class="gcr-prompter"] floating enable
 for_window [class="(?i)skype.*"] floating enable
 for_window [class="Firefox" window_role="About"] floating enable
 
-workspace "$ws1" output DP-1
-workspace "$ws2" output DP-1
-workspace "$ws3" output DP-1
-workspace "$ws4" output DP-1
+workspace "$ws1" output DP1
+workspace "$ws2" output DP1
+workspace "$ws3" output DP1
+workspace "$ws4" output DP1

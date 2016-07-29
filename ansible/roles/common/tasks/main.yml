@@ -6,5 +6,4 @@
 - include: users.yml
 - include: gsettings.yml
 - include: fonts.yml
-- include: tmux.yml
 - include: dotfiles.yml
