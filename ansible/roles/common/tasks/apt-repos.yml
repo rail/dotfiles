@@ -12,6 +12,7 @@
     - "deb http://security.debian.org/ testing/updates main contrib non-free"
     - "deb-src http://security.debian.org/ testing/updates main contrib non-free"
     - "deb [arch=amd64] https://repo.skype.com/deb stable main"
+    - "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
 
 - name: apt pinning preferences
   copy: dest=/etc/apt/preferences.d/pinning src=apt_pinning

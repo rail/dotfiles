@@ -41,11 +41,29 @@ set charset="utf-8"
 set pipe_decode=no
 set help=no
 set forward_format = "Fwd: %s"
-set sidebar_visible="yes"
+set sidebar_visible=yes
 set sidebar_width=35
-# set sidebar_shortpath=yes
-set sidebar_delim="│"
-# set sidebar_newmail_only="yes"
+set sidebar_divider_char="│"
+
+set mail_check_stats=yes
+set sidebar_format="%B%*  %S%?N?(%N)?%?F?[%F]?"
+set sidebar_indent_string=" "
+set sidebar_folder_indent=yes
+set sidebar_short_path=yes
+
+color sidebar_indicator default color17
+# Dark blue background
+color sidebar_highlight white   color238
+# Grey background
+color sidebar_spoolfile yellow  default
+# Yellow
+color sidebar_new       green   default
+# Green
+color sidebar_flagged   red     default
+# Red
+color sidebar_divider   color8  default
+# Dark grey
+
 set query_command="abook --mutt-query %s"
 set wrapmargin = 10
 #set max_line_length = 100
@@ -64,9 +82,6 @@ unset bounce_delivered
 unset confirmappend
 unset mark_old
 
-color sidebar_new yellow default
-#color sidebar_new yellow color234
-# color sidebar_flagged color253 color234
 # Use the following script to dump color numbers: http://www.vim.org/scripts/script.php?script_id=1349
 color body red default "review[?+\-]"
 
@@ -189,3 +204,10 @@ spam "X-Bogosity: Spam, tests=bogofilter"     "B"
 message-hook '~s "\\(Secure bug .* updated\\)"' 'exec check-traditional-pgp'
 message-hook '~s "SecureMail"' 'exec check-traditional-pgp'
 
+# The 'S' (skip-quoted) command scrolls the pager past the quoted text (usually
+# indented with '> '.  Setting 'skip_quoted_offset' leaves some lines of quoted
+# text on screen for context.
+# Show three quoted lines before the reply
+set skip_quoted_offset = 3
+
+color progress white red

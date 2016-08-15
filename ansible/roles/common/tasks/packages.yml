@@ -30,7 +30,7 @@
     - xinput
     - virtualenvwrapper
     - offlineimap
-    - mutt-patched
+    - mutt
     - postfix
     - gnome-screensaver
     - chromium
@@ -70,6 +70,7 @@
     - scrot
     - lxappearance
     - blueman
+    - notmuch
 
 - name: dev
   become: yes
@@ -97,7 +98,7 @@
     - puppet-lint
     - docker-compose
     - sqlite3
-    - pandoc
+    - google-chrome-stable
 
 
 - name: python
