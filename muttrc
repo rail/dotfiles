@@ -22,7 +22,7 @@ set allow_8bit
 set autoedit
 set beep_new=no
 set editor="vim -c 'set tw=72 et spell ft=mail formatoptions=tcqw'"
-set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"
+set index_format="%Z %D [%-20.20n] %?M? %M?  %s %> %5c"
 set date_format="%H:%M, %a, %d %b"
 set folder_format="%N %f"
 set fast_reply
@@ -85,12 +85,6 @@ unset mark_old
 # Use the following script to dump color numbers: http://www.vim.org/scripts/script.php?script_id=1349
 color body red default "review[?+\-]"
 
-# release mail
-color index red default "~s '[release] .* failed at'"
-color index green default "~s '[release] .* ready for release'"
-color index green default "~s 'All signed builds now available'"
-color index green default "~s '.*aws_sanity_check'"
-
 ignore *
 unignore from: date subject to cc Reply-To:
 hdr_order from subject to cc date x-spam: Reply-To:
@@ -98,8 +92,14 @@ alternates rail@.* raliiev@.*
 
 source ~/.mutt/muttmailboxes
 source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
-#source ~/.mutt/vombatidae.mutt
 source ~/.mutt/lists
+
+# release mail
+color index red default "~s '[release] .* failed at'"
+color index green default "~s '[release] .* ready for release'"
+color index green default "~s 'All signed builds now available'"
+color index red default "~s 'Failed:.*'"
+
 
 bind index P parent-message
 bind pager P parent-message
@@ -139,16 +139,15 @@ macro index,pager     \ei "c+INBOX\n"
 macro index,pager S "<save-message>+Spam<enter>" "mark message as spam"
 macro index,pager a "<enter-command>unset trash\n <delete-message><enter-command>set trash=+Trash\n" "Gmail archive message"
 
-folder-hook     INBOX       push '.i'
-folder-hook     Cron        push '.a'
+folder-hook     INBOX       push '.a'
 folder-hook     .           push '.n'
-folder-hook . 'set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"'
-folder-hook Bug 'set index_format="%2N %Z %D %?M?(->%M)? %s"'
-folder-hook Releases 'set index_format="%Z %D %?M?(->%M)? %s"'
+# folder-hook . 'set index_format="%Z %D [%-20.20n] %?M?(->%M)? %s %> %5c %2N"'
+#folder-hook Bug 'set index_format="%2N %Z %D %?M?(->%M)? %s"'
+# folder-hook Releases 'set index_format="%Z %D %?M?(->%M)? %s"'
 folder-hook . set sort=threads
 folder-hook Sent set sort=date-sent
-folder-hook . set pager_stop
-folder-hook Cron set pager_stop=no
+#folder-hook . set pager_stop
+#folder-hook Cron set pager_stop=no
 folder-hook Trash push 'T~N<enter>Wn'  # Mark all trashed messages as read
 
 auto_view text/richtext

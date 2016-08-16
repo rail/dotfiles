@@ -4,6 +4,7 @@ general {
 }
 
 #order += "weather_yahoo toronto"
+order += "external_script brightness"
 order += "volume_status master"
 order += "wireless wlp4s0"
 order += "battery_level 0"
@@ -66,4 +67,13 @@ external_script layout {
     on_click 1 = "exec xkblayout-state set -1"
     on_click 4 = "exec xkblayout-state set -1"
     on_click 5 = "exec xkblayout-state set +1"
+}
+
+external_script brightness {
+    cache_timeout = 3
+    color = "#00FF00"
+    format = " ✲ {output}%"
+    script_path = "xbacklight | awk '{print int($1)}'"
+    on_click 4 = "exec xbacklight -dec 5"
+    on_click 5 = "exec xbacklight -inc 10"
 }
