@@ -5,3 +5,7 @@ Pin-Priority: 900
 Package: *
 Pin: release a=unstable
 Pin-Priority: 800
+
+Package: *
+Pin: release a=experimental
+Pin-Priority: 800

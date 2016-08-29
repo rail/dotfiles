@@ -71,6 +71,8 @@
     - lxappearance
     - blueman
     - notmuch
+    - google-chrome-stable
+    - mosh
 
 - name: dev
   become: yes
@@ -98,7 +100,7 @@
     - puppet-lint
     - docker-compose
     - sqlite3
-    - google-chrome-stable
+    - heroku-toolbelt
 
 
 - name: python
