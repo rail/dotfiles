@@ -1,7 +1,7 @@
 [user]
     name = Rail Aliiev
     email = rail@mozilla.com
-    signingkey = 5BA4BDF1
+    signingKey = F011018E
 
 
 [alias]
@@ -36,3 +36,5 @@
     excludesfile = ~/.gitglobalignore
     autocrlf = input
     safecrlf = true
+[commit]
+    gpgsign = true
