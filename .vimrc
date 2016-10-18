@@ -43,7 +43,6 @@ Plugin 'Lokaltog/vim-distinguished'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
-Plugin 'floobits/floobits-neovim'
 
 call vundle#end() " required
 

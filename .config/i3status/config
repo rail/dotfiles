@@ -32,7 +32,9 @@ battery_level 0 {
 
 tztime local {
     format = " %a %d, %H:%M "
-    on_click 1 = "exec yad --calendar  --mouse --on-top --undecorated --skip-taskbar --button Close --sticky"
+    #on_click 1 = "exec yad --calendar  --mouse --on-top --undecorated --skip-taskbar --button Close --sticky"
+    on_click 1 = "exec gnome-clocks"
+    on_click 2 = "exec gnome-calendar"
 }
 tztime NZ {
     format = " NZ: %H:%M "

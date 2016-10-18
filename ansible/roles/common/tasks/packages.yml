@@ -101,6 +101,8 @@
     - docker-compose
     - sqlite3
     - heroku-toolbelt
+    - arc-theme
+    - pass
 
 
 - name: python
