@@ -7,3 +7,4 @@
 - include: gsettings.yml
 - include: fonts.yml
 - include: dotfiles.yml
+- include: dnsmasq.yml
