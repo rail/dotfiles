@@ -55,7 +55,6 @@
     - scrot
     - google-chrome-stable
     - mosh
-    - xss-lock
 
 - name: dev
   become: yes
