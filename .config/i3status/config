@@ -7,49 +7,21 @@ general {
     color_bad = "#dc322f"
 }
 
-#order += "weather_yahoo toronto"
-order += "external_script brightness"
-order += "volume_status master"
-order += "wireless wlp4s0"
-order += "battery_level 0"
-# order += "tztime Berlin"
-# order += "tztime PL"
-order += "tztime local"
-order += "external_script layout"
+order += "backlight"
+order += "volume_status"
+order += "wifi"
+order += "battery_level"
+order += "clock"
+order += "keyboard_layout"
 
-wireless wlp4s0 {
-    format_up = "  %quality "
-    format_down = " down "
-    on_click 1 = "exec gnome-control-center network"
-}
-
-battery_level 0 {
+battery_level {
     charging_character = ""
     cache_timeout = 60
     format = " {icon} {percent}% "
-    blocks =  
+    blocks = ""
 }
 
-tztime local {
-    format = " %a %d, %H:%M "
-    #on_click 1 = "exec yad --calendar  --mouse --on-top --undecorated --skip-taskbar --button Close --sticky"
-    on_click 1 = "exec gnome-clocks"
-    on_click 2 = "exec gnome-calendar"
-}
-tztime NZ {
-    format = " NZ: %H:%M "
-    timezone = "Pacific/Auckland"
-}
-tztime Berlin {
-    format = " BER: %H:%M "
-    timezone = "Europe/Berlin"
-}
-tztime PL {
-    format = " WOW: %H:%M "
-    timezone = "Europe/Warsaw"
-}
-
-volume_status master {
+volume_status {
     format = "  {percentage}% "
     on_click 1 = "exec gnome-control-center sound"
     on_click 2 = "exec pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle && killall -s USR1 py3status"
@@ -57,29 +29,29 @@ volume_status master {
     on_click 5 = "exec pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -5% && killall -s USR1 py3status"
 }
 
-weather_yahoo toronto {
-    woeid = "91978064"
-    forecast_days = 1
-    icon_snow = "❄"
-    icon_rain = "☔"
-    format_today = "{icon}{temp}°{units}   "
-    format_forecast = " {day}: {icon} {high}/{low}"
-}
-external_script layout {
+keyboard_layout {
     cache_timeout = 1
-    # solarized green
-    color = "#859900"
-    format = " {output} "
-    script_path = 'xkblayout-state print "%s"'
+    color_us = "#839496"
+    color_ru = "#839496"
+    format = " {layout} "
     on_click 1 = "exec xkblayout-state set -1"
     on_click 4 = "exec xkblayout-state set -1"
     on_click 5 = "exec xkblayout-state set +1"
 }
 
-external_script brightness {
+backlight {
     cache_timeout = 3
-    format = " ✲ {output}% "
-    script_path = "xbacklight | awk '{print int($1)}'"
-    on_click 4 = "exec xbacklight -inc 10"
-    on_click 5 = "exec xbacklight -dec 5"
+    format = " ✲ {level}% "
+}
+
+wifi {
+    device = "wlp4s0"
+    format_up = "   {signal_percent} {bitrate} "
+    format_down = "   down "
+}
+
+clock {
+    format_time = " %a %d, %H:%M "
+    on_click 1 = "exec gnome-clocks"
+    on_click 2 = "exec gnome-calendar"
 }

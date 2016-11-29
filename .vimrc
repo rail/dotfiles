@@ -20,7 +20,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/vimwiki'
 Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'alfredodeza/coveragepy.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'gmarik/Vundle.vim'
@@ -43,6 +43,9 @@ Plugin 'Lokaltog/vim-distinguished'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
+
+Plugin 'rust-lang/rust.vim'
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end() " required
 
