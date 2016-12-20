@@ -3,108 +3,108 @@
   become: yes
   apt: update_cache=yes cache_valid_time=3600 name={{item}}
   with_items:
-    - zsh
-    - tmux
-    - vim
-    - vim-gtk  # For X11 clipboard awareness
-    - i3
-    - mc
     - apt-file
-    - silversearcher-ag
-    - openssh-server
-    - network-manager-openvpn-gnome
-    - unzip
-    - zip
-    - htop
-    - xclip
-    - git
-    - libnotify-bin
-    - mercurial
-    - sudo
-    - flashplugin-nonfree
-    - virtualbox
-    - rofi
-    - xbacklight
-    - xinput
-    - virtualenvwrapper
-    - offlineimap
-    - mutt
-    - postfix
-    - gnome-screensaver
-    - stardict
-    - qt4-qtconfig
-    - imapfilter
-    - urlview
-    - links
-    - secure-delete
-    - s3cmd
-    - gnome-tweak-tool
     - aptitude
-    - dmz-cursor-theme
-    - jwhois
-    - gparted
-    - fonts-font-awesome
-    - virtualbox-guest-additions-iso
     - compton
+    - dmz-cursor-theme
     - feh
-    - redshift-gtk
-    - pinentry-curses
-    - tree
+    - flashplugin-nonfree
+    - fonts-font-awesome
+    - git
+    - gnome-screensaver
+    - gnome-tweak-tool
+    - google-chrome-stable
+    - gparted
+    - htop
+    - i3
+    - imapfilter
     - info
     - jq
-    - scrot
-    - google-chrome-stable
+    - jwhois
+    - libnotify-bin
+    - links
+    - mc
+    - mercurial
     - mosh
+    - mutt
+    - network-manager-openvpn-gnome
+    - offlineimap
+    - openssh-server
+    - pinentry-curses
+    - postfix
+    - qt4-qtconfig
+    - redshift-gtk
+    - rofi
+    - s3cmd
+    - scrot
+    - secure-delete
+    - silversearcher-ag
+    - stardict
+    - sudo
+    - tmux
+    - tree
+    - unzip
+    - urlview
+    - vim
+    - vim-gtk  # For X11 clipboard awareness
+    - virtualbox
+    - virtualbox-guest-additions-iso
+    - virtualenvwrapper
+    - xbacklight
+    - xclip
+    - xinput
+    - zip
+    - zsh
 
 - name: dev
   become: yes
   apt: update_cache=yes cache_valid_time=3600 name={{item}}
   with_items:
-    - devscripts
     - autoconf2.13
-    - quilt
-    - pbuilder
-    - libiw-dev
-    - libevent-dev
-    - libyaml-dev
-    - libmysqlclient-dev
-    - libssl-dev
-    - libffi-dev
-    - libxml2-dev # nikola
-    - libxslt1-dev # nikola
-    - libjpeg9-dev # nikola
-    - rustc
     - cargo
-    - golang
-    - equivs
-    - ubuntu-archive-keyring # to build ubuntu packages in pbuilder
-    - puppet-lint
+    - devscripts
     - docker-compose
     - docker.io
-    - sqlite3
+    - equivs
+    - golang
     - heroku-toolbelt
+    - libevent-dev
+    - libffi-dev
+    - libiw-dev
+    - libjpeg9-dev # nikola
+    - libmysqlclient-dev
+    - libssl-dev
+    - libxml2-dev # nikola
+    - libxslt1-dev # nikola
+    - libyaml-dev
     - pass
+    - pbuilder
+    - puppet-lint
+    - quilt
+    - rustc
+    - sqlite3
     - tig
-
+    - ubuntu-archive-keyring # to build ubuntu packages in pbuilder
+    - zipalign
 
 - name: python
   become: yes
   apt: update_cache=yes cache_valid_time=3600 name={{item}}
   with_items:
-    - python-zope.interface
-    - python-openssl
     - python-cryptography
-    - python-setuptools
-    - python-pytest-cov
-    - python-stdeb
+    - python-flake8
     - python-gnomekeyring
+    - python-notify2
+    - python-openssl
+    - python-pytest-cov
+    - python-setuptools
     - python-sh
+    - python-simplejson
+    - python-stdeb
     - python-tox
+    - python-zope.interface
     - python2.7
     - python2.7-dev
     - python3
     - python3-dev
-    - python-notify2
-    - python-flake8
     - python3-flake8
-    - python-simplejson

@@ -5,6 +5,7 @@
 - include: udev.yml
 - include: users.yml
 - include: gsettings.yml
-- include: fonts.yml
+# - include: fonts.yml
 - include: dotfiles.yml
-- include: security.yml
+- include: purge.yml
+# - include: security.yml
