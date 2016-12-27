@@ -48,6 +48,7 @@
     - vim
     - vim-gtk  # For X11 clipboard awareness
     - virtualbox
+    - virtualbox-ext-pack
     - virtualbox-guest-additions-iso
     - virtualenvwrapper
     - xbacklight
