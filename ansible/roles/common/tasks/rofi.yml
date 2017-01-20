@@ -1,0 +1,6 @@
+---
+- name: external dir
+  file: dest={{DOTFILES}}/external state=directory
+
+- name: rofi-menugen
+  git: repo=https://github.com/octotep/menugen dest={{DOTFILES}}/external/rofi-menugen update=no

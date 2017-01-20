@@ -8,4 +8,4 @@
 # - include: fonts.yml
 - include: dotfiles.yml
 - include: purge.yml
-# - include: security.yml
+- include: rofi.yml

@@ -221,7 +221,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         # status_command i3status
-        status_command /home/rail/.virtualenvs/py3status/bin/py3status
+        status_command /home/rail/.virtualenvs/py3status-py3/bin/py3status
         tray_output eDP1
         tray_padding 0
         colors {
