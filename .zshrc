@@ -5,9 +5,6 @@ export ZSH=/home/rail/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="steeef"
-ZSH_THEME="jlund_juang"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 
@@ -81,7 +78,10 @@ plugins=(git pip gpg-agent ssh-agent virtualenv systemd virtualenvwrapper colori
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/sbin:/sbin:/home/rail/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games:/home/rail/.local/bin"
+if [ -e /etc/debian_version ]; then
+    # Debian only, nothing on NixOS
+    export PATH="/usr/local/sbin:/usr/sbin:/sbin:/home/rail/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games:/home/rail/.local/bin"
+fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

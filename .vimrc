@@ -15,7 +15,8 @@ Plugin 'klen/python-mode'
 Plugin 'local-packages'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'jnurmine/Zenburn'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/vimwiki'
@@ -108,21 +109,34 @@ autocmd! BufRead,BufNewFile *.json set filetype=json foldmethod=syntax
 autocmd! BufRead,BufNewFile *.pp set syntax=puppet filetype=puppet
 autocmd! BufRead,BufNewFile *.rst set tw=72 et spell formatoptions=tcqw
 
-autocmd FileType javascript set shiftwidth=2 softtabstop=2
-
 "restore-position
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line ("'\"") <= line("$") |
       \   exe "normal g'\"" |
       \ endif
 
+autocmd BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ textwidth=79
+    \ expandtab
+    \ autoindent
+    \ fileformat=unix
+
+autocmd BufNewFile,BufRead *.yml.tmpl set filetype=yaml
+autocmd BufNewFile,BufRead *.js, *.html, *.css, *.yml, *.yaml, *.yml.tmpl
+    \ set tabstop=2
+    \ softtabstop=2
+    \ shiftwidth=2
+
 
 set background=dark
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-colorscheme solarized
+"let g:solarized_termtrans=1
+"let g:solarized_termcolors=256
+"let g:solarized_contrast="high"
+"let g:solarized_visibility="high"
+colorscheme zenburn
 highlight BadFormat ctermbg=red ctermfg=white guibg=#592929
 
 let g:pymode_paths = ["lib/python", "lib/python/vendor"]
@@ -143,17 +157,6 @@ let g:gist_open_browser_after_post = 1
 " Wildmenu
 set wildmenu                " use wildmenu ...
 set wildcharm=<TAB>
-
-
-noremap <F9> :emenu G.<TAB>
-menu G.Status :Gstatus<CR>
-menu G.Diff :Gdiff<CR>
-menu G.Commit :Gcommit %<CR>
-menu G.Checkout :Gread<CR>
-menu G.Remove :Gremove<CR>
-menu G.Move :Gmove<CR>
-menu G.Log :Glog<CR>
-menu G.Blame :Gblame<CR>
 
 
 " Don't indent coments in Python

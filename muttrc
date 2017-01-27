@@ -85,7 +85,8 @@ hdr_order from subject to cc date x-spam: Reply-To:
 alternates rail@.* raliiev@.*
 
 source ~/.mutt/muttmailboxes
-source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
+# source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
+source ~/.mutt/colors-zenburn
 source ~/.mutt/lists
 
 # release mail

@@ -23,6 +23,8 @@
     - jwhois
     - libnotify-bin
     - links
+    - linux-headers-amd64
+    - linux-image-amd64
     - mc
     - mercurial
     - mosh
