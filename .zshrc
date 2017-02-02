@@ -80,7 +80,7 @@ plugins=(git pip gpg-agent ssh-agent virtualenv systemd virtualenvwrapper colori
 
 if [ -e /etc/debian_version ]; then
     # Debian only, nothing on NixOS
-    export PATH="/usr/local/sbin:/usr/sbin:/sbin:/home/rail/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games:/home/rail/.local/bin"
+    export PATH="/usr/local/sbin:/usr/sbin:/sbin:/home/rail/bin:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games:/home/rail/.local/bin:/home/rail/.cargo/bin"
 fi
 # export MANPATH="/usr/local/man:$MANPATH"
 

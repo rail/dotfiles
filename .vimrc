@@ -44,9 +44,19 @@ Plugin 'Lokaltog/vim-distinguished'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
-
-Plugin 'rust-lang/rust.vim'
 Plugin 'ryanoasis/vim-devicons'
+
+" Rust support
+Plugin 'rust-lang/rust.vim'
+
+" Cargo bindings
+Plugin 'timonv/vim-cargo'
+
+" Rust Racer (autocompl)
+Plugin 'racer-rust/vim-racer'
+
+" TOML support
+Plugin 'cespare/vim-toml'
 
 call vundle#end() " required
 
@@ -242,5 +252,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Not for python
-let g:syntastic_python_checkers = []
+" let g:syntastic_python_checkers = []
 let g:syntastic_javascript_checkers = []
+
+" run rustfmt on save
+let g:rustfmt_autosave = 1

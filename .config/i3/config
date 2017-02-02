@@ -253,6 +253,7 @@ for_window [class="(?i)skype.*"] floating enable
 for_window [class="Firefox" window_role="About"] floating enable
 for_window [class="deja-dup"] floating enable
 for_window [class="Gnome-clocks"] floating enable
+for_window [class="VirtualBox"] floating enable
 
 workspace "$ws1" output DP1
 workspace "$ws2" output DP1

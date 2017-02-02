@@ -22,6 +22,7 @@
     - jq
     - jwhois
     - libnotify-bin
+    - libqtwebkit4
     - links
     - linux-headers-amd64
     - linux-image-amd64
