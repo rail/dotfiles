@@ -236,6 +236,7 @@ exec --no-startup-id gnome-screensaver
 exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -cCGf -e 0.8 --fade-delta=2 -b
+exec --no-startup-id caffeine-indicator
 
 for_window [class="Pidgin" window_role="conversation"] floating enable
 for_window [class="Stardict"] floating enable
@@ -253,7 +254,6 @@ for_window [class="(?i)skype.*"] floating enable
 for_window [class="Firefox" window_role="About"] floating enable
 for_window [class="deja-dup"] floating enable
 for_window [class="Gnome-clocks"] floating enable
-for_window [class="VirtualBox"] floating enable
 
 workspace "$ws1" output DP1
 workspace "$ws2" output DP1

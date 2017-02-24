@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mailq_out=$(mailq)
+if [[ $mailq_out != "Mail queue is empty" ]]; then
+  printf "#[fg=colour197]Check mailq#[default]   "
+fi

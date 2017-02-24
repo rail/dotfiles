@@ -5,6 +5,7 @@
   with_items:
     - apt-file
     - aptitude
+    - caffeine
     - compton
     - dmz-cursor-theme
     - feh
