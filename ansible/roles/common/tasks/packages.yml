@@ -36,6 +36,7 @@
     - openssh-server
     - pinentry-curses
     - postfix
+    - powertop
     - qt4-qtconfig
     - redshift-gtk
     - rofi

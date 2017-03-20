@@ -9,3 +9,4 @@
 - include: dotfiles.yml
 - include: purge.yml
 - include: rofi.yml
+- include: systemd.yml
