@@ -67,7 +67,6 @@
   apt: update_cache=yes cache_valid_time=3600 name={{item}}
   with_items:
     - autoconf2.13
-    - cargo
     - devscripts
     - docker-compose
     - docker-engine
@@ -87,7 +86,6 @@
     - pbuilder
     - puppet-lint
     - quilt
-    - rustc
     - sqlite3
     - tig
     - ubuntu-archive-keyring # to build ubuntu packages in pbuilder
