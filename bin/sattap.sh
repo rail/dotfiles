@@ -15,9 +15,9 @@ imageshack(){
     fi
     #rm /tmp/$out
 }
-SCP_HOST='people.mozilla.com'
-SCP_PATH='~/public_html/sattap/'
-HTTP_URL="http://people.mozilla.org/~raliiev/sattap/"
+SCP_HOST='merail.ca'
+SCP_PATH='/var/www/virtual/merail.ca/img'
+HTTP_URL="http://img.merail.ca/"
 
 FILENAME=`date | md5sum | head -c 8`.png
 FILEPATH=/tmp/$FILENAME

@@ -75,3 +75,4 @@ setopt no_nomatch # when pattern matching fails, simply use the command as is
 zstyle :omz:plugins:ssh-agent lifetime 4h
 
 export R=~/work/mozilla/build
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

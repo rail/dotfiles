@@ -43,7 +43,7 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'ryanoasis/vim-devicons'
 
 " Rust support
@@ -57,6 +57,8 @@ Plugin 'racer-rust/vim-racer'
 
 " TOML support
 Plugin 'cespare/vim-toml'
+
+Plugin 'w0rp/ale'
 
 call vundle#end() " required
 

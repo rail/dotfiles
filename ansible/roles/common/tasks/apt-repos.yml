@@ -14,7 +14,6 @@
     - "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
     - "deb http://toolbelt.heroku.com/ubuntu ./"
     - "deb http://httpredir.debian.org/debian experimental main"
-    - "deb http://download.opensuse.org/repositories/home:/Horst3180/Debian_8.0/ /"
 
 - name: apt pinning preferences
   copy: dest=/etc/apt/preferences.d/pinning src=apt_pinning

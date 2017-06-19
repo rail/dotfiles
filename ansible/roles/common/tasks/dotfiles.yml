@@ -27,3 +27,4 @@
     - {src: .Xresources, dest: .Xresources}
     - {src: .tigrc, dest: .tigrc}
     - {src: .config/redshift.conf, dest: .config/redshift.conf}
+    - {src: .config/redshift/hooks/brightness.sh, dest: .config/redshift/hooks/brightness.sh}
