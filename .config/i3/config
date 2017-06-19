@@ -231,7 +231,8 @@ exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 exec --no-startup-id xrandr --dpi 144
 exec --no-startup-id gnome-settings-daemon
-exec --no-startup-id /usr/lib/notification-daemon/notification-daemon
+# exec --no-startup-id /usr/lib/notification-daemon/notification-daemon
+exec --no-startup-id dunst
 exec --no-startup-id python ~/work/mozilla/git/fakegnomesessionmanager/SessionManager.py
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id redshift-gtk

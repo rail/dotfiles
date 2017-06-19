@@ -62,6 +62,8 @@
     - zip
     - zsh
     - zsh-syntax-highlighting
+    - xautolock
+    - xss-lock
 
 - name: dev
   become: yes
