@@ -111,3 +111,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.zshrc-railz
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -3,7 +3,7 @@
   apt_repository: repo='{{item}}' state=present
   become: yes
   with_items:
-    - "deb http://www.deb-multimedia.org stretch main non-free"
+    - "deb http://www.deb-multimedia.org sid main non-free"
     - "deb https://apt.dockerproject.org/repo debian-stretch main"
     - "deb http://ftp.debian.org/debian/ testing main contrib non-free"
     - "deb http://ftp.debian.org/debian/ unstable main contrib non-free"
