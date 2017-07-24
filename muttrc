@@ -110,6 +110,8 @@ bind pager \CP sidebar-prev
 bind pager \CN sidebar-next
 bind pager \CO sidebar-open
 
+bind index . noop
+bind pager . noop
 macro index,pager      .i      "l((~N|~O|~F)!~D)|(~d<1w!~Q)\n" 'Show messages not so old (1 week)'
 macro index,pager      .n      "l~N\n" 'Show new messages'
 macro index,pager      .o      "l(~N|~O)\n" 'Show old messages'

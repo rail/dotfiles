@@ -10,3 +10,4 @@
 - include: purge.yml
 - include: rofi.yml
 - include: systemd.yml
+- include: core.yml

@@ -1,0 +1,4 @@
+---
+- name: Disable core dumps
+  copy: dest=/etc/security/limits.d/core.conf src=core.conf
+  become: yes
