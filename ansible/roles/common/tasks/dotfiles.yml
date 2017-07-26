@@ -29,3 +29,4 @@
     - {src: .config/redshift.conf, dest: .config/redshift.conf}
     - {src: .config/redshift/hooks/brightness.sh, dest: .config/redshift/hooks/brightness.sh}
     - {src: .config/dunst/dunstrc, dest: .config/dunst/dunstrc}
+    - {src: .config/nvim/init.vim, dest: .config/nvim/init.vim}
