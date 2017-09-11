@@ -107,8 +107,9 @@ Plug 'machakann/vim-highlightedyank'
 
 " look and feel
 Plug 'junegunn/limelight.vim'
-    autocmd! User GoyoEnter Limelight
-    autocmd! User GoyoLeave Limelight!
+"     autocmd! User GoyoEnter Limelight
+"     autocmd! User GoyoLeave Limelight!
+Plug 'junegunn/rainbow_parentheses.vim'
 
 " Plug 'jnurmine/Zenburn'
 Plug 'junegunn/seoul256.vim'
@@ -254,6 +255,10 @@ colorscheme seoul256
 
 " Goyo on/off
 nmap <Leader>g :Goyo<Return>
+
+" Limelight on/off
+nmap <silent> <Leader>l :Limelight!!<Return>
+xmap <silent> <Leader>l :Limelight!!<Return>
 
 " }}}
 
