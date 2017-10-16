@@ -26,10 +26,10 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Writing plugins
 Plug 'junegunn/goyo.vim'
-    augroup Writing
-        au!
-        autocmd FileType markdown,text setlocal spell
-    augroup END
+    " augroup Writing
+    "     au!
+    "     autocmd FileType markdown,text setlocal spell
+    " augroup END
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -120,6 +120,20 @@ Plug 'mhinz/vim-signify'
 Plug 'thirtythreeforty/lessspace.vim'
     let g:lessspace_blacklist = ['python']
 
+Plug 'vim-airline/vim-airline'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_powerline_fonts = 1
+
+Plug 'vim-airline/vim-airline-themes'
+    let g:airline_theme = 'base16_hopscotch'
+
+
+Plug 'majutsushi/tagbar'
+    nmap <F8> :TagbarToggle<CR>
+
+Plug 'mhinz/vim-startify'
+
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -156,10 +170,10 @@ augroup Filetypes
     autocmd BufNewFile,BufRead *.md set filetype=markdown
 
     " Equalize splits on resize, mainly used with Goyo to fix it's padding on resize.
-    autocmd VimResized * execute "normal \<C-W>="
+    " autocmd VimResized * execute "normal \<C-W>="
 
     " Always use goyo
-    autocmd BufReadPost * Goyo 80%x90%
+    " autocmd BufReadPost * Goyo 80%x90%
 
     " Plugins
     autocmd FileType xdefaults setlocal commentstring=!\ %s
@@ -278,10 +292,6 @@ set smartcase
 
 " Mapping {{{
 
-" Really simple Multi cursors
-" nnoremap <C-j> *Ncgn
-" vnoremap <C-j> <Esc>*Ncgn
-
 " Unmap space in normal and visual modes
 nnoremap <SPACE> <nop>
 vnoremap <SPACE> <nop>
@@ -295,7 +305,7 @@ cabbrev W w
 cabbrev Q q
 
 " Map q to qa to quickly exit when using goyo
-cnoreabbrev q qa
+" cnoreabbrev q qa
 
 " unmap capital K
 nnoremap K <nop>
@@ -344,11 +354,6 @@ vnoremap L $
 " za/az toggle folds
 " ezpz to spam open/close folds now
 nmap az za
-
-" Shows the highlight group of whatever's under the cursor
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 nmap <F2> :set number!<CR>
 

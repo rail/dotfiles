@@ -13,6 +13,7 @@ order += "wifi"
 order += "battery_level"
 order += "clock"
 order += "keyboard_layout"
+# order += "external_script weather"
 
 battery_level {
     charging_character = ""
@@ -54,4 +55,10 @@ clock {
     format_time = " %a %d, %H:%M "
     on_click 1 = "exec gnome-clocks"
     on_click 2 = "exec gnome-calendar"
+}
+
+external_script weather {
+    cache_timeout = 600
+    format = "{output}"
+    script_path = "/home/rail/bin/weather"
 }

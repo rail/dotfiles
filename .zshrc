@@ -1,15 +1,16 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/rail/.oh-my-zsh
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv root_indicator time)
 #####
 POWERLEVEL9K_MODE='awesome-patched'
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHOW_CHANGESET=true
@@ -22,11 +23,11 @@ POWERLEVEL9K_SHOW_CHANGESET=true
 #POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
 
 
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n"
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%K{white}%F{black} `date +%T` \UE12E %f%k%F{white}%f "
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n"
+# POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%K{white}%F{black} `date +%T` \UE12E %f%k%F{white}%f "
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv nvm rvm)
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv nvm rvm)
 ####
 
 # Uncomment the following line to use case-sensitive completion.

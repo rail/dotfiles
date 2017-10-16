@@ -1,5 +1,6 @@
 [global]
-    font = Overpass 22
+    # font = Overpass 22
+    font = Cantarell 12
     # Allow a small subset of html markup:
     #   <b>bold</b>
     #   <i>italic</i>

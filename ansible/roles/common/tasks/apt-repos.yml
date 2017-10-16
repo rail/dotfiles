@@ -3,7 +3,7 @@
   apt_repository: repo='{{item}}' state=present
   become: yes
   with_items:
-    - "deb http://www.deb-multimedia.org sid main non-free"
+    - "deb http://www.deb-multimedia.org testing main non-free"
     - "deb https://apt.dockerproject.org/repo debian-stretch main"
     - "deb http://ftp.debian.org/debian/ testing main contrib non-free"
     - "deb http://ftp.debian.org/debian/ unstable main contrib non-free"
@@ -14,6 +14,8 @@
     - "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
     - "deb http://toolbelt.heroku.com/ubuntu ./"
     - "deb http://httpredir.debian.org/debian experimental main"
+    - "deb http://prerelease.keybase.io/deb stable main"
+    - "deb https://dl.yarnpkg.com/debian/ stable main"
 
 - name: apt pinning preferences
   copy: dest=/etc/apt/preferences.d/pinning src=apt_pinning
