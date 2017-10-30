@@ -70,10 +70,10 @@ tray-padding = 2
 modules-right = weather xbacklight volume xkeyboard wlan battery date
 
 ; {{{1 External monitor bar
-[bar/DP1]
+[bar/default]
 inherit = section/bars
 monitor = DP1
-modules-right = volume xkeyboard wlan battery date
+modules-right = weather volume xkeyboard wlan battery date
 
 ; {{{1 xwindow
 [module/xwindow]

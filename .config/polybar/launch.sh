@@ -8,7 +8,11 @@ while pgrep -x polybar >/dev/null; do sleep 0.2; done
 
 for monitor in $(polybar -m | awk -F: '{print $1}'); do
     echo found $monitor
+    # Try to find monitor specific bar, otherwise fall back to "default"
     if grep -q bar/$monitor ~/.config/polybar/config; then
-        polybar $monitor &
+        bar=$monitor
+    else
+        bar=default
     fi
+    polybar $bar &
 done
