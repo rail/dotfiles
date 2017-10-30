@@ -9,24 +9,36 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# {{{1 Variables
 set $mod Mod4
 
-set $ws1 1 
-set $ws2 2 
-set $ws3 3 
-set $ws4 4 
-set $ws5 5 
-set $ws6 6 
-set $ws7 7 
-set $ws8 8 
-set $ws9 9 
-set $ws10 10 
+# set $ws1 1 
+# set $ws2 2 
+# set $ws3 3 
+# set $ws4 4 
+# set $ws5 5 
+# set $ws6 6 
+# set $ws7 7 
+# set $ws8 8 
+# set $ws9 9 
+# set $ws10 10 
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
 
 # from `pactl list sinks| grep Name`
 set $out_sink alsa_output.pci-0000_00_1b.0.analog-stereo
 # from `pactl list sources | grep Name`
 set $in_source alsa_input.pci-0000_00_1b.0.analog-stereo
 
+# {{{1 Theme
 client.focused              #688060 #688060 #303030 #ffcfaf
 client.focused_inactive     #3f3f3f #3F3F3F #7f9f7f #3f3f3f
 client.unfocused            #3f3f3f #3F3F3F #DCDCCC #3f3f3f
@@ -38,6 +50,7 @@ client.urgent               #dca3a3 #dca3a3 #DCDCCC #3f3f3f
 # font pango: System San Francisco Display, FontAwesome 10
 font pango: CPMono_v07, FontAwesome 10
 
+# {{{1 Behaviour
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 workspace_auto_back_and_forth yes
@@ -46,6 +59,7 @@ new_window none
 force_display_urgency_hint 500 ms
 
 
+# {{{1 Key bindings
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -172,6 +186,7 @@ bindsym $mod+m exec ~/bin/toggle_ext_monitor
 bindsym --whole-window $mod+button4 exec compton-trans -c +6
 bindsym --whole-window $mod+button5 exec compton-trans -c -- -5
 
+# {{{1 modes
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -198,6 +213,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# {{{1 Bar
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -217,6 +233,7 @@ bar {
         }
 }
 
+# {{{1 startup
 # scrolling by trackpoint
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1
 exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
@@ -238,8 +255,9 @@ exec --no-startup-id gnome-screensaver
 exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -cCGf -e 0.8 --fade-delta=2 -b
-exec --no-startup-id caffeine-indicator
+exec --no-startup-id caffeine
 
+# {{{1 Rules
 for_window [class="Pidgin" window_role="conversation"] floating enable
 for_window [class="Stardict"] floating enable
 for_window [class="MPlayer"] floating enable
@@ -256,7 +274,9 @@ for_window [class="(?i)skype.*"] floating enable
 for_window [class="Firefox" window_role="About"] floating enable
 for_window [class="deja-dup"] floating enable
 for_window [class="Gnome-clocks"] floating enable
+for_window [class="VirtualBox"] floating enable
 
+# {{{1 outputs
 workspace "$ws1" output DP1
 workspace "$ws2" output DP1
 workspace "$ws3" output DP1
