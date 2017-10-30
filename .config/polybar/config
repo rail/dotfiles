@@ -48,10 +48,11 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Noto Mono:size=14;1"
-font-1 = "FontAwesome:size=14;1"
-font-2 = "SourceCodePro+Powerline+Awesome Regular:size=14;1"
-font-3 = "DejaVu Sans:size=14;1"
+font-0 = "Weather Icons:size=14;1"
+font-1 = "Noto Mono:size=14;1"
+font-2 = "FontAwesome:size=14;1"
+font-3 = "SourceCodePro+Powerline+Awesome Regular:size=14;1"
+font-4 = "DejaVu Sans:size=14;1"
 
 modules-left = i3 xwindow
 modules-center =
@@ -66,7 +67,7 @@ inherit = section/bars
 monitor = eDP1
 tray-position = right
 tray-padding = 2
-modules-right = xbacklight volume xkeyboard wlan battery date
+modules-right = weather xbacklight volume xkeyboard wlan battery date
 
 ; {{{1 External monitor bar
 [bar/DP1]
@@ -254,6 +255,14 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
+
+; {{{1 Weather
+[module/weather]
+type = custom/script
+interval = 600
+format = %{A1:xdg-open http\://openweathermap.org/:}<label>%{A}
+format-padding = 6
+exec = ~/bin/weather
 
 ; {{{1 Settings
 [settings]
