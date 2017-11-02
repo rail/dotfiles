@@ -7,28 +7,49 @@ general {
     color_bad = "#dc322f"
 }
 
+# order += "external_script weather"
+order += "weather_yahoo"
 order += "backlight"
 order += "volume_status"
 order += "wifi"
 order += "battery_level"
 order += "clock"
 order += "keyboard_layout"
-# order += "external_script weather"
 
 battery_level {
     charging_character = ""
     cache_timeout = 60
     format = " {icon} {percent}% "
     blocks = ""
+    notify_low_level = true
+    color = "#839496"
+    color_bad = "#839496"
+    color_charging = "#839496"
+    color_degraded = "#839496"
+    color_good = "#839496"
 }
 
 volume_status {
     command = "pactl"
     format = "  {percentage}% "
+    # format = " ♪ {percentage}% "
     on_click 1 = "exec gnome-control-center sound"
     on_click 2 = "exec pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle && killall -s USR1 py3status"
     on_click 4 = "exec pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +5% && killall -s USR1 py3status"
     on_click 5 = "exec pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -5% && killall -s USR1 py3status"
+    color = "#839496"
+    thresholds = [
+        (0, "#839496"),
+        (10, "#839496"),
+        (20, "#839496"),
+        (30, "#839496"),
+        (40, "#839496"),
+        (50, "#839496"),
+        (60, "#839496"),
+        (70, "#839496"),
+        (80, "#839496"),
+        (90, "#839496")
+    ]
 }
 
 keyboard_layout {
@@ -44,22 +65,38 @@ keyboard_layout {
 backlight {
     cache_timeout = 3
     format = " ✲ {level}% "
+    # format = "  {level}% "
+    color = "#839496"
 }
 
 wifi {
     device = "wlp4s0"
-    format_up = "   {signal_percent} {bitrate} "
+    # format_up = "   {signal_percent} {bitrate} "
+    format_up = "   {signal_percent} "
     format_down = "   down "
+    color = "#839496"
 }
 
 clock {
     format_time = " %a %d, %H:%M "
     on_click 1 = "exec gnome-clocks"
     on_click 2 = "exec gnome-calendar"
+    color = "#839496"
 }
 
 external_script weather {
     cache_timeout = 600
-    format = "{output}"
+    format = " {output} "
     script_path = "/home/rail/bin/weather"
+    color = "#839496"
+    on_click 1 = "exec xdg-open https://www.windy.com/43.264/-79.954?43.261,-79.916,5"
+}
+
+weather_yahoo {
+    woeid = 615702
+    format_today = "{icon}{temp}°{units} {text}"
+    format = '{today} {forecasts}   '
+    forecast_days = 3
+    color = "#839496"
+    on_click 1 = "exec xdg-open https://www.windy.com/43.264/-79.954?43.261,-79.916,5"
 }

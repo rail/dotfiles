@@ -260,7 +260,7 @@ animation-charging-framerate = 750
 [module/weather]
 type = custom/script
 interval = 600
-format = %{A1:xdg-open http\://openweathermap.org/:}<label>%{A}
+format = %{A1:xdg-open https\://www.windy.com/:}<label>%{A}
 format-padding = 6
 exec = ~/bin/weather
 
