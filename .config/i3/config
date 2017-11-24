@@ -48,7 +48,7 @@ client.urgent               #dca3a3 #dca3a3 #DCDCCC #3f3f3f
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango: System San Francisco Display, FontAwesome 10
-font pango: CPMono_v07, SourceCodePro+Powerline+Awesome, FontAwesome 10
+font pango: Noto Mono, CPMono_v07, SourceCodePro+Powerline+Awesome, FontAwesome 11
 
 # {{{1 Behaviour
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -59,7 +59,7 @@ new_window none
 force_display_urgency_hint 500 ms
 
 
-# {{{1 Key bindings
+# {{{1 Key binding
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -161,8 +161,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $out_sink toggle 
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute $in_source toggle && killall -s USR1 py3status
 bindsym XF86Tools exec gnome-control-center
 
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && killall -s USR1 py3status
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 && killall -s USR1 py3status
 
 bindsym $mod+Mod1+Right move workspace to output right
 bindsym $mod+Mod1+Left move workspace to output left
