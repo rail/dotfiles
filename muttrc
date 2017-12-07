@@ -205,6 +205,6 @@ message-hook '~h "X-Bugzilla-Encrypt: 1"' 'exec check-traditional-pgp'
 # indented with '> '.  Setting 'skip_quoted_offset' leaves some lines of quoted
 # text on screen for context.
 # Show three quoted lines before the reply
-set skip_quoted_offset = 3
+# set skip_quoted_offset = 3
 
-color progress white red
+# color progress white red

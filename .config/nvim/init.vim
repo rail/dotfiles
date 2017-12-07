@@ -41,8 +41,10 @@ Plug 'w0rp/ale'
     let g:ale_lint_on_save = 1
     let g:ale_lint_on_text_changed = 1
     let g:ale_lint_on_enter = 1
-    let g:ale_sign_error = '>>'
-    let g:ale_sign_warning = '--'
+    " let g:ale_sign_error = '>>'
+    " let g:ale_sign_warning = '--'
+    let g:ale_sign_error = '●'
+    let g:ale_sign_warning = '.'
     let g:ale_python_flake8_options = "--max-line-length=110"
     nmap <silent> <C-n> <Plug>(ale_next_wrap)
     nmap <silent> <C-N> <Plug>(ale_previous_wrap)
@@ -133,6 +135,11 @@ Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
 
 Plug 'ryanoasis/vim-devicons'
+
+Plug 'mxw/vim-jsx'
+    let g:jsx_ext_required = 0
+
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
