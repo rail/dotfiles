@@ -141,6 +141,8 @@ Plug 'mxw/vim-jsx'
 
 Plug 'pangloss/vim-javascript'
 
+Plug 'LnL7/vim-nix'
+
 call plug#end()
 
 " }}}

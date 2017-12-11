@@ -1,13 +1,14 @@
 ---
-- include: apt-repos.yml
-- include: packages.yml
-- include: x.yml
-- include: udev.yml
-- include: users.yml
-- include: gsettings.yml
-# - include: fonts.yml
-- include: dotfiles.yml
-- include: purge.yml
-- include: rofi.yml
-- include: systemd.yml
-- include: core.yml
+- import_tasks: apt-repos.yml
+- import_tasks: packages.yml
+- import_tasks: x.yml
+- import_tasks: udev.yml
+- import_tasks: users.yml
+- import_tasks: gsettings.yml
+# - import_tasks: fonts.yml
+- import_tasks: dotfiles.yml
+- import_tasks: purge.yml
+- import_tasks: rofi.yml
+- import_tasks: systemd.yml
+- import_tasks: core.yml
+- import_tasks: docker.yml

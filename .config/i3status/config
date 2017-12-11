@@ -87,14 +87,6 @@ clock {
     color = "#839496"
 }
 
-external_script weather {
-    cache_timeout = 600
-    format = " {output} "
-    script_path = "/home/rail/bin/weather"
-    color = "#839496"
-    on_click 1 = "exec xdg-open https://www.windy.com/43.264/-79.954?43.261,-79.916,5"
-}
-
 weather_yahoo {
     woeid = 55999149
     format_today = "{icon}{temp}°{units} {text}"

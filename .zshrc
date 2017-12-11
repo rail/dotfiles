@@ -74,7 +74,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 WORKON_HOME=~/.virtualenvs
 #plugins=(git pip gpg-agent ssh-agent virtualenv systemd virtualenvwrapper jlundmercurial scm-prompt)
-plugins=(git pip gpg-agent ssh-agent virtualenv systemd virtualenvwrapper colorize colored-man-pages)
+plugins=(git pip gpg-agent ssh-agent virtualenv systemd virtualenvwrapper colorize colored-man-pages zsh-autosuggestions)
 
 # User configuration
 
