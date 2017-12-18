@@ -17,7 +17,7 @@ imageshack(){
 }
 SCP_HOST='merail.ca'
 SCP_PATH='/var/www/virtual/merail.ca/img'
-HTTP_URL="http://img.merail.ca/"
+HTTP_URL="https://img.merail.ca/"
 
 FILENAME=`date | md5sum | head -c 8`.png
 FILEPATH=/tmp/$FILENAME

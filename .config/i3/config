@@ -277,6 +277,7 @@ for_window [class="deja-dup"] floating enable
 for_window [class="Gnome-clocks"] floating enable
 for_window [class="VirtualBox"] floating enable
 for_window [class="Gnome-calendar"] floating enable
+for_window [class="pavucontrol"] floating enable
 
 # {{{1 outputs
 workspace "$ws1" output DP1
