@@ -36,6 +36,7 @@
     - pinentry-curses
     - postfix
     - powertop
+    - py3status
     - qt4-qtconfig
     - redshift-gtk
     - rofi

@@ -218,7 +218,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         # status_command i3status
-        status_command /home/rail/.virtualenvs/py3status/bin/py3status
+        status_command py3status
         tray_output eDP1
         tray_padding 0
         separator_symbol "‖"
@@ -226,7 +226,7 @@ bar {
             background #3f3f3f
             statusline #dcdccc
 
-            focused_workspace  #93b3a3 #3f3f3f #93b3a3
+            focused_workspace  #3f3f3f #93b3a3 #3f3f3f
             active_workspace   #ffcfaf #3f3f3f #ffcfaf
             inactive_workspace #636363 #3f3f3f #dcdccc
             urgent_workspace   #dca3a3 #3f3f3f #dca3a3

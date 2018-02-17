@@ -92,5 +92,5 @@ weather_yahoo {
     format = '{today} {forecasts}   '
     forecast_days = 3
     color = "#839496"
-    on_click 1 = "exec xdg-open https://www.windy.com/43.264/-79.954?43.261,-79.916,5"
+    on_click 1 = "exec xdg-open https://darksky.net/forecast/43.2642,-79.9537/ca12/en"
 }

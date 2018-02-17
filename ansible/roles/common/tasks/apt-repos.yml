@@ -12,7 +12,7 @@
     - "deb http://httpredir.debian.org/debian experimental main"
     - "deb https://apt.dockerproject.org/repo debian-stretch main"
     - "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-    - "deb http://prerelease.keybase.io/deb stable main"
+    # - "deb http://prerelease.keybase.io/deb stable main"
     - "deb https://dl.yarnpkg.com/debian/ stable main"
 
 - name: apt pinning preferences
