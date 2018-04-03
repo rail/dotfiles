@@ -143,6 +143,8 @@ Plug 'pangloss/vim-javascript'
 
 Plug 'LnL7/vim-nix'
 
+Plug 'ambv/black', { 'rtp': 'vim'}
+
 call plug#end()
 
 " }}}

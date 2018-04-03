@@ -88,7 +88,7 @@ clock {
 
 weather_yahoo {
     woeid = 55999149
-    format_today = "{icon}{temp}°{unit} {text}"
+    format_today = "{icon}{temp}°{units} {text}"
     format = '{today} {forecasts}   '
     forecast_days = 3
     color = "#839496"

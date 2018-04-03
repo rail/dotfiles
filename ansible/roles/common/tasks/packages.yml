@@ -7,6 +7,7 @@
     - apt-file
     - aptitude
     - caffeine
+    - clementine
     - compton
     - curl
     - dmz-cursor-theme
@@ -35,6 +36,7 @@
     - network-manager-openvpn-gnome
     - offlineimap
     - openssh-server
+    - pavucontrol
     - pinentry-curses
     - postfix
     - powertop
@@ -115,3 +117,4 @@
     - python3
     - python3-dev
     - python3-flake8
+    - python3-venv
