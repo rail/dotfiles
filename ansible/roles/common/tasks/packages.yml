@@ -3,10 +3,12 @@
   become: yes
   apt: update_cache=yes cache_valid_time=3600 name={{item}}
   with_items:
+    - abook
     - apt-file
     - aptitude
     - caffeine
     - compton
+    - curl
     - dmz-cursor-theme
     - feh
     - fonts-font-awesome
@@ -20,16 +22,16 @@
     - imapfilter
     - info
     - jq
-    - jwhois
     - libnotify-bin
     - libqtwebkit4
     - links
     - linux-headers-amd64
     - linux-image-amd64
+    - locales-all
     - mc
     - mercurial
-    - mosh
-    - mutt
+    - neomutt
+    - neovim
     - network-manager-openvpn-gnome
     - offlineimap
     - openssh-server
@@ -37,21 +39,23 @@
     - postfix
     - powertop
     - py3status
+    - python-neovim
+    - python3-neovim
+    - python3-tz
+    - python3-tzlocal
     - qt4-qtconfig
     - redshift-gtk
     - rofi
-    - s3cmd
-    - scrot
+    - rsync
     - secure-delete
     - silversearcher-ag
     - stardict
     - sudo
     - tmux
     - tree
+    - unattended-upgrades
     - unzip
     - urlview
-    - vim
-    - vim-gtk  # For X11 clipboard awareness
     - virtualbox
     - virtualbox-ext-pack
     - virtualbox-guest-additions-iso
@@ -62,8 +66,6 @@
     - zip
     - zsh
     - zsh-syntax-highlighting
-    - xautolock
-    - xss-lock
 
 - name: dev
   become: yes
@@ -85,12 +87,11 @@
     - libxslt1-dev # nikola
     - libyaml-dev
     - pass
-    - pbuilder
     - puppet-lint
-    - quilt
     - sqlite3
     - tig
     - ubuntu-archive-keyring # to build ubuntu packages in pbuilder
+    - yarn
     - zipalign
 
 - name: python

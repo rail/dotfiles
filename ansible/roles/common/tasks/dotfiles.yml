@@ -5,11 +5,14 @@
 - name: railz-dotfiles
   git: repo=https://github.com/rail/dotfiles.git dest={{DOTFILES}} update=no
 
-- name: i3 dir
-  file: dest={{HOME}}/.config/i3 state=directory
-
-- name: i3status dir
-  file: dest={{HOME}}/.config/i3status state=directory
+- name: dirs
+  file: dest={item} state=directory
+  with_items:
+    - "{{HOME}}/.config/dunst"
+    - "{{HOME}}/.config/redshift/hooks"
+    - "{{HOME}}/.config/nvim"
+    - "{{HOME}}/.config/i3status"
+    - "{{HOME}}/.config/i3"
 
 - name: symlinks
   file: src={{DOTFILES}}/{{item.src}} dest={{HOME}}/{{item.dest}} state=link

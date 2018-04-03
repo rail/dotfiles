@@ -3,12 +3,12 @@
   become: yes
   apt: update_cache=yes cache_valid_time=3600 name={{item}} state=absent
   with_items:
-    - conky
-    - conky-std
     - alacarte
     - brasero
+    - conky
+    - conky-std
     - dvdauthor
-    - growisofs
     - evolution
+    - growisofs
     - irssi
     - irssi-scripts

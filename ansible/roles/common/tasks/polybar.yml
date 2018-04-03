@@ -1,0 +1,16 @@
+- name: polybar build deps
+  become: yes
+  apt: update_cache=yes cache_valid_time=3600 name={{item}}
+  with_items:
+    - cmake
+    - libcairo2-dev
+    - libpulse-dev
+    - libxcb-xkb-dev
+    - xcb-proto
+    - libxcb-ewmh-dev
+    - libxcb-image0-dev
+    - libxcb-util0-dev
+    - libxcb-icccm4-dev
+    - python-xcbgen
+
+

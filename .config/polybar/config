@@ -67,13 +67,13 @@ inherit = section/bars
 monitor = eDP1
 tray-position = right
 tray-padding = 2
-modules-right = weather xbacklight volume xkeyboard wlan battery date
+modules-right = xbacklight volume xkeyboard wlan battery date
 
 ; {{{1 External monitor bar
 [bar/default]
 inherit = section/bars
 monitor = DP1
-modules-right = weather volume xkeyboard wlan battery date
+modules-right = volume xkeyboard date
 
 ; {{{1 xwindow
 [module/xwindow]
@@ -203,7 +203,7 @@ format-underline = #0a6cf5
 label = %date% %time%
 
 ; {{{1 Volume
-[module/volume]
+[module/volume-old]
 type = internal/volume
 
 ; sound control on right click
@@ -224,6 +224,26 @@ ramp-volume-1 = " "
 ramp-volume-2 = " "
 ramp-volume-underline = ${self.label-volume-underline}
 
+[module/volume]
+type = internal/pulseaudio
+
+; sound control on right click
+format-volume = %{A3:gnome-control-center sound:}<ramp-volume><label-volume>%{A}
+; label-volume = VOL
+label-volume-foreground = ${root.foreground}
+label-volume-underline = ${colors.blue}
+
+format-muted-prefix = " "
+format-muted-prefix-foreground = ${colors.red-dark}
+format-muted-underline = ${self.label-volume-underline}
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = muted
+label-muted-underline = ${self.label-volume-underline}
+
+ramp-volume-0 = " "
+ramp-volume-1 = " "
+ramp-volume-2 = " "
+ramp-volume-underline = ${self.label-volume-underline}
 ; {{{1 Battery
 [module/battery]
 type = internal/battery
@@ -260,7 +280,7 @@ animation-charging-framerate = 750
 [module/weather]
 type = custom/script
 interval = 600
-format = %{A1:xdg-open https\://www.windy.com/:}<label>%{A}
+format = %{A1:xdg-open https\://darksky.net/forecast/43.2642,-79.9537/ca12/en:}<label>%{A}
 format-padding = 6
 exec = ~/bin/weather
 

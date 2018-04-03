@@ -1,8 +1,12 @@
 ---
+- name: xorg.conf.d dir
+  file: dest=/etc/X11/xorg.conf.d state=directory
+  become: yes
+
 - name: Use intel_backlight
   copy: dest=/etc/X11/xorg.conf.d/50-backlight.conf src=50-backlight.conf
   become: yes
 
-- name: Synpatics config
-  copy: dest=/etc/X11/xorg.conf.d/50-synaptics.conf src=50-synaptics.conf
-  become: yes
+# - name: Synpatics config
+#   copy: dest=/etc/X11/xorg.conf.d/50-synaptics.conf src=50-synaptics.conf
+#   become: yes

@@ -1,0 +1,21 @@
+- name: plasma
+  become: yes
+  apt: update_cache=yes cache_valid_time=3600 name={{item}}
+  with_items:
+    - kde-config-sddm
+    - kde-plasma-desktop
+    - plasma-applet-redshift-control
+    - plasma-desktop
+    - plasma-nm
+    - plasma-pa
+    - plasma-widgets-addons
+    - plasma-workspace
+    - sddm-theme-breeze
+    - sddm-theme-debian-breeze
+    - sddm-theme-debian-elarun
+    - sddm-theme-debian-maui
+    - sddm-theme-elarun
+    - sddm-theme-maldives
+    - sddm-theme-maui
+    - sddm-theme-maya
+

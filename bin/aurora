@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd ~/.local/opt
-exec aurora/firefox $* >> firefox.log 2>&1

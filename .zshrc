@@ -4,8 +4,9 @@ export ZSH=/home/rail/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
 # ZSH_THEME="norm"
+ZSH_THEME="frisk"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv root_indicator time)
@@ -78,7 +79,8 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 WORKON_HOME=~/.virtualenvs
 #plugins=(git pip gpg-agent ssh-agent virtualenv systemd virtualenvwrapper jlundmercurial scm-prompt)
-plugins=(git pip gpg-agent ssh-agent virtualenv systemd virtualenvwrapper colorize colored-man-pages zsh-autosuggestions)
+# plugins=(git pip gpg-agent ssh-agent virtualenv systemd virtualenvwrapper colorize colored-man-pages zsh-autosuggestions)
+plugins=(git pip gpg-agent ssh-agent virtualenv systemd colorize colored-man-pages zsh-autosuggestions)
 
 # User configuration
 

@@ -34,9 +34,9 @@ set $ws10 10 
 # set $ws10 10
 
 # from `pactl list sinks| grep Name`
-set $out_sink alsa_output.pci-0000_00_1b.0.analog-stereo
+set $out_sink alsa_output.pci-0000_00_1f.3.analog-stereo
 # from `pactl list sources | grep Name`
-set $in_source alsa_input.pci-0000_00_1b.0.analog-stereo
+set $in_source alsa_input.pci-0000_00_1f.3.analog-stereo
 
 # {{{1 Theme
 client.focused              #688060 #688060 #303030 #ffcfaf
@@ -55,7 +55,7 @@ font pango: Noto Mono, CPMono_v07, SourceCodePro+Powerline+Awesome, FontAwesome 
 floating_modifier $mod
 workspace_auto_back_and_forth yes
 hide_edge_borders both
-new_window none
+default_border none
 force_display_urgency_hint 500 ms
 
 
@@ -217,7 +217,6 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        # status_command i3status
         status_command py3status
         tray_output eDP1
         tray_padding 0
@@ -235,12 +234,13 @@ bar {
 
 # {{{1 startup
 # scrolling by trackpoint
-exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1
-exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
-exec_always --no-startup-id /usr/bin/xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5
+exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+# exec_always --no-startup-id xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1
+# exec_always --no-startup-id xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
+# exec_always --no-startup-id xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5
 
-exec_always --no-startup-id /usr/bin/setxkbmap -option compose:ralt,grp:shifts_toggle,grp_led:caps,caps:escape -layout us,ru
-exec_always --no-startup-id /usr/bin/synclient TouchpadOff=1
+exec_always --no-startup-id setxkbmap -option compose:ralt,grp:shifts_toggle,grp_led:caps,caps:escape -layout us,ru
+# exec_always --no-startup-id synclient TouchpadOff=1
 exec_always --no-startup-id pactl set-sink-volume 0 '50%'
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpapers/current
 # Make Caps Lock a Control key
@@ -251,7 +251,7 @@ exec --no-startup-id xrandr --dpi 144
 exec --no-startup-id gnome-settings-daemon
 # exec --no-startup-id /usr/lib/notification-daemon/notification-daemon
 exec --no-startup-id dunst
-exec --no-startup-id python ~/work/mozilla/git/fakegnomesessionmanager/SessionManager.py
+# exec --no-startup-id python ~/work/mozilla/git/fakegnomesessionmanager/SessionManager.py
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-applet
@@ -280,3 +280,4 @@ workspace "$ws1" output DP1
 workspace "$ws2" output DP1
 workspace "$ws3" output DP1
 workspace "$ws4" output DP1
+workspace "$ws8" output DP1
