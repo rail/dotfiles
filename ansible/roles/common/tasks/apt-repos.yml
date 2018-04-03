@@ -14,6 +14,7 @@
     - "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
     # - "deb http://prerelease.keybase.io/deb stable main"
     - "deb https://dl.yarnpkg.com/debian/ stable main"
+    - "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main"
 
 - name: apt pinning preferences
   copy: dest=/etc/apt/preferences.d/pinning src=apt_pinning
