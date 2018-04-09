@@ -19,6 +19,7 @@
     - gnome-tweak-tool
     - google-chrome-stable
     - gparted
+    - heroku
     - htop
     - i3
     - imapfilter
@@ -54,6 +55,7 @@
     - silversearcher-ag
     - stardict
     - sudo
+    - syncthing
     - tmux
     - tree
     - unattended-upgrades
@@ -63,6 +65,7 @@
     - virtualbox-ext-pack
     - virtualbox-guest-additions-iso
     - virtualenvwrapper
+    - whois
     - xbacklight
     - xclip
     - xinput
@@ -89,6 +92,7 @@
     - libxml2-dev # nikola
     - libxslt1-dev # nikola
     - libyaml-dev
+    - libpng-dev
     - pass
     - puppet-lint
     - sqlite3
@@ -101,6 +105,9 @@
   become: yes
   apt: update_cache=yes cache_valid_time=3600 name={{item}}
   with_items:
+    - ipython3
+    - pylint
+    - pylint3
     - python-cryptography
     - python-flake8
     - python-gnomekeyring
@@ -119,5 +126,3 @@
     - python3-dev
     - python3-flake8
     - python3-venv
-    - pylint
-    - pylint3

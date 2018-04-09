@@ -61,7 +61,7 @@ force_display_urgency_hint 500 ms
 
 # {{{1 Key binding
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
