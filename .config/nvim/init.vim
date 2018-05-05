@@ -32,9 +32,11 @@ Plug 'junegunn/goyo.vim'
     " augroup END
 
 " Fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-    nmap <C-x> :FZF<CR>
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+"     nmap <C-x> :FZF<CR>
+
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Async Linting
 Plug 'w0rp/ale'
@@ -46,6 +48,8 @@ Plug 'w0rp/ale'
     let g:ale_sign_error = '●'
     let g:ale_sign_warning = '.'
     let g:ale_python_flake8_options = "--max-line-length=110"
+    " airline thingy
+    let g:airline#extensions#ale#enabled = 1
     nmap <silent> <C-n> <Plug>(ale_next_wrap)
     nmap <silent> <C-N> <Plug>(ale_previous_wrap)
 
@@ -133,6 +137,7 @@ Plug 'majutsushi/tagbar'
     nmap <F8> :TagbarToggle<CR>
 
 Plug 'mhinz/vim-startify'
+    let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, '~/.zshrc' ]
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -144,6 +149,22 @@ Plug 'pangloss/vim-javascript'
 Plug 'LnL7/vim-nix'
 
 Plug 'ambv/black', { 'rtp': 'vim'}
+
+Plug 'mileszs/ack.vim'
+    let g:ackprg = 'ag --vimgrep --smart-case'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'scrooloose/nerdtree'
+    " Start both startify and nerdtree
+    autocmd VimEnter *
+                \   if !argc()
+                \ |   Startify
+                \ |   NERDTree
+                \ |   wincmd w
+                \ | endif
+
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
@@ -187,7 +208,7 @@ augroup Filetypes
 
     " Plugins
     autocmd FileType xdefaults setlocal commentstring=!\ %s
-    autocmd FileType scss,css setlocal commentstring=/*%s*/ shiftwidth=2 softtabstop=2 expandtab
+    autocmd FileType scss,css,json,yaml,javascript.jsx,javascript setlocal shiftwidth=2 softtabstop=2
 augroup END
 
 syntax enable
