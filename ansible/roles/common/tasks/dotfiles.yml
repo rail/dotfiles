@@ -6,7 +6,7 @@
   git: repo=https://github.com/rail/dotfiles.git dest={{DOTFILES}} update=no
 
 - name: dirs
-  file: dest={item} state=directory
+  file: dest={{item}} state=directory
   with_items:
     - "{{HOME}}/.config/dunst"
     - "{{HOME}}/.config/redshift/hooks"

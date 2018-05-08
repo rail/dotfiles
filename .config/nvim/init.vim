@@ -138,6 +138,8 @@ Plug 'majutsushi/tagbar'
 
 Plug 'mhinz/vim-startify'
     let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, '~/.zshrc' ]
+    let g:startify_change_to_dir = 0
+    let g:startify_relative_path = 1
 
 Plug 'ryanoasis/vim-devicons'
 
