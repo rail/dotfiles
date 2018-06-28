@@ -24,6 +24,8 @@ REPORTTIME=60
 
 alias scp="scp -rC"
 alias tmux="tmux -2"
+alias au="sudo apt update"
+alias auu="sudo apt full-upgrade"
 #
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"

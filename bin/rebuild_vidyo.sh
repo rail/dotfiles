@@ -4,7 +4,7 @@ BUILDDIR=/tmp/vidyobuild
 
 dpkg-deb -x $DEB $BUILDDIR
 dpkg-deb --control $DEB $BUILDDIR/DEBIAN
-sed -i 's/^Depends:.*/Depends: libxss1,libaudio2,libasound2,libqt4-network/' $BUILDDIR/DEBIAN/control
+sed -i 's/^Depends:.*/Depends: libxss1,libaudio2,libasound2,libqt4-network,libqtwebkit4/' $BUILDDIR/DEBIAN/control
 
 dpkg-deb -b $BUILDDIR $OUT
 

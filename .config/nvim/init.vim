@@ -168,6 +168,8 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+Plug 'michaeljsmith/vim-indent-object'
+
 call plug#end()
 
 " }}}
