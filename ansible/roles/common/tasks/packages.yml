@@ -34,6 +34,7 @@
     - locales-all
     - mc
     - mercurial
+    - mtr-tiny
     - neomutt
     - neovim
     - network-manager-openvpn-gnome
@@ -51,8 +52,8 @@
     - qt4-qtconfig
     - redshift-gtk
     - rofi
-    - rsync
     - rsibreak
+    - rsync
     - secure-delete
     - silversearcher-ag
     - stardict
