@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+from __future__ import print_function
 
 import gnomekeyring as gkey
 
@@ -49,13 +50,12 @@ if __name__ == "__main__":
     import os
     import getpass
     if len(sys.argv) != 3:
-        print "Usage: %s <repository> <username>" \
-            % (os.path.basename(sys.argv[0]))
+        print( "Usage: %s <repository> <username>" % (os.path.basename(sys.argv[0])))
         sys.exit(0)
     repo, username = sys.argv[1:]
     password = getpass.getpass("Enter password for user '%s': " % username)
     password_confirmation = getpass.getpass("Confirm password: ")
     if password != password_confirmation:
-        print "Error: password confirmation does not match"
+        print("Error: password confirmation does not match")
         sys.exit(1)
     set_credentials(repo, username, password)

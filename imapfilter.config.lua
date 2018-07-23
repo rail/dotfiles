@@ -15,14 +15,6 @@ acc = IMAP {
     password = password
 }
 
-forward_messages = function(messages, email)
-    for _, mesg in ipairs(messages) do
-        mbox, uid = unpack(mesg)
-        text = mbox[uid]:fetch_message()
-        pipe_to('/usr/sbin/sendmail ' .. email, text)
-    end
-end
-
 -- Bughmail --
 -- gmail filters put all bugmail under Bugs
 bugs = acc.Bugs

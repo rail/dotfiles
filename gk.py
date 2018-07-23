@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from offlineimap import get_username, get_password
 
 if __name__ == '__main__':
@@ -8,8 +10,8 @@ if __name__ == '__main__':
     action = sys.argv[1]
     repo = sys.argv[2]
     if action == "user":
-        print get_username(repo),
+        print(get_username(repo), end='')
     elif action == "pass":
-        print get_password(repo),
+        print(get_password(repo), end='')
     else:
         raise Exception("Unknown action")

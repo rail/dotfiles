@@ -6,6 +6,7 @@
     - abook
     - apt-file
     - aptitude
+    - autorandr
     - caffeine
     - clementine
     - code
@@ -25,6 +26,7 @@
     - i3
     - imapfilter
     - info
+    - insomnia
     - jq
     - libnotify-bin
     - libqtwebkit4

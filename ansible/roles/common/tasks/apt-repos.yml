@@ -16,6 +16,7 @@
     - "deb https://dl.yarnpkg.com/debian/ stable main"
     - "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main"
     - "deb https://cli-assets.heroku.com/branches/stable/apt ./"
+    - "deb https://dl.bintray.com/getinsomnia/Insomnia /"
 
 - name: apt pinning preferences
   copy: dest=/etc/apt/preferences.d/pinning src=apt_pinning

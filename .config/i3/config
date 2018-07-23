@@ -170,7 +170,7 @@ bindsym $mod+Mod1+Up move workspace to output up
 bindsym $mod+Mod1+Down move workspace to output down
 bindsym $mod+Tab workspace back_and_forth
 
-bindsym Ctrl+$mod+l exec gnome-screensaver-command --lock
+bindsym Ctrl+$mod+l exec gnome-screensaver-command --lock || xautolock -locknow
 # sticky window
 bindsym $mod+Shift+s sticky toggle
 
