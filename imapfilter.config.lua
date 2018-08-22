@@ -5,8 +5,8 @@ options.create = true
 options.info = true
 options.certificates = false
 
-status, username = pipe_from("python ~/.dotfiles/gk.py user Mozilla_Remote")
-status, password = pipe_from("python ~/.dotfiles/gk.py pass Mozilla_Remote")
+username = "raliiev@mozilla.com"
+status, password = pipe_from("pass email/raliiev@mozilla.com")
 
 acc = IMAP {
     server = "imap.gmail.com",

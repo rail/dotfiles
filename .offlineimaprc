@@ -23,8 +23,8 @@ foldersort = mycmp
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 folderfilter = lambda foldername: foldername not in '[Gmail]/All Mail'
-remoteusereval = get_username("Mozilla_Remote")
-remotepasseval = get_password("Mozilla_Remote")
+remoteusereval = "raliiev@mozilla.com"
+remotepasseval = get_password("email/raliiev@mozilla.com")
 nametrans: lambda s: {'[Gmail]/Starred'   : 'Starred',
                       '[Gmail]/Trash'     : 'Trash',
                       '[Gmail]/Spam'      : 'Spam',
@@ -56,4 +56,4 @@ remoterepository = Mozilla_Remote-gmail
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
 # only changes were to IMAP flags
 quick = 10
-#postsynchook = notmuch new
+postsynchook = notmuch new
