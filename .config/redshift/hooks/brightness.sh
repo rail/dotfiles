@@ -4,10 +4,12 @@
 
 # Set brightness via xbrightness when redshift status changes
 
-brightness_day="100"
-brightness_transition="50"
-brightness_night="20"
-fade_time=60000
+PATH=$PATH:/run/current-system/sw/bin
+
+brightness_day="60"
+brightness_transition="30"
+brightness_night="10"
+fade_time=20000
 
 case $1 in
     period-changed)
