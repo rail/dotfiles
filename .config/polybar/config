@@ -54,13 +54,16 @@ font-2 = "FontAwesome:size=14;1"
 font-3 = "SourceCodePro+Powerline+Awesome Regular:size=14;1"
 font-4 = "DejaVu Sans:size=14;1"
 
-modules-left = bspwm xwindow
+#modules-left = bspwm xwindow
+modules-left = i3 xwindow
 modules-center =
 modules-right = xbacklight volume xkeyboard wlan battery date
 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-wm-restack = bspwm
+; scroll-up = bspwm-desknext
+; scroll-down = bspwm-deskprev
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+; wm-restack = bspwm
 
 
 [module/bspwm]
