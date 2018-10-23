@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/rail/.oh-my-zsh
+# export ZSH=/home/rail/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -90,7 +90,7 @@ if [ -e /etc/debian_version ]; then
 fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -120,3 +120,5 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zshrc-railz
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $(fzf-share)/completion.zsh
+source $(fzf-share)/key-bindings.zsh

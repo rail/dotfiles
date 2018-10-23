@@ -179,6 +179,7 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+minus move scratchpad
 
 # bindsym $mod+m exec ~/bin/toggle_ext_monitor
+bindsym $mod+m exec autorandr --change
 #bindsym $mod+Shift+p exec /home/rail/bin/sattap.sh
 #bindsym XF88LaunchA exec /home/rail/bin/sattap.sh
 
@@ -235,6 +236,7 @@ bar {
 # {{{1 startup
 # scrolling by trackpoint
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+exec_always --no-startup-id xinput set-prop "Synaptics TM3289-002" "Device Enabled" 0
 # exec_always --no-startup-id xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1
 # exec_always --no-startup-id xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
 # exec_always --no-startup-id xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5

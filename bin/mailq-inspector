@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
 mailq_out=$(mailq)
-if [[ $mailq_out != "Mail queue is empty" ]]; then
+if ls /var/spool/nullmailer/queue/* 2>/dev/null; then
+# if [[ $mailq_out != "Mail queue is empty" ]]; then
   printf "#[fg=colour197]Check mailq#[default]   "
 fi

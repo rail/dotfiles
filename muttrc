@@ -1,3 +1,4 @@
+set sendmail = "sendmail -oem -oi"
 set mbox_type = Maildir
 set folder = ~/.offlineimap-gmail
 set implicit_autoview
