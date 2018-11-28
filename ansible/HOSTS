@@ -1,6 +1,0 @@
-[local]
-127.0.0.1
-
-[all:vars]
-HOME=/home/rail
-DOTFILES=/home/rail/.dotfiles

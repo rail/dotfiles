@@ -1,4 +1,0 @@
----
-- name: Enable overlay2 docker driver
-  copy: dest=/etc/docker/daemon.json src=daemon.json
-  become: yes

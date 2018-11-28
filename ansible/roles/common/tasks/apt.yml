@@ -1,4 +1,0 @@
-- name: Disable pdiffs
-  copy: dest=/etc/apt/apt.conf.d/50disable-pdiff src=disable-pdiff
-  become: yes
-

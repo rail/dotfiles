@@ -1,6 +1,0 @@
----
-- name: Cursor size
-  gsettings: schema=org.gnome.desktop.interface key=cursor-size int=36
-
-- name: No automatic UI scaling
-  gsettings: schema=org.gnome.desktop.interface key=scaling-factor int=1

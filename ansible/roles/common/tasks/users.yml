@@ -1,6 +1,0 @@
----
-- name: system users
-  user: name=rail shell=/bin/zsh group=rail groups=rail,cdrom,floppy,sudo,audio,dip,video,plugdev,netdev,lpadmin,bluetooth,scanner,docker,vboxusers,systemd-journal uid=1000
-  become: yes
-
-

@@ -1,6 +1,6 @@
 ! rofi
 rofi.modi: run
-rofi.font: Source Code Pro 18
+rofi.font: Fira Code 18
 rofi.width: 50
 rofi.lines: 10
 rofi.columns: 1

@@ -1,3 +1,0 @@
-- name: powertop autotune
-  become: yes
-  copy: dest=/etc/systemd/system/powertop.service src=powertop.service
