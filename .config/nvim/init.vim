@@ -170,6 +170,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'michaeljsmith/vim-indent-object'
 
+Plug 'rodjek/vim-puppet'
+
+Plug 'neovimhaskell/haskell-vim'
+
 call plug#end()
 
 " }}}

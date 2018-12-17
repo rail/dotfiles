@@ -4,3 +4,5 @@
 .ropeproject
 *.pem
 .idea/
+.mypy_cache/
+.vscode/
