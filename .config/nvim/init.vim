@@ -174,6 +174,8 @@ Plug 'rodjek/vim-puppet'
 
 Plug 'neovimhaskell/haskell-vim'
 
+Plug 'mattn/emmet-vim'
+
 call plug#end()
 
 " }}}

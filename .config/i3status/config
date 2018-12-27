@@ -34,9 +34,9 @@ volume_status {
     format = "  {percentage}% "
     # format = " ♪ {percentage}% "
     on_click 1 = "exec pavucontrol"
-    on_click 2 = "exec pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle && killall -s USR1 py3status"
-    on_click 4 = "exec pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +5% && killall -s USR1 py3status"
-    on_click 5 = "exec pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -5% && killall -s USR1 py3status"
+    on_click 2 = "exec pamixer -t && killall -s USR1 py3status"
+    on_click 4 = "exec pamixer -i 5 && killall -s USR1 py3status"
+    on_click 5 = "exec pamixer -d 5 && killall -s USR1 py3status"
     color = "#839496"
     thresholds = [
         (0, "#839496"),

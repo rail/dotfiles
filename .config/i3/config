@@ -23,16 +23,30 @@ set $ws8 8 
 set $ws9 9 
 set $ws10 10 
 
-# from `pactl list sinks| grep Name`
-set $out_sink alsa_output.pci-0000_00_1f.3.analog-stereo
-# from `pactl list sources | grep Name`
-set $in_source alsa_input.pci-0000_00_1f.3.analog-stereo
 set $restart_py3status pkill --signal USR1 py3status
 # {{{1 Theme
-client.focused              #688060 #688060 #303030 #ffcfaf
-client.focused_inactive     #3f3f3f #3F3F3F #7f9f7f #3f3f3f
-client.unfocused            #3f3f3f #3F3F3F #DCDCCC #3f3f3f
-client.urgent               #dca3a3 #dca3a3 #DCDCCC #3f3f3f
+
+set $base00 #272822
+set $base01 #383830
+set $base02 #49483e
+set $base03 #75715e
+set $base04 #a59f85
+set $base05 #f8f8f2
+set $base06 #f5f4f1
+set $base07 #f9f8f5
+set $base08 #f92672
+set $base09 #fd971f
+set $base0A #f4bf75
+set $base0B #a6e22e
+set $base0C #a1efe4
+set $base0D #66d9ef
+set $base0E #ae81ff
+set $base0F #cc6633
+
+client.focused $base0D $base0D $base00 $base01
+client.focused_inactive $base02 $base02 $base03 $base01
+client.unfocused $base01 $base01 $base03 $base01
+client.urgent $base02 $base08 $base07 $base08
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -145,10 +159,10 @@ bindsym $mod+y border 1pixel
 bindsym $mod+u border none
 bindsym $mod+b border toggle
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $out_sink +5% && $restart_py3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $out_sink -5% && $restart_py3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $out_sink toggle && $restart_py3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute $in_source toggle && $restart_py3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && $restart_py3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && $restart_py3status
+bindsym XF86AudioMute exec --no-startup-id pamixer -t && $restart_py3status
+bindsym XF86AudioMicMute exec --no-startup-id pamixer -t --source 1 && $restart_py3status
 # bindsym XF86Tools exec gnome-control-center
 
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && $restart_py3status
@@ -213,13 +227,13 @@ bar {
         tray_padding 0
         separator_symbol "‖"
         colors {
-            background #3f3f3f
-            statusline #dcdccc
-
-            focused_workspace  #3f3f3f #93b3a3 #3f3f3f
-            active_workspace   #ffcfaf #3f3f3f #ffcfaf
-            inactive_workspace #636363 #3f3f3f #dcdccc
-            urgent_workspace   #dca3a3 #3f3f3f #dca3a3
+            background $base01
+            statusline $base05
+            separator $base03
+            focused_workspace $base0C $base0D $base00
+            active_workspace $base02 $base02 $base07
+            inactive_workspace $base01 $base01 $base03
+            urgent_workspace $base08 $base08 $base07
         }
 }
 
@@ -251,7 +265,10 @@ for_window [class="Gnome-clocks"] floating enable
 # for_window [class="VirtualBox"] floating enable
 for_window [class="Gnome-calendar"] floating enable
 for_window [class="pavucontrol"] floating enable
-
+for_window [class="mpv"] floating enable
+for_window [class="mpv"] sticky enable
+for_window [class="mpv"] resize set 640 480
+for_window [class="mpv"] move position center
 # {{{1 outputs
 workspace "$ws1" output DP1
 workspace "$ws2" output DP1
