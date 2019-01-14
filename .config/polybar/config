@@ -54,8 +54,8 @@ font-2 = "FontAwesome:size=14;1"
 font-3 = "SourceCodePro+Powerline+Awesome Regular:size=14;1"
 font-4 = "DejaVu Sans:size=14;1"
 
-modules-left = bspwm xwindow
-# modules-left = i3 xwindow
+; modules-left = bspwm xwindow
+modules-left = i3 xwindow
 modules-center =
 modules-right = xbacklight volume xkeyboard wlan battery date
 

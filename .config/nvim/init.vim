@@ -24,18 +24,6 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Writing plugins
-Plug 'junegunn/goyo.vim'
-    " augroup Writing
-    "     au!
-    "     autocmd FileType markdown,text setlocal spell
-    " augroup END
-
-" Fuzzy finder
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
-"     nmap <C-x> :FZF<CR>
-
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Async Linting
@@ -56,7 +44,7 @@ Plug 'w0rp/ale'
 " Async Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
     let g:deoplete#enable_at_startup = 1
@@ -86,9 +74,6 @@ Plug 'junegunn/vim-oblique'
     let g:oblique#clear_highlight = 1
     let g:oblique#prefix = "\\v" " Very Magic
 
-" Insert brackets on enter.
-Plug 'rstacruz/vim-closer'
-
 " Tpope
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -111,10 +96,6 @@ Plug 'othree/html5.vim'
 Plug 'machakann/vim-highlightedyank'
     let g:highlightedyank_highlight_duration = 200
 
-" look and feel
-Plug 'junegunn/limelight.vim'
-"     autocmd! User GoyoEnter Limelight
-"     autocmd! User GoyoLeave Limelight!
 Plug 'junegunn/rainbow_parentheses.vim'
 
 " Plug 'jnurmine/Zenburn'
@@ -129,6 +110,7 @@ Plug 'thirtythreeforty/lessspace.vim'
 Plug 'vim-airline/vim-airline'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 Plug 'vim-airline/vim-airline-themes'
     let g:airline_theme = 'base16_hopscotch'
@@ -140,8 +122,6 @@ Plug 'mhinz/vim-startify'
     let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, '~/.zshrc' ]
     let g:startify_change_to_dir = 0
     let g:startify_relative_path = 1
-
-Plug 'ryanoasis/vim-devicons'
 
 Plug 'mxw/vim-jsx'
     let g:jsx_ext_required = 0
@@ -156,17 +136,6 @@ Plug 'mileszs/ack.vim'
     let g:ackprg = 'ag --vimgrep --smart-case'
 
 Plug 'tpope/vim-fugitive'
-
-Plug 'scrooloose/nerdtree'
-    " Start both startify and nerdtree
-    autocmd VimEnter *
-                \   if !argc()
-                \ |   Startify
-                \ |   NERDTree
-                \ |   wincmd w
-                \ | endif
-
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'michaeljsmith/vim-indent-object'
 
@@ -209,12 +178,6 @@ augroup Filetypes
     " Markdown
     " set .md files to filetype markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
-
-    " Equalize splits on resize, mainly used with Goyo to fix it's padding on resize.
-    " autocmd VimResized * execute "normal \<C-W>="
-
-    " Always use goyo
-    " autocmd BufReadPost * Goyo 80%x90%
 
     " Plugins
     autocmd FileType xdefaults setlocal commentstring=!\ %s
@@ -308,9 +271,6 @@ set scrolloff=3
 set background=dark
 colorscheme seoul256
 
-" Goyo on/off
-nmap <Leader>g :Goyo<Return>
-
 " Limelight on/off
 nmap <silent> <Leader>l :Limelight!!<Return>
 xmap <silent> <Leader>l :Limelight!!<Return>
@@ -344,9 +304,6 @@ noremap <C-c> <Esc>
 cabbrev Wq wq
 cabbrev W w
 cabbrev Q q
-
-" Map q to qa to quickly exit when using goyo
-" cnoreabbrev q qa
 
 " unmap capital K
 nnoremap K <nop>

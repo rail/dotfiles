@@ -7,11 +7,9 @@ general {
     color_bad = "#dc322f"
 }
 
-# order += "external_script weather"
-order += "weather_yahoo"
 order += "backlight"
 order += "volume_status"
-order += "wifi"
+# order += "wifi"
 order += "battery_level"
 order += "clock"
 order += "keyboard_layout"
@@ -31,13 +29,14 @@ battery_level {
 
 volume_status {
     command = "pactl"
-    format = "  {percentage}% "
+    format = " ♫ {percentage}% "
     # format = " ♪ {percentage}% "
     on_click 1 = "exec pavucontrol"
-    on_click 2 = "exec pamixer -t && killall -s USR1 py3status"
-    on_click 4 = "exec pamixer -i 5 && killall -s USR1 py3status"
-    on_click 5 = "exec pamixer -d 5 && killall -s USR1 py3status"
+    # on_click 2 = "exec pamixer -t && pkill --signal USR1 py3status"
+    on_click 4 = "exec pamixer -i 5 && pkill --signal USR1 py3status"
+    on_click 5 = "exec pamixer -d 5 && pkill --signal USR1 py3status"
     color = "#839496"
+    button_mute = 2
     thresholds = [
         (0, "#839496"),
         (10, "#839496"),
@@ -84,14 +83,4 @@ clock {
     on_click 1 = "exec gnome-clocks"
     on_click 2 = "exec gnome-calendar"
     color = "#839496"
-}
-
-weather_yahoo {
-    woeid = 55999149
-    format_today = "{icon}{temp}°{unit} {text}"
-    format = '{today} {forecasts}   '
-    forecast_days = 3
-    color = "#839496"
-    on_click 1 = "exec xdg-open https://darksky.net/forecast/43.2642,-79.9537/ca12/en"
-    icon_snow = "❄"
 }
