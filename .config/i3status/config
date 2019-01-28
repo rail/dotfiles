@@ -7,6 +7,7 @@ general {
     color_bad = "#dc322f"
 }
 
+order += "weather_owm"
 order += "backlight"
 order += "volume_status"
 # order += "wifi"
@@ -83,4 +84,20 @@ clock {
     on_click 1 = "exec gnome-clocks"
     on_click 2 = "exec gnome-calendar"
     color = "#839496"
+}
+
+weather_owm {
+    api_key = shell(cat ~/.config/openweathermap.api)
+    cache_timeout = 7200
+    city = "Dundas"
+    country = "Canada"
+    forecast_include_today = True
+    forecast_days = 2
+    format = "{temperature} {forecast}"
+    unit_temperature = "C"
+    format_temperature = "[\?color=all {current:.0f}°{unit}]"
+    icon_rain = "☂"
+    icon_thunderstorm = "☔"
+    on_click 1 = "exec firefox https://darksky.net/forecast/43.2598,-79.9607/ca12/en"
+    request_timeout = 60
 }
