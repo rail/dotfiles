@@ -27,7 +27,7 @@
   renames = copy
 
 [core]
-    excludesfile = ~/.gitglobalignore
+    excludesfile = ~/.config/git/globalignore
     autocrlf = input
     safecrlf = true
     pager = diff-so-fancy | less --tabs=4 -RFX
