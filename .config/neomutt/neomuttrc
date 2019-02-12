@@ -5,7 +5,7 @@ set implicit_autoview
 set spoolfile = ~/.offlineimap-gmail/INBOX
 set record=+Sent
 set postponed=+Drafts
-set header_cache="~/.mutt/Cache"
+set header_cache="~/.cache/neomutt_headers
 set trash=+Trash
 set use_from
 set from = "Rail Aliiev <rail@mozilla.com>"
@@ -85,10 +85,8 @@ unignore from: date subject to cc Reply-To:
 hdr_order from subject to cc date x-spam: Reply-To:
 alternates rail@.* raliiev@.*
 
-source ~/.mutt/muttmailboxes
-# source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
-source ~/.mutt/colors-zenburn
-source ~/.mutt/lists
+source ~/.config/neomutt/mailboxes
+source ~/.config/neomutt/colors-zenburn
 
 # release mail
 color index red default "~s '[release] .* failed at'"
