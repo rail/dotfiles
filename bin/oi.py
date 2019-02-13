@@ -13,10 +13,6 @@ subprocess.check_call([
 ], timeout=4 * 60)
 print("Done")
 print("sync in progress... ")
-subprocess.check_call([
-    "offlineimap",
-    "-u", "quiet",
-    "-c", os.path.expanduser("~/.dotfiles/offlineimaprc"),
-], timeout=4 * 60)
+subprocess.check_call(["offlineimap", "-u", "quiet"], timeout=4 * 60)
 print("Done")
 os.chmod(imap_status, 0o644)

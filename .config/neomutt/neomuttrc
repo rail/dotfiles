@@ -1,8 +1,8 @@
 set sendmail = "sendmail -oem -oi"
 set mbox_type = Maildir
-set folder = ~/.offlineimap-gmail
+set folder = ~/.local/offlineimap/mozilla
 set implicit_autoview
-set spoolfile = ~/.offlineimap-gmail/INBOX
+set spoolfile = ~/.local/offlineimap/mozilla/INBOX
 set record=+Sent
 set postponed=+Drafts
 set header_cache="~/.cache/neomutt_headers

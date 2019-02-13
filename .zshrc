@@ -26,9 +26,6 @@ zstyle ':vcs_info:*' enable git
 setopt NOCLOBBER
 setopt no_nomatch # when pattern matching fails, simply use the command as is
 
-export BROWSER=firefox
-export WORKON_HOME=~/.virtualenvs
-
 function wp() {
   cd ~/work/git/$1;
 }
