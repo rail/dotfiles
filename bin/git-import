@@ -1,6 +1,0 @@
-# !/bin/sh
-# Uh, there shouldn’t be a space between the # and ! in the previous
-# line, but the highlighter I’m using seems to require it…
-
-wget -q -O- $1 | git-apply
-

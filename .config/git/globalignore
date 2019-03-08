@@ -6,3 +6,4 @@
 .idea/
 .mypy_cache/
 .vscode/
+.pytest_cache/
