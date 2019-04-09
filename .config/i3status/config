@@ -1,8 +1,8 @@
 general {
     colors = true
     interval = 5
-    # solarized colors!
-    color_good = "#839496"
+    # color_good = "#c0c5ce"
+    color_good = "#c0c5ce"
     color_degraded = "#b58900"
     color_bad = "#dc322f"
 }
@@ -21,11 +21,11 @@ battery_level {
     format = " {icon} {percent}% "
     blocks = ""
     notify_low_level = true
-    color = "#839496"
-    color_bad = "#839496"
-    color_charging = "#839496"
-    color_degraded = "#839496"
-    color_good = "#839496"
+    color = "#c0c5ce"
+    color_bad = "#c0c5ce"
+    color_charging = "#c0c5ce"
+    color_degraded = "#c0c5ce"
+    color_good = "#c0c5ce"
 }
 
 volume_status {
@@ -36,54 +36,54 @@ volume_status {
     # on_click 2 = "exec pamixer -t && pkill --signal USR1 py3status"
     on_click 4 = "exec pamixer -i 5 && pkill --signal USR1 py3status"
     on_click 5 = "exec pamixer -d 5 && pkill --signal USR1 py3status"
-    color = "#839496"
+    color = "#c0c5ce"
     button_mute = 2
     thresholds = [
-        (0, "#839496"),
-        (10, "#839496"),
-        (20, "#839496"),
-        (30, "#839496"),
-        (40, "#839496"),
-        (50, "#839496"),
-        (60, "#839496"),
-        (70, "#839496"),
-        (80, "#839496"),
-        (90, "#839496")
+        (0, "#c0c5ce"),
+        (10, "#c0c5ce"),
+        (20, "#c0c5ce"),
+        (30, "#c0c5ce"),
+        (40, "#c0c5ce"),
+        (50, "#c0c5ce"),
+        (60, "#c0c5ce"),
+        (70, "#c0c5ce"),
+        (80, "#c0c5ce"),
+        (90, "#c0c5ce")
     ]
 }
 
 keyboard_layout {
     cache_timeout = 1
-    color_us = "#839496"
-    color_ru = "#839496"
+    color_us = "#c0c5ce"
+    color_ru = "#c0c5ce"
     format = " {layout} "
-    on_click 1 = "exec xkblayout-state set -1"
-    on_click 4 = "exec xkblayout-state set -1"
-    on_click 5 = "exec xkblayout-state set +1"
+    # on_click 1 = "exec xkblayout-state set -1"
+    # on_click 4 = "exec xkblayout-state set -1"
+    # on_click 5 = "exec xkblayout-state set +1"
 }
 
 backlight {
     cache_timeout = 3
     format = " ✲ {level}% "
     # format = "  {level}% "
-    color = "#839496"
+    color = "#c0c5ce"
 }
 
 wifi {
     device = "wlp4s0"
     # format_up = "   {signal_percent} {bitrate} "
     format = "   {signal_percent} |   down "
-    color = "#839496"
-    color_good = "#839496"
-    color_bad = "#839496"
-    color_degraded = "#839496"
+    color = "#c0c5ce"
+    color_good = "#c0c5ce"
+    color_bad = "#c0c5ce"
+    color_degraded = "#c0c5ce"
 }
 
 clock {
     format_time = " %a %d, %H:%M "
     on_click 1 = "exec gnome-clocks"
     on_click 2 = "exec gnome-calendar"
-    color = "#839496"
+    color = "#c0c5ce"
 }
 
 weather_owm {

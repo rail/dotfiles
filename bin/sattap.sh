@@ -9,7 +9,12 @@ HTTP_URL="https://img.lgtm.ca/"
 FILENAME=`date | md5sum | head -c 8`.png
 FILEPATH=/tmp/$FILENAME
 
-import $FILEPATH
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    grim -g "$(slurp)" $FILEPATH
+else
+    import $FILEPATH
+fi
+
 scp $FILEPATH ${SCP_HOST}:$SCP_PATH
 rm $FILEPATH
 
