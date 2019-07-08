@@ -33,3 +33,5 @@ _wp() {
   _files -W ~/work/git/
 }
 compdef _wp wp
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

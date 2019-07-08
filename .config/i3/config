@@ -219,6 +219,7 @@ bar {
 
 # {{{1 startup
 exec_always --no-startup-id xinput --disable "Synaptics TM3289-002"
+exec_always --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/wallpapers/current
 
 # {{{1 Rules
 for_window [class="Transmission-gtk"] floating enable

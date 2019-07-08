@@ -26,9 +26,9 @@ mine:move_messages(acc["My bugs"])
 new_bugs = bugs:contain_field('X-Bugzilla-Type', 'new')
 new_bugs:move_messages(acc["Bugs New"])
 
-release_bugs = bugs:contain_field('X-Bugzilla-Component', 'Release Automation') +
-               bugs:contain_field('X-Bugzilla-Component', 'Releases')
-release_bugs:move_messages(acc["Bugs Releases"])
+-- release_bugs = bugs:contain_field('X-Bugzilla-Component', 'Release Automation') +
+--                bugs:contain_field('X-Bugzilla-Component', 'Releases')
+-- release_bugs:move_messages(acc["Bugs Releases"])
 
 
 cc = bugs:contain_field('X-Bugzilla-Who', 'rail@mozilla.com') +
@@ -41,8 +41,8 @@ cc:move_messages(acc["Bugs CC"])
 inbox = acc.INBOX
 
 -- releases
-release_failures = inbox:match_subject("\\[release\\] .*: failed at ")
-release_failures:move_messages(acc["Release failures"])
+-- release_failures = inbox:match_subject("\\[release\\] .*: failed at ")
+-- release_failures:move_messages(acc["Release failures"])
 
 -- thunderbird-drivers ML comes via release ML, no easy way to identify it by headers
 tb = inbox:contain_to("thunderbird-drivers@mozilla.org") +
