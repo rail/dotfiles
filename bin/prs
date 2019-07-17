@@ -1,0 +1,9 @@
+#!/bin/sh
+
+prs=$(curl -su rail:$(pass show personal/github-py3status-token) "https://api.github.com/search/issues?q=is%3Aopen+is%3Apr+archived%3Afalse+review-requested%3Arail" | jq .total_count)
+if [[ $prs != 0 ]]; then
+    echo "PRs: $prs"
+    echo "#FF0000"
+else
+    echo "No PRs \o/"
+fi
