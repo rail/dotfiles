@@ -7,6 +7,8 @@ general {
     color_bad = "#dc322f"
 }
 
+order += "external_script prs"
+# order += "github"
 order += "weather_owm"
 order += "backlight"
 order += "volume_status"
@@ -87,7 +89,7 @@ clock {
 }
 
 weather_owm {
-    api_key = shell(cat ~/.config/openweathermap.api)
+    api_key = shell(pass show personal/openweathermap.api)
     cache_timeout = 7200
     city = "Dundas"
     country = "Canada"
@@ -100,4 +102,18 @@ weather_owm {
     icon_thunderstorm = "☔"
     on_click 1 = "exec firefox https://darksky.net/forecast/43.2598,-79.9607/ca12/en"
     request_timeout = 60
+}
+
+github {
+    username = "rail"
+    auth_token = shell(pass show personal/github-py3status-token)
+    format = "{notifications}"
+    format_notifications = "GH: {notifications_count}"
+}
+
+external_script prs {
+    cache_timeout = 180
+    format = " {output} "
+    script_path = "~/bin/prs"
+    on_click 1 = "exec firefox https://github.com/pulls?q=is%3Aopen+is%3Apr+archived%3Afalse+review-requested%3Arail"
 }

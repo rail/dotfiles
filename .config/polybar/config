@@ -100,7 +100,8 @@ modules-right = xbacklight volume xkeyboard wlan battery date
 [bar/default]
 inherit = section/bars
 monitor = DP1
-modules-right = volume xkeyboard date
+; modules-right = volume xkeyboard date
+modules-right = xbacklight volume xkeyboard wlan battery date
 
 ; {{{1 xwindow
 [module/xwindow]
