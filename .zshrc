@@ -26,12 +26,5 @@ zstyle ':vcs_info:*' enable git
 setopt NOCLOBBER
 setopt no_nomatch # when pattern matching fails, simply use the command as is
 
-function wp() {
-  cd ~/work/git/$1;
-}
-_wp() {
-  _files -W ~/work/git/
-}
-compdef _wp wp
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(starship init zsh)"

@@ -13,7 +13,7 @@ set $ws9 9 
 set $ws10 10 
 
 set $restart_py3status pkill --signal USR1 py3status
-set $term konsole
+set $term kitty
 # {{{1 Theme
 
 # base16, ocean.dark: https://github.com/khamer/base16-i3/blob/master/colors/base16-ocean.config
@@ -163,7 +163,7 @@ bindsym $mod+Mod1+Up move workspace to output up
 bindsym $mod+Mod1+Down move workspace to output down
 bindsym $mod+Tab workspace back_and_forth
 
-bindsym Ctrl+$mod+l exec light-locker-command -l
+bindsym Ctrl+$mod+l exec xautolock -locknow
 # sticky window
 bindsym $mod+Shift+s sticky toggle
 
@@ -219,7 +219,7 @@ bar {
 
 # {{{1 startup
 exec_always --no-startup-id xinput --disable "Synaptics TM3289-002"
-exec_always --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/wallpapers/current
+exec_always --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/wallpapers/current
 
 # {{{1 Rules
 for_window [class="Transmission-gtk"] floating enable

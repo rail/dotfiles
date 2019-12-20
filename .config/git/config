@@ -10,12 +10,11 @@
     st = status
     co = checkout
     di = diff -U8 --patch-with-stat --binary
-    out = outgoing
     du = diff -U8 --patch-with-stat --binary @{u}...
     in = log ..@{u}
     nb = !sh -c 'git checkout -b $1 origin/master' -
-    glog = log --graph --abbrev-commit --decorate --date=relative --format=tformat:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    wip = branch --no-merged master
+    ki = difftool --no-symlinks --dir-diff
+    ku = difftool --no-symlinks --dir-diff --binary @{u}...
 
 [color]
     ui = auto
@@ -23,8 +22,8 @@
 [github]
     user = rail
 
-[diff]
-  renames = copy
+; [diff]
+;   renames = copy
 
 [core]
     excludesfile = ~/.config/git/globalignore
@@ -33,3 +32,15 @@
     pager = diff-so-fancy | less --tabs=4 -RFX
 [commit]
     gpgsign = true
+
+[diff]
+    renames = copy
+    tool = kitty
+    guitool = kitty.gui
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitty kitty +kitten diff $LOCAL $REMOTE

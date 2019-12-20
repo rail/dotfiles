@@ -22,6 +22,7 @@ maxconnections = 4
 type = Gmail
 foldersort = mycmp
 ssl = yes
+ssl_version = tls1_2
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 folderfilter = lambda foldername: foldername not in '[Gmail]/All Mail'
 remoteusereval = "raliiev@mozilla.com"

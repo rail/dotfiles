@@ -7,9 +7,9 @@
 PATH=$PATH:/run/current-system/sw/bin
 
 brightness_day="60"
-brightness_transition="30"
-brightness_night="10"
-fade_time=20000
+brightness_transition="40"
+brightness_night="20"
+fade_time=10000
 
 case $1 in
     period-changed)
