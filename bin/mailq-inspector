@@ -1,6 +1,0 @@
-#!/bin/sh
-
-mailq_out=$(mailq)
-if ls /var/spool/nullmailer/queue/* 2>/dev/null; then
-  printf "#[fg=colour197]Check mailq#[default]   "
-fi

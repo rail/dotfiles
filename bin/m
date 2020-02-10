@@ -1,9 +1,0 @@
-if ! tmux -2 attach-session -t mutt; then
-    tmux -2 new-session -d -s mutt -n mutt
-    tmux splitw -t mutt:1 -v -p 4
-    tmux send-keys -t mutt:1.1 "neomutt" C-m
-    tmux send-keys -t mutt:1.2 "while 1; do python ~/bin/oi.py; echo done ;sleep 120;done" C-m
-    tmux select-pane -t mutt:1.1
-    tmux rename-window -t 1 mutt
-    tmux -2 attach-session -t mutt
-fi

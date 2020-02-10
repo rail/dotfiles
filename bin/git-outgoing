@@ -1,5 +1,0 @@
-# !/bin/sh
-# Uh, there shouldn’t be a space between the # and ! in the previous
-# line, but the highlighter I’m using seems to require it…
-git push --dry-run $@ 2>&1 | awk '/^ / {print $1}' | xargs git log
-

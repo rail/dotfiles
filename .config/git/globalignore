@@ -1,9 +1,0 @@
-*.pyc
-*.wpr
-*.wpu
-.ropeproject
-*.pem
-.idea/
-.mypy_cache/
-.vscode/
-.pytest_cache/
